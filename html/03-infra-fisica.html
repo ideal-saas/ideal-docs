@@ -1,0 +1,111 @@
+<div class="sheet page-break" id="s3">
+  <h2>3. Infraestructura Física</h2>
+
+  <h3 id="s3-1">3.1 Proveedor de Servicios en la Nube</h3>
+  <p>IDEAL SOFTWARE S.A.S opera su infraestructura de facturación electrónica sobre <strong>Amazon Web Services (AWS)</strong>, específicamente el servicio <strong>AWS Lightsail</strong>, que proporciona servidores virtuales, bases de datos gestionadas, almacenamiento y conectividad de red en centros de datos certificados.</p>
+  <table>
+    <tr><th>Aspecto</th><th>Detalle</th></tr>
+    <tr><td><strong>Proveedor</strong></td><td>Amazon Web Services (AWS)</td></tr>
+    <tr><td><strong>Servicio</strong></td><td>AWS Lightsail (Infrastructure as a Service)</td></tr>
+    <tr><td><strong>Región</strong></td><td>us-east-1 (N. Virginia, Estados Unidos)</td></tr>
+    <tr><td><strong>Zona de disponibilidad</strong></td><td>us-east-1a</td></tr>
+    <tr><td><strong>Certificaciones AWS</strong></td><td>SOC 1/2/3, ISO 27001, ISO 27017, ISO 27018, PCI DSS Level 1, CSA STAR Level 2, FedRAMP</td></tr>
+    <tr><td><strong>SLA de disponibilidad</strong></td><td>99.99% para instancias Lightsail</td></tr>
+  </table>
+  <p><strong>Justificación de selección de AWS:</strong></p>
+  <ul>
+    <li>Proveedor cloud líder global con más de 18 años de operación</li>
+    <li>Centros de datos con redundancia de energía, refrigeración y conectividad</li>
+    <li>Certificaciones de seguridad internacionales reconocidas</li>
+    <li>Backups automáticos integrados en bases de datos gestionadas</li>
+    <li>Escalabilidad vertical y horizontal bajo demanda</li>
+    <li>Firewall nativo configurable por instancia</li>
+  </ul>
+
+  <h3 id="s3-2">3.2 Servidor de Producción</h3>
+  <table>
+    <tr><th>Especificación</th><th>Valor</th></tr>
+    <tr><td><strong>Nombre</strong></td><td>ideal-production-server</td></tr>
+    <tr><td><strong>Sistema Operativo</strong></td><td>Ubuntu 22.04 LTS (soporte hasta abril 2027, extendido hasta 2032)</td></tr>
+    <tr><td><strong>Procesador</strong></td><td>4 vCPU</td></tr>
+    <tr><td><strong>Memoria RAM</strong></td><td>16 GB</td></tr>
+    <tr><td><strong>Almacenamiento</strong></td><td>320 GB SSD</td></tr>
+    <tr><td><strong>Bundle</strong></td><td><a href="https://aws.amazon.com/lightsail/pricing/" target="_blank">xlarge_3_0</a> — 4 vCPU, 16 GB RAM, 320 GB SSD, 6 TB transferencia</td></tr>
+    <tr><td><strong>IP Estática</strong></td><td>[Asignada por AWS — no divulgada]</td></tr>
+  </table>
+
+  <h3 id="s3-3">3.3 Cumplimiento de Transferencia Internacional de Datos</h3>
+  <p>La infraestructura de IDEAL SOFTWARE S.A.S opera en la región us-east-1 (N. Virginia, Estados Unidos) de Amazon Web Services. Esta configuración cumple plenamente con la normativa colombiana de protección de datos personales, conforme a lo siguiente:</p>
+  <p><strong>Marco legal aplicable:</strong></p>
+  <table>
+    <tr><th>Norma</th><th>Disposición</th><th style="text-align:center;">Cumplimiento</th></tr>
+    <tr><td>Ley 1581 de 2012 (Habeas Data)</td><td>Art. 26 - Transferencias internacionales permitidas a países con nivel adecuado de protección</td><td style="text-align:center;"><span class="check">&#x2713;</span></td></tr>
+    <tr><td>Decreto 1377 de 2013</td><td>Art. 26 - EE.UU. reconocido como país con nivel adecuado por la SIC bajo el marco Data Privacy Framework</td><td style="text-align:center;"><span class="check">&#x2713;</span></td></tr>
+    <tr><td>ISO/IEC 27018:2019</td><td>Estándar específico para protección de PII en la nube - certificado por AWS</td><td style="text-align:center;"><span class="check">&#x2713;</span></td></tr>
+  </table>
+  <p><strong>Rol de AWS como encargado del tratamiento:</strong> AWS actúa exclusivamente como <strong>encargado del tratamiento</strong> (data processor) de conformidad con el Art. 3 de la Ley 1581 de 2012. IDEAL SOFTWARE S.A.S es el <strong>responsable del tratamiento</strong> (data controller). AWS no accede ni utiliza los datos de los clientes para ningún propósito diferente a la prestación del servicio contratado.</p>
+  <p><strong>Certificaciones de seguridad de AWS relevantes:</strong></p>
+  <ul>
+    <li>SOC 1 Tipo II, SOC 2 Tipo II, SOC 3 (auditados por terceros)</li>
+    <li>ISO 27001:2022 (Seguridad de la información)</li>
+    <li>ISO 27017:2015 (Seguridad en la nube)</li>
+    <li>ISO 27018:2019 (Protección de datos personales en la nube)</li>
+    <li>PCI DSS Nivel 1 (Seguridad de datos de pago)</li>
+  </ul>
+  <div class="note">
+    <p><strong>Acuerdo de procesamiento de datos:</strong> AWS ofrece un Data Processing Addendum (DPA) que establece obligaciones contractuales de seguridad, confidencialidad y protección de datos, disponible en: https://aws.amazon.com/compliance/gdpr-center/</p>
+  </div>
+
+  <h3 id="s3-4">3.4 Bases de Datos Gestionadas</h3>
+  <p>IDEAL SOFTWARE S.A.S utiliza bases de datos gestionadas de AWS Lightsail (Managed Database), que incluyen backups automáticos, mantenimiento del motor, parches de seguridad y alta disponibilidad sin intervención manual.</p>
+
+  <h4>3.4.1 PostgreSQL 16 (Producción)</h4>
+  <table>
+    <tr><th>Especificación</th><th>Valor</th></tr>
+    <tr><td><strong>Nombre</strong></td><td>ideal-production-postgres</td></tr>
+    <tr><td><strong>Motor</strong></td><td>PostgreSQL 16</td></tr>
+    <tr><td><strong>Bundle</strong></td><td><a href="https://aws.amazon.com/lightsail/pricing/#Databases" target="_blank">micro_1_0</a> — 1 GB RAM, 1 vCPU, 40 GB SSD</td></tr>
+    <tr><td><strong>Acceso público</strong></td><td>DESHABILITADO</td></tr>
+    <tr><td><strong>Backup automático</strong></td><td>Diario, ventana 04:00-04:30 UTC</td></tr>
+    <tr><td><strong>Retención de backups</strong></td><td>7 días</td></tr>
+    <tr><td><strong>Ventana de mantenimiento</strong></td><td>Domingo 05:00-05:30 UTC</td></tr>
+    <tr><td><strong>Final snapshot</strong></td><td>Obligatorio antes de eliminación</td></tr>
+    <tr><td><strong>Consumidores</strong></td><td>8 microservicios NestJS + 6 consumers Kafka</td></tr>
+    <tr><td><strong>Datos almacenados</strong></td><td>Empresas, facturas, notas crédito/débito, contabilidad, nómina, inventario, tesorería, reportes</td></tr>
+  </table>
+
+  <h4>3.4.2 MySQL 8.0 (Producción)</h4>
+  <table>
+    <tr><th>Especificación</th><th>Valor</th></tr>
+    <tr><td><strong>Nombre</strong></td><td>ideal-production-mysql</td></tr>
+    <tr><td><strong>Motor</strong></td><td>MySQL 8.0</td></tr>
+    <tr><td><strong>Bundle</strong></td><td><a href="https://aws.amazon.com/lightsail/pricing/#Databases" target="_blank">micro_1_0</a> — 1 GB RAM, 1 vCPU, 40 GB SSD</td></tr>
+    <tr><td><strong>Acceso público</strong></td><td>DESHABILITADO</td></tr>
+    <tr><td><strong>Backup automático</strong></td><td>Diario, ventana 04:00-04:30 UTC</td></tr>
+    <tr><td><strong>Retención de backups</strong></td><td>7 días</td></tr>
+    <tr><td><strong>Ventana de mantenimiento</strong></td><td>Domingo 05:00-05:30 UTC</td></tr>
+    <tr><td><strong>Final snapshot</strong></td><td>Obligatorio antes de eliminación</td></tr>
+    <tr><td><strong>Consumidor</strong></td><td>API DIAN (Laravel/PHP)</td></tr>
+    <tr><td><strong>Datos almacenados</strong></td><td>Resoluciones DIAN, consecutivos de facturación, XMLs generados, estados de transmisión</td></tr>
+  </table>
+
+  <h3 id="s3-5">3.5 Dominio y DNS</h3>
+  <table>
+    <tr><th>Dominio</th><th>Tipo</th><th>Propósito</th></tr>
+    <tr><td>idealsoluciones.com.co</td><td>Dominio principal</td><td>Dominio corporativo de producción</td></tr>
+    <tr><td>api.idealsoluciones.com.co</td><td>Registro A &rarr; IP producción</td><td>API GraphQL (punto de entrada del servicio)</td></tr>
+    <tr><td>app.idealsoluciones.com.co</td><td>Registro A &rarr; IP producción</td><td>Aplicación web para facturadores</td></tr>
+  </table>
+
+  <h3 id="s3-6">3.6 Gestión de Infraestructura como Código</h3>
+  <p>Toda la infraestructura se gestiona mediante código versionado (Terraform), lo que garantiza que puede ser recreada de forma idéntica ante cualquier contingencia. Cada cambio queda registrado y es trazable en el historial de Git. Los recursos gestionados incluyen instancias Lightsail, bases de datos gestionadas, IPs estáticas, reglas de firewall y pares de claves SSH.</p>
+
+  <h3 id="s3-7">3.7 Plan de Evolución de Infraestructura</h3>
+  <p>IDEAL SOFTWARE S.A.S ha definido una hoja de ruta de crecimiento en tres etapas, alineada con la proyección de clientes facturadores activos:</p>
+  <ul>
+    <li><strong>Etapa 1 — Capacidad actual (0 a ~50 clientes):</strong> La infraestructura actual sobre AWS Lightsail (4 vCPU, 16 GB RAM, 320 GB SSD) soporta la operación de hasta aproximadamente 50 empresas clientes con carga normal de facturación. El 73% de headroom de memoria disponible garantiza margen suficiente para absorber picos de demanda en esta etapa.</li>
+    <li><strong>Etapa 2 — Escalamiento vertical (~50 a ~100 clientes):</strong> Al superar los 50 clientes activos, se realizará un escalamiento vertical de la instancia Lightsail (upgrade de bundle) y de las bases de datos gestionadas, sin cambios en la arquitectura de contenedores ni en los procesos operativos. Esta etapa sostendrá la operación hasta alcanzar el punto de equilibrio económico proyectado en aproximadamente 100 clientes.</li>
+    <li><strong>Etapa 3 — Infraestructura elástica (más de ~100 clientes):</strong> Al superar los 100 clientes activos, IDEAL SOFTWARE S.A.S migrará a una arquitectura de nube elástica con escalamiento horizontal, compuesta por: Amazon EKS (Elastic Kubernetes Service) como orquestador de contenedores, Amazon RDS como motor de bases de datos administradas con réplicas de lectura, y un Application Load Balancer (ALB) para distribución de tráfico. Esta arquitectura elimina los límites de escalamiento vertical y permite crecer de forma ilimitada en función de la demanda.</li>
+  </ul>
+
+</div>

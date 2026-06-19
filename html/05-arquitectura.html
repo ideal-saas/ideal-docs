@@ -1,0 +1,16 @@
+<div class="sheet page-break" id="s5">
+  <h2>5. Arquitectura del Servicio</h2>
+
+  <h3 id="s5-1">5.1 Arquitectura General</h3>
+  <p>La plataforma IDEAL FACTURACIÓN ELECTRÓNICA implementa una arquitectura de microservicios desplegada sobre contenedores Docker, orquestada mediante Docker Compose, con un API Gateway GraphQL unificado (Apollo Router) que expone todos los servicios a través de un único endpoint. La comunicación asíncrona entre servicios se realiza mediante Apache Kafka, y la infraestructura se provisiona como código mediante Terraform sobre AWS Lightsail. Ver <strong>Anexo A &mdash; Diagrama 1: Arquitectura General del Sistema</strong> para la representación visual completa.</p>
+
+  <h3 id="s5-2">5.2 Proceso Externo: Flujo del Usuario</h3>
+  <p>El proceso externo describe el flujo de cara al facturador electrónico, desde la autenticación en Ideal App, la generación y validación del documento electrónico, la transmisión a la DIAN, y la notificación al adquirente con el XML firmado y la representación gráfica (PDF). Ver <strong>Anexo A &mdash; Diagrama 2: Flujo de Emisión de Factura Electrónica</strong> para el detalle completo de la secuencia.</p>
+
+  <h3 id="s5-3">5.3 Proceso Interno: Emisión de Documento Electrónico</h3>
+  <p>El proceso interno describe el flujo técnico desde la petición GraphQL hasta la notificación final, incluyendo la coordinación entre Apollo Router, microservicios NestJS, Kafka, la API DIAN (Laravel) para firma digital y transmisión SOAP, y los consumers especializados para actualización de estado, generación de PDF y envío de notificaciones. Ver <strong>Anexo A &mdash; Diagrama 2: Diagrama de Secuencia del Proceso Interno</strong> para la representación visual detallada.</p>
+
+  <h3 id="s5-4">5.4 Topología de Redes</h3>
+  <p>La plataforma implementa <strong>7 redes Docker aisladas</strong> que segmentan el tráfico por dominio funcional. Cada red es de tipo bridge y puede ser referenciada desde múltiples proyectos Docker Compose mediante redes externas (<code>external: true</code>), permitiendo que servicios definidos en diferentes repositorios se comuniquen entre sí sin exponer puertos innecesarios. Ver <strong>Anexo A &mdash; Diagrama 3: Topología de Redes Docker</strong> para la representación visual de las redes y sus interconexiones.</p>
+
+</div>

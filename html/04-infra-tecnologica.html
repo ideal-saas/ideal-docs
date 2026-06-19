@@ -1,0 +1,95 @@
+<div class="sheet page-break" id="s4">
+  <h2>4. Infraestructura Tecnológica</h2>
+
+  <h3 id="s4-1">4.1 Stack Tecnológico</h3>
+  <table>
+    <tr><th>Capa</th><th>Tecnología</th><th>Versión</th><th>Propósito</th></tr>
+    <tr><td><strong>Orquestación</strong></td><td>Docker Compose v2</td><td>Latest</td><td>Gestión del ciclo de vida de containers</td></tr>
+    <tr><td><strong>Proxy reverso y TLS</strong></td><td>Caddy</td><td>2.8.4</td><td>Terminación TLS automática, HTTP/3, routing</td></tr>
+    <tr><td><strong>API Gateway</strong></td><td>Apollo Router</td><td>Latest</td><td>GraphQL Federation v2, enrutamiento de queries</td></tr>
+    <tr><td><strong>Backend</strong></td><td>NestJS (Node.js)</td><td>Latest</td><td>8 microservicios de lógica de negocio</td></tr>
+    <tr><td><strong>Integración DIAN</strong></td><td>Laravel/PHP</td><td>Latest</td><td>Firma digital, UBL 2.1, transmisión SOAP</td></tr>
+    <tr><td><strong>Event streaming</strong></td><td>Apache Kafka</td><td>3.9.0</td><td>Procesamiento asíncrono de documentos</td></tr>
+    <tr><td><strong>Consumers</strong></td><td>NestJS (Node.js)</td><td>Latest</td><td>6 procesadores especializados por tipo de documento</td></tr>
+    <tr><td><strong>Frontend</strong></td><td>Next.js (React)</td><td>Latest</td><td>Interfaz de usuario server-side rendered</td></tr>
+    <tr><td><strong>Panel de administración</strong></td><td>NestJS + Vite</td><td>Latest</td><td>Backend y frontend de administración</td></tr>
+    <tr><td><strong>Base de datos relacional</strong></td><td>PostgreSQL 16 + MySQL 8.0</td><td>Managed</td><td>Persistencia de datos de negocio</td></tr>
+    <tr><td><strong>Monitoreo</strong></td><td>Grafana Cloud (Alloy + cAdvisor)</td><td>Latest</td><td>Métricas, logs y alertas en tiempo real</td></tr>
+    <tr><td><strong>CI/CD</strong></td><td>GitHub Actions</td><td>—</td><td>Build, test y deploy automatizado</td></tr>
+    <tr><td><strong>Registro de imágenes</strong></td><td>GitHub Container Registry</td><td>—</td><td>Almacenamiento privado de imágenes Docker</td></tr>
+    <tr><td><strong>Infraestructura como código</strong></td><td>Terraform</td><td>≥ 1.0</td><td>Provisioning reproducible de AWS Lightsail</td></tr>
+  </table>
+
+  <h3 id="s4-2">4.2 Servicios de Facturación Electrónica</h3>
+  <p>La plataforma ha sido diseñada para cumplir con todos los flujos exigidos por la DIAN en el proceso de facturación electrónica. El sistema implementa los servicios web de generación, transmisión, consulta y recepción de documentos electrónicos conforme a los anexos técnicos de la Resolución 00165 de 2023.</p>
+  <table>
+    <tr><th>Servicio DIAN</th><th>Endpoint</th></tr>
+    <tr><td>Generación de factura electrónica</td><td>SendBillSync / SendTestSetAsync</td></tr>
+    <tr><td>Consulta de factura electrónica</td><td>GetStatus / GetStatusZip</td></tr>
+    <tr><td>Generación de nota crédito</td><td>SendBillSync (CreditNote)</td></tr>
+    <tr><td>Generación de nota débito</td><td>SendBillSync (DebitNote)</td></tr>
+    <tr><td>Generación de documento soporte</td><td>SendBillSync (SupportDocument)</td></tr>
+    <tr><td>Generación de nómina electrónica</td><td>SendPayrollSync</td></tr>
+    <tr><td>Recepción de factura electrónica</td><td>GetReceivedBills / GetReceivedBillsZip</td></tr>
+  </table>
+
+  <h3 id="s4-3">4.3 Inventario de Servicios</h3>
+  <p>La plataforma IDEAL FACTURACIÓN ELECTRÓNICA se compone de <strong>24 servicios containerizados</strong> orquestados mediante Docker Compose. Cada servicio se despliega desde imágenes publicadas en el registro privado de contenedores <code>ghcr.io/ideal-saas</code>.</p>
+  <table>
+    <tr><th>#</th><th>Servicio</th><th>Imagen Docker</th><th>Función</th></tr>
+    <tr><td>1</td><td>Caddy</td><td>caddy:2.8.4-alpine</td><td>Reverse proxy, terminación TLS automática (puertos 80 y 443)</td></tr>
+    <tr><td>2</td><td>Apollo Router</td><td>apollographql/apollo-runtime</td><td>Gateway GraphQL Federation v2</td></tr>
+    <tr><td>3</td><td>Core MS</td><td>ghcr.io/ideal-saas/core-ms</td><td>Empresas, usuarios, configuración</td></tr>
+    <tr><td>4</td><td>Inventory MS</td><td>ghcr.io/ideal-saas/inventoryms</td><td>Inventario y productos</td></tr>
+    <tr><td>5</td><td>Purchases MS</td><td>ghcr.io/ideal-saas/purchase-ms</td><td>Facturación, compras, notas</td></tr>
+    <tr><td>6</td><td>File Uploader MS</td><td>ghcr.io/ideal-saas/file-uploader-ms</td><td>Gestión de archivos</td></tr>
+    <tr><td>7</td><td>Accounting MS</td><td>ghcr.io/ideal-saas/accounting-ms</td><td>Contabilidad</td></tr>
+    <tr><td>8</td><td>Report MS</td><td>ghcr.io/ideal-saas/report-ms</td><td>Reportes</td></tr>
+    <tr><td>9</td><td>Payroll MS</td><td>ghcr.io/ideal-saas/payroll-ms</td><td>Nómina electrónica</td></tr>
+    <tr><td>10</td><td>Treasury MS</td><td>ghcr.io/ideal-saas/treasury-ms</td><td>Tesorería</td></tr>
+    <tr><td>11</td><td>API DIAN</td><td>ghcr.io/ideal-saas/dian-invoicer-ms</td><td>Integración DIAN: UBL 2.1, firma digital X.509, transmisión SOAP, almacenamiento de documentos en AWS S3</td></tr>
+    <tr><td>12</td><td>Apache Kafka</td><td>apache/kafka-native:3.9.0</td><td>Broker de mensajes para procesamiento asíncrono</td></tr>
+    <tr><td>13</td><td>Kafka UI</td><td>kafbat/kafka-ui</td><td>Administración y monitoreo de topics Kafka</td></tr>
+    <tr><td>14</td><td>Consumer Factura</td><td>ghcr.io/ideal-saas/ideal-stream-consumers-dian-einvoice-emission</td><td>Emisión de factura electrónica de venta</td></tr>
+    <tr><td>15</td><td>Consumer Nota Crédito</td><td>ghcr.io/ideal-saas/ideal-stream-consumers-dian-note-credit-emission</td><td>Emisión de nota crédito</td></tr>
+    <tr><td>16</td><td>Consumer Nota Débito</td><td>ghcr.io/ideal-saas/ideal-stream-consumers-dian-note-debit-emission</td><td>Emisión de nota débito</td></tr>
+    <tr><td>17</td><td>Consumer Doc. Soporte</td><td>ghcr.io/ideal-saas/ideal-stream-consumers-dian-document-support-emission</td><td>Emisión de documento soporte en adquisiciones</td></tr>
+    <tr><td>18</td><td>Consumer Nómina</td><td>ghcr.io/ideal-saas/ideal-stream-consumers-dian-payroll-emission</td><td>Emisión de nómina electrónica</td></tr>
+    <tr><td>19</td><td>Consumer Ajuste Nómina</td><td>ghcr.io/ideal-saas/ideal-stream-consumers-dian-payroll-adjustment-emission</td><td>Emisión de ajuste de nómina electrónica</td></tr>
+    <tr><td>20</td><td>Aplicación Web</td><td>ghcr.io/ideal-saas/acc-web-app</td><td>Frontend Next.js para facturadores</td></tr>
+    <tr><td>21</td><td>Grafana Alloy</td><td>grafana/alloy</td><td>Recolección de métricas y logs</td></tr>
+    <tr><td>22</td><td>cAdvisor</td><td>gcr.io/cadvisor/cadvisor</td><td>Métricas de rendimiento de containers</td></tr>
+    <tr><td>23</td><td>Admin MS</td><td>ghcr.io/ideal-saas/ideal-admin-ms</td><td>Backend de panel de administración</td></tr>
+    <tr><td>24</td><td>Admin Web</td><td>ghcr.io/ideal-saas/ideal-admin-web</td><td>Panel de administración (Vite)</td></tr>
+  </table>
+
+  <h3 id="s4-4">4.4 GraphQL Federation v2 (Apollo Router)</h3>
+  <p>La plataforma expone una <strong>API unificada GraphQL</strong> mediante Apollo Federation v2. El Apollo Router actúa como punto único de entrada, componiendo un supergrafo a partir de subgrafos publicados por cada microservicio. Esto permite que los clientes (aplicación web, admin) realicen consultas que abarcan múltiples dominios en una sola petición, mientras cada equipo mantiene su subgrafo de forma independiente.</p>
+  <table>
+    <tr><th>Subgrafo</th><th>Servicio</th><th>URL</th><th>Responsabilidad</th></tr>
+    <tr><td>coreMs</td><td>Core MS</td><td>http://core:3000/graphql</td><td>Empresas, usuarios, configuración</td></tr>
+    <tr><td>inventoryMs</td><td>Inventory MS</td><td>http://inventory:3001/graphql</td><td>Inventario, productos</td></tr>
+    <tr><td>purchaseMs</td><td>Purchases MS</td><td>http://purchases:3002/graphql</td><td>Compras, facturación, notas</td></tr>
+    <tr><td>accountingMs</td><td>Accounting MS</td><td>http://accounting:3004/graphql</td><td>Contabilidad, asientos</td></tr>
+    <tr><td>reportMs</td><td>Report MS</td><td>http://report:3005/graphql</td><td>Reportes tributarios</td></tr>
+    <tr><td>payrollMs</td><td>Payroll MS</td><td>http://payroll:3006/graphql</td><td>Nómina electrónica</td></tr>
+    <tr><td>treasuryMs</td><td>Treasury MS</td><td>http://treasury:3007/graphql</td><td>Tesorería, flujo de caja</td></tr>
+  </table>
+  <p><strong>Ventajas de Federation v2:</strong></p>
+  <ul>
+    <li><strong>Composición declarativa:</strong> El supergrafo se genera con Rover CLI a partir de las definiciones de cada subgrafo</li>
+    <li><strong>Consultas entre dominios:</strong> Una sola query GraphQL puede obtener datos de múltiples microservicios</li>
+    <li><strong>Despliegue independiente:</strong> Cada microservicio puede actualizar su esquema sin afectar a los demás</li>
+    <li><strong>Traza distribuida:</strong> El router propaga headers de tracing a través de todos los subgrafos</li>
+  </ul>
+
+  <h3 id="s4-5">4.5 Event Streaming (Apache Kafka)</h3>
+  <p>La emisión de documentos electrónicos se implementa mediante una <strong>arquitectura basada en eventos</strong> sobre Apache Kafka en modo KRaft (sin dependencia de Zookeeper). La plataforma utiliza el patrón <strong>Transactional Outbox</strong>: los eventos se escriben en la base de datos dentro de la misma transacción que los datos de negocio, y un proceso publicador los envía a Kafka. Esto garantiza que ningún evento se pierda — incluso si Kafka está temporalmente indisponible, el evento permanece persistido en la base de datos hasta su publicación exitosa.</p>
+  <p><strong>Beneficios del modelo de eventos:</strong></p>
+  <ul>
+    <li><strong>Asincronía:</strong> El usuario no espera a que se complete todo el flujo; la factura se emite y el procesamiento continúa en segundo plano</li>
+    <li><strong>Desacoplamiento:</strong> Cada consumer puede escalarse, actualizarse o reiniciarse de forma independiente</li>
+    <li><strong>Resiliencia:</strong> El patrón Transactional Outbox garantiza cero pérdida de eventos: si Kafka no está disponible, el evento permanece en la base de datos hasta su publicación. Si un consumer falla, el mensaje se reprocesa automáticamente</li>
+    <li><strong>Trazabilidad:</strong> Cada etapa del flujo deja registro en el tópico correspondiente, permitiendo auditoría completa del ciclo de vida del documento</li>
+  </ul>
+</div>

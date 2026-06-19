@@ -1,0 +1,34 @@
+<div class="sheet page-break" id="annex-b">
+  <div class="annex-header">ANEXO B / Inventario de Activos Tecnológicos</div>
+  <div class="meta">Ref: Punto 8, Numeral 8, IDEAL SOFTWARE S.A.S | NIT: 902.027.596-7, Junio 2026 | Versión: 1.1</div>
+
+  <h3>1. Activos de Infraestructura Cloud (Hardware Virtual)</h3>
+
+  <h4>1.1 Servidores de Cómputo</h4>
+  <p>Las especificaciones detalladas de los servidores de producción y QA se encuentran en el documento principal, Sección 3 &mdash; Infraestructura Física. En resumen: el servidor de producción cuenta con 4 vCPU, 16 GB RAM y 320 GB SSD (bundle xlarge_3_0), y el servidor QA con 2 vCPU, 8 GB RAM y 160 GB SSD (bundle large_3_0). Ambos ejecutan Ubuntu 22.04 LTS sobre AWS Lightsail.</p>
+
+  <h4>1.2 Bases de Datos Gestionadas</h4>
+  <table>
+    <thead>
+      <tr><th>ID</th><th>Motor</th><th>Bundle</th><th>Entorno</th><th>Proveedor</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>DB-003</td><td>PostgreSQL 16</td><td>micro_1_0 (1 GB RAM, 40 GB SSD)</td><td>QA</td><td>AWS Lightsail Managed DB</td></tr>
+      <tr><td>DB-004</td><td>MySQL 8.0</td><td>micro_1_0 (1 GB RAM, 40 GB SSD)</td><td>QA</td><td>AWS Lightsail Managed DB</td></tr>
+    </tbody>
+  </table>
+  <p>Las bases de datos de producción se detallan en el documento principal, Sección 3.4. Las bases de datos de QA replican la misma configuración (micro_1_0) para paridad de entornos.</p>
+
+  <h4>1.3 Dominios y DNS</h4>
+  <p>El dominio principal y los subdominios de producción se detallan en el documento principal, Sección 3.5. Los dominios de QA se listan a continuación:</p>
+  <table>
+    <thead>
+      <tr><th>ID</th><th>Subdominio</th><th>Propósito</th><th>Entorno</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>DNS-004</td><td>api.qa.idealsoluciones.com.co</td><td>API GraphQL QA</td><td>QA</td></tr>
+      <tr><td>DNS-005</td><td>app.qa.idealsoluciones.com.co</td><td>Aplicación web QA</td><td>QA</td></tr>
+    </tbody>
+  </table>
+  <p>Dominio registrado en GoDaddy. DNS gestionado mediante AWS Route 53. Todos los dominios cuentan con auto-renovación y registrar lock activado.</p>
+</div>

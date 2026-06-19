@@ -1,0 +1,203 @@
+<div class="sheet page-break" id="s6">
+
+<h2>6. Seguridad de la Información</h2>
+
+<h3>6.1 Modelo de Defensa en Profundidad</h3>
+
+<div class="note">Ref. Diagrama 5: Modelo de Defensa en Profundidad</div>
+
+<p>La plataforma Ideal SaaS implementa un modelo de defensa en profundidad con ocho capas de protección superpuestas. Cada capa opera de forma independiente, de modo que la falla o elusión de una no compromete la seguridad global del sistema. Este enfoque garantiza que un atacante deba superar múltiples barreras para acceder a los datos o servicios.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Capa</th>
+      <th>Componente</th>
+      <th>Función de Seguridad</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Firewall AWS Lightsail</td>
+      <td>Filtrado de puertos a nivel de instancia. Solo se exponen 80 (HTTP), 443 (HTTPS) y 22 (SSH). Todo el resto del tráfico entrante se descarta por defecto.</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Caddy (Terminación TLS)</td>
+      <td>Terminación TLS 1.3 con certificados Let's Encrypt. Renovación automática cada 60 días. Cifrado de todas las comunicaciones externas.</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Segmentación por Redes Docker</td>
+      <td>7 redes aisladas, mínimo privilegio. Aislamiento de servicios mediante 7 redes Docker independientes (accounting-net, api-dian-net, kafka-net, kafkaui-net, ideal-app-net, monitoring-net, admin-net). Cada microservicio solo accede a las redes que necesita.</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Autenticación y Autorización</td>
+      <td>Gestión de identidad centralizada con JWT. Cada microservicio valida tokens independientemente. Roles y permisos granulares por operación.</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Cifrado en Tránsito Interno</td>
+      <td>Comunicaciones entre microservicios protegidas mediante TLS mutuo (mTLS) dentro de las redes Docker. Kafka configurado con SASL/SCRAM y TLS para productores y consumidores.</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Cifrado en Reposo</td>
+      <td>Bases de datos Lightsail Managed DB con cifrado de disco habilitado por AWS. Snapshots automáticos cifrados. No se almacenan secretos en texto plano en el sistema de archivos.</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Monitoreo y Alertas</td>
+      <td>Grafana Cloud para dashboards y alertas. cAdvisor para métricas de contenedores. Grafana Alloy para recolección de logs centralizados. UptimeRobot para monitoreo externo de disponibilidad.</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Respuesta a Incidentes</td>
+      <td>Procedimientos documentados de respuesta ante incidentes. Canales de comunicación definidos por criticidad. Estrategia de recuperación basada en infraestructura como código, imágenes inmutables y backups automáticos (ver Sección 8).</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>6.2 Seguridad Perimetral</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Elemento</th>
+      <th>Configuración</th>
+      <th>Propósito</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Firewall AWS Lightsail (IPv4)</td>
+      <td>Puertos 80, 443, 22 abiertos. Resto cerrado.</td>
+      <td>Limitar superficie de ataque a los servicios estrictamente necesarios.</td>
+    </tr>
+    <tr>
+      <td>Firewall AWS Lightsail (IPv6)</td>
+      <td>Deshabilitado completamente.</td>
+      <td>Eliminar vector de ataque IPv6 no monitoreado.</td>
+    </tr>
+    <tr>
+      <td>Caddy Reverse Proxy</td>
+      <td>Único punto de entrada HTTP/S. Virtual hosts con encabezados de seguridad (HSTS, X-Frame-Options, X-Content-Type-Options).</td>
+      <td>Centralizar terminación TLS y enrutamiento. Prevenir ataques de capa 7 comunes.</td>
+    </tr>
+    <tr>
+      <td>Bases de Datos</td>
+      <td>Producción: publicly_accessible = false. QA: publicly_accessible = true (solo para desarrollo).</td>
+      <td>Aislar datos de producción de accesos externos directos.</td>
+    </tr>
+    <tr>
+      <td>SSH</td>
+      <td>Acceso mediante par de llaves administrado por Terraform. Sin autenticación por contraseña.</td>
+      <td>Acceso administrativo seguro sin riesgo de fuerza bruta.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>6.3 Cifrado en Tránsito</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Comunicación</th>
+      <th>Protocolo</th>
+      <th>Detalle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Cliente → Caddy</td>
+      <td>TLS 1.3</td>
+      <td>Certificados Let's Encrypt (ECDSA P-256). HTTP Strict Transport Security (HSTS) con max-age=63072000 e includeSubDomains.</td>
+    </tr>
+    <tr>
+      <td>Caddy → Microservicios</td>
+      <td>HTTP plano (red interna)</td>
+      <td>Tráfico confinado a redes Docker internas sin exposición externa. No requiere TLS dentro del host.</td>
+    </tr>
+    <tr>
+      <td>Microservicios → Kafka</td>
+      <td>SASL/SCRAM-SHA-512 + TLS</td>
+      <td>Autenticación mutua con credenciales por servicio. Cifrado de todos los mensajes en tránsito.</td>
+    </tr>
+    <tr>
+      <td>Microservicios → PostgreSQL</td>
+      <td>TLS (SSL Mode: require)</td>
+      <td>Conexiones cifradas a Lightsail Managed DB. Certificados raíz de AWS verificados.</td>
+    </tr>
+    <tr>
+      <td>api_dian → MySQL</td>
+      <td>TLS (SSL Mode: require)</td>
+      <td>Conexiones cifradas a Lightsail Managed DB con verificación de certificado.</td>
+    </tr>
+    <tr>
+      <td>Grafana Alloy → Grafana Cloud</td>
+      <td>HTTPS (TLS 1.3)</td>
+      <td>Envío de logs y métricas cifrados. Autenticación por token de API.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>6.4 Control de Acceso</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nivel</th>
+      <th>Mecanismo</th>
+      <th>Descripción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Autenticación</td>
+      <td>JWT (JSON Web Tokens)</td>
+      <td>Tokens firmados con RS256. Expiración configurable por entorno. Refresh tokens con rotación automática.</td>
+    </tr>
+    <tr>
+      <td>Autorización</td>
+      <td>RBAC (Role-Based Access Control)</td>
+      <td>Roles: SuperAdmin, Admin, Contador, Auditor, Operador. Permisos granulares por módulo (Facturación, Nómina, Inventario, Compras).</td>
+    </tr>
+    <tr>
+      <td>Microservicios</td>
+      <td>Guards NestJS por endpoint</td>
+      <td>Cada endpoint declara los permisos requeridos. El Apollo Router propaga el contexto de autenticación a todos los microservicios federados.</td>
+    </tr>
+    <tr>
+      <td>Kafka</td>
+      <td>SASL/SCRAM + ACLs</td>
+      <td>Cada consumidor y productor tiene credenciales únicas. ACLs restringen qué tópicos puede leer o escribir cada principal.</td>
+    </tr>
+    <tr>
+      <td>Infraestructura</td>
+      <td>Llaves SSH + AWS IAM</td>
+      <td>Acceso administrativo solo mediante llaves SSH gestionadas por Terraform. Sin usuarios/contraseñas en instancias.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>6.5 Monitoreo y Observabilidad</h3>
+<p>La plataforma cuenta con monitoreo 24/7 de disponibilidad externa, rendimiento de servidores, y logs centralizados con alertas automáticas ante cualquier degradación del servicio. Las herramientas específicas se detallan en el Anexo B &mdash; Inventario de Activos Tecnológicos.</p>
+
+<h3>6.6 Políticas de Seguridad Detalladas</h3>
+
+<p>Las siguientes políticas de seguridad rigen todos los aspectos de la plataforma Ideal SaaS. Su cumplimiento es obligatorio para todo el personal con acceso a los sistemas de producción. Las versiones completas y detalladas de cada política se encuentran en el Anexo C de este documento.</p>
+
+<ol>
+  <li><strong>Política de Control de Acceso:</strong> Principio de mínimo privilegio. Acceso basado en roles (RBAC) con revisión trimestral de permisos. Autenticación multifactor para accesos administrativos. Registro de todos los accesos y cambios de privilegios.</li>
+  <li><strong>Política de Gestión de Secretos:</strong> Prohibición absoluta de secretos en código fuente o repositorios. Uso exclusivo de variables de entorno y archivos .env (gitignored). Rotación obligatoria de tokens y contraseñas cada 90 días. Secrets de infraestructura gestionados por Terraform con variables de entorno TF_VAR_*.</li>
+  <li><strong>Política de Cifrado:</strong> TLS 1.3 como mínimo para todas las comunicaciones externas. Cifrado en reposo para todas las bases de datos. Algoritmos y conjuntos de cifrado revisados anualmente contra estándares NIST.</li>
+  <li><strong>Política de Desarrollo Seguro:</strong> Revisión de código obligatoria (code review) antes de merge a main. Análisis estático de seguridad (SAST) en CI/CD. Escaneo de dependencias (SCA) semanal. Pruebas de penetración anuales por tercero independiente.</li>
+  <li><strong>Política de Respuesta a Incidentes:</strong> Procedimiento documentado de notificación y escalamiento. Clasificación de incidentes por severidad (P1-Crítico a P4-Bajo). Tiempos máximos de respuesta: P1 ≤ 30 min, P2 ≤ 2 h, P3 ≤ 8 h, P4 ≤ 24 h. Análisis post-mortem obligatorio para incidentes P1 y P2.</li>
+  <li><strong>Política de Copias de Seguridad:</strong> Backups diarios automatizados con retención de 7 días (Lightsail Managed DB). Snapshot antes de cada despliegue a producción. Prueba de restauración trimestral. Ver Sección 7 para detalles completos.</li>
+  <li><strong>Política de Actualización y Parches:</strong> Actualización de imágenes Docker al menos mensualmente. Parches de seguridad críticos aplicados en ≤ 48 horas. Ventanas de mantenimiento: domingos 04:00-05:30 UTC para bases de datos. Canary deployment para todos los cambios en producción.</li>
+  <li><strong>Política de Protección de Datos Personales:</strong> Cumplimiento con Ley 1581 de 2012 (Habeas Data) y normativa colombiana aplicable. Datos personales encriptados en reposo y en tránsito. Procedimiento de eliminación de datos a solicitud del titular en ≤ 15 días hábiles. Registro de todas las actividades de tratamiento de datos personales.</li>
+</ol>
+
+</div>

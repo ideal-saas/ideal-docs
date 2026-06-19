@@ -1,0 +1,59 @@
+<div class="sheet page-break" id="annex-c">
+  <div class="annex-header">ANEXO C / Políticas de Seguridad de la Información</div>
+  <div class="meta">Ref: Punto 8, Numeral 8, IDEAL SOFTWARE S.A.S | NIT: 902.027.596-7, Junio 2026 | Versión: 1.1</div>
+
+  <h2>Introducción</h2>
+  <p>El presente anexo establece las políticas de seguridad de la información aplicables a la plataforma tecnológica de IDEAL SOFTWARE S.A.S, en cumplimiento de los requisitos de habilitación ante la DIAN como proveedor de servicios de facturación electrónica. Su alcance incluye todos los activos de información, infraestructura cloud (AWS Lightsail), servicios de aplicación, redes Docker, pipelines CI/CD y servicios externos que soportan la operación de la plataforma IDEAL.</p>
+
+  <h3>Política 1: Control de Acceso</h3>
+  <p>Se aplica el principio de mínimo privilegio en todos los niveles: sistema operativo, bases de datos, redes Docker, APIs y repositorios. El acceso a servidores es exclusivamente mediante autenticación por llave SSH (sin contraseñas ni cuentas compartidas), con revisión trimestral de accesos y desactivación inmediata al cese de funciones. La autenticación de dos factores (2FA) es obligatoria para GitHub, AWS Console y GoDaddy.</p>
+  <table>
+    <thead>
+      <tr><th>Control</th><th>Descripción</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Complejidad de contraseñas</td><td>Mínimo 12 caracteres, con mayúsculas, minúsculas, números y caracteres especiales</td></tr>
+      <tr><td>Rotación de credenciales</td><td>Contraseñas de bases de datos y tokens rotados cada 90 días</td></tr>
+      <tr><td>Bloqueo por intentos fallidos</td><td>5 intentos fallidos = bloqueo temporal de 15 minutos (fail2ban)</td></tr>
+      <tr><td>Acceso a bases de datos</td><td>PostgreSQL: microservicios y consumers autorizados. MySQL: solo API DIAN. IPs restringidas por firewall</td></tr>
+      <tr><td>Registro de accesos</td><td>Todos los accesos administrativos registrados con retención mínima de 90 días, revisados mensualmente</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Política 2: Cifrado y Protección de Datos</h3>
+  <p>Toda comunicación externa utiliza TLS 1.3 con certificados Let's Encrypt gestionados automáticamente por Caddy (renovación 30 días antes del vencimiento). Las bases de datos Lightsail Managed DB incluyen cifrado en reposo por defecto, con snapshots automáticos cifrados.</p>
+  <p>Los secretos y credenciales se almacenan exclusivamente en archivos <code>.env.local</code> y <code>.env</code> (gitignored), con plantillas <code>.env.example</code> como referencia sin valores reales. Está prohibido incluir credenciales en código fuente, Dockerfiles o docker-compose.yaml. Las claves de API, tokens de registro y contraseñas de bases de datos se rotan cada 90 días; las llaves SSH cada 6 meses.</p>
+
+  <h3>Política 3: Seguridad en Operaciones</h3>
+  <p>Los parches de seguridad del sistema operativo (Ubuntu Server) se aplican mensualmente. Las imágenes Docker de aplicación se actualizan por release mediante CI/CD automatizado. Las bases de datos gestionadas reciben parches automáticos de AWS. Se realiza escaneo de vulnerabilidades en imágenes Docker en el pipeline CI/CD, bloqueando el despliegue ante vulnerabilidades críticas. Dependabot monitorea dependencias en repositorios.</p>
+  <p>El hardening de servidores incluye: firewall con solo puertos 80, 443 y 22 abiertos (gestionado vía Terraform), SSH sin login como root y solo por llave, fail2ban para protección contra fuerza bruta, y solo servicios esenciales instalados. Los backups son automáticos diarios (Lightsail Managed DB) con 7 días de retención, verificados mensualmente mediante restauración de prueba en QA.</p>
+
+  <h3>Política 4: Seguridad en Comunicaciones</h3>
+  <p>La plataforma utiliza 7 redes Docker independientes para aislar el tráfico entre componentes, siguiendo el principio de mínimo privilegio a nivel de red.</p>
+  <table>
+    <thead>
+      <tr><th>Puerto</th><th>Propósito</th><th>Acceso</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>80/TCP</td><td>HTTP (redirección a HTTPS)</td><td>Público (0.0.0.0/0)</td></tr>
+      <tr><td>443/TCP</td><td>HTTPS (Caddy TLS)</td><td>Público (0.0.0.0/0)</td></tr>
+      <tr><td>22/TCP</td><td>SSH administrativo</td><td>Restringido (IPs de oficina)</td></tr>
+    </tbody>
+  </table>
+  <p>AWS Lightsail proporciona protección contra DDoS y Caddy incluye rate limiting y timeouts. No se expone ningún puerto de base de datos a internet pública. El acceso administrativo remoto se realiza exclusivamente mediante SSH con llave criptográfica. Se monitorean patrones anómalos de tráfico con alertas automatizadas.</p>
+
+  <h3>Política 5: Gestión de Incidentes de Seguridad</h3>
+  <p>Se considera incidente de seguridad cualquier evento que comprometa la confidencialidad, integridad o disponibilidad de los activos de información de la plataforma IDEAL.</p>
+  <table>
+    <thead>
+      <tr><th>Nivel</th><th>Descripción</th><th>Tiempo de Respuesta</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Crítico</td><td>Afecta datos fiscales, disponibilidad total del servicio, o implica fuga de datos</td><td>&lt; 1 hora</td></tr>
+      <tr><td>Alto</td><td>Degradación significativa del servicio o compromiso de un componente no crítico</td><td>&lt; 4 horas</td></tr>
+      <tr><td>Medio</td><td>Afecta un componente aislado sin impacto en la operación principal</td><td>&lt; 24 horas</td></tr>
+      <tr><td>Bajo</td><td>Evento de seguridad menor sin impacto operativo</td><td>&lt; 72 horas</td></tr>
+    </tbody>
+  </table>
+  <p>El procedimiento de notificación sigue la cadena: detección → evaluación y clasificación (máx. 30 min) → notificación al equipo técnico → notificación a la DIAN (&lt; 24 h si aplica) → notificación a clientes (&lt; 48 h). Las medidas de contención inmediata incluyen aislar el componente afectado y preservar evidencia forense. Tras la erradicación y recuperación, se realiza un análisis post-mortem en los 5 días hábiles posteriores. Se mantiene un registro centralizado de todos los incidentes, revisado trimestralmente.</p>
+</div>

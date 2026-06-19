@@ -1,0 +1,112 @@
+<div class="sheet page-break">
+
+  <h3>Política 6: Continuidad del Negocio</h3>
+  <p>La política de continuidad del negocio —que incluye los objetivos de recuperación (RPO ≤ 24 horas, RTO ≤ 2 horas), la estrategia de backups, y los mecanismos de recuperación integrados en la arquitectura— se documenta en detalle en el documento principal: <strong>Sección 7 — Continuidad de la Prestación del Servicio</strong> y <strong>Sección 8 — Objetivos de Recuperación y Estrategia de Recuperación</strong>.</p>
+
+  <h3>Política 7: Gestión de Proveedores</h3>
+
+  <h4>7.1 Proceso de Selección y Evaluación</h4>
+  <p>Todos los proveedores de servicios que manejan o tienen acceso a datos de la plataforma IDEAL son evaluados antes de su contratación y reevaluados anualmente. La evaluación considera: seguridad de la infraestructura, cumplimiento normativo, certificaciones (ISO 27001, SOC 2), SLA, ubicación geográfica de datos, y viabilidad financiera del proveedor.</p>
+
+  <h4>7.2 AWS (Proveedor de Infraestructura Cloud)</h4>
+  <table>
+    <thead>
+      <tr><th>Criterio</th><th>Evaluación</th><th>Cumplimiento</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Certificaciones</td><td>ISO 27001, SOC 1/2/3, PCI DSS, FedRAMP</td><td>Cumple</td></tr>
+      <tr><td>Residencia de datos</td><td>Región us-east-1 (Virginia, EE.UU.)</td><td>Aceptable — datos fiscales residen en BD gestionada</td></tr>
+      <tr><td>SLA</td><td>99.95% Lightsail, 99.95% Managed DB</td><td>Cumple</td></tr>
+      <tr><td>Cifrado</td><td>Cifrado en reposo y tránsito por defecto</td><td>Cumple</td></tr>
+      <tr><td>Respaldo</td><td>Backups automáticos 7 días (Managed DB)</td><td>Cumple</td></tr>
+    </tbody>
+  </table>
+
+  <h4>7.3 GitHub (CI/CD y Repositorios)</h4>
+  <table>
+    <thead>
+      <tr><th>Criterio</th><th>Evaluación</th><th>Cumplimiento</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Control de acceso</td><td>2FA obligatorio, roles de equipo, branch protection</td><td>Cumple</td></tr>
+      <tr><td>Seguridad de pipeline</td><td>OIDC para autenticación AWS sin secretos de larga duración</td><td>Cumple</td></tr>
+      <tr><td>Escaneo de secretos</td><td>GitHub secret scanning + push protection habilitado</td><td>Cumple</td></tr>
+      <tr><td>Registro de contenedores</td><td>GHCR con tokens de acceso de solo lectura para despliegue</td><td>Cumple</td></tr>
+    </tbody>
+  </table>
+
+  <h4>7.4 DIAN (Servicio de Facturación Electrónica)</h4>
+  <p>La DIAN es un proveedor externo obligatorio para la operación de facturación electrónica en Colombia. IDEAL SOFTWARE S.A.S no tiene control sobre su disponibilidad o SLA. Se implementan mecanismos de reintento y cola de mensajes (Kafka) para manejar intermitencias del servicio de la DIAN. Los consumidores Kafka reintentan documentos fallidos con backoff exponencial.</p>
+
+  <h4>7.5 GoDaddy / AWS Route 53 (Dominios y DNS)</h4>
+  <table>
+    <thead>
+      <tr><th>Criterio</th><th>Evaluación</th><th>Cumplimiento</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Autenticación</td><td>2FA habilitado en cuenta de registro</td><td>Cumple</td></tr>
+      <tr><td>Renovación</td><td>Auto-renovación habilitada para todos los dominios</td><td>Cumple</td></tr>
+      <tr><td>Bloqueo de transferencia</td><td>Registrar lock activado para prevenir transferencias no autorizadas</td><td>Cumple</td></tr>
+      <tr><td>DNS</td><td>Registros A para IPs estáticas de Lightsail, propagación &lt; 1 hora</td><td>Cumple</td></tr>
+    </tbody>
+  </table>
+
+  <h4>7.6 Monitoreo Continuo de Proveedores</h4>
+  <p>Revisión anual de cada proveedor con actualización de la matriz de evaluación. Monitoreo continuo de: estado de servicios (AWS Health Dashboard, GitHub Status), cambios en términos de servicio o SLA, incidentes de seguridad reportados por el proveedor. Los hallazgos que afecten la operación de IDEAL se escalan al Director de Tecnología para evaluación de continuidad o migración.</p>
+
+  <h3>Política 8: Desarrollo Seguro</h3>
+  <p>IDEAL SOFTWARE S.A.S adopta un modelo de desarrollo seguro integrado en todas las fases del ciclo de vida: planificación (análisis de riesgos), diseño (modelado de amenazas), implementación (estándares de codificación segura OWASP), verificación (SAST, revisión de código, pruebas de seguridad), despliegue (CI/CD con validaciones de seguridad y OIDC para autenticación AWS sin secretos de larga duración), y operación (monitoreo continuo y respuesta a incidentes).</p>
+  <p>El control de versiones sigue Git Flow simplificado (main/producción, develop/QA, feature/desarrollo) con branch protection en main que requiere PR, revisión aprobada y CI verde. GitHub secret scanning + push protection bloquean credenciales en repositorios. El pipeline CI/CD incluye: escaneo de seguridad en cada etapa (análisis estático, escaneo de dependencias, linting de infraestructura), pruebas unitarias y de integración, escaneo de secretos, y verificación de despliegue con rollback automático ante fallos. Todos los cambios requieren code review verificando estándares OWASP Top 10, ausencia de credenciales, manejo seguro de errores, y logs sin datos sensibles.</p>
+
+  <h2>9. Resumen de Políticas de Seguridad</h2>
+  <table>
+    <thead>
+      <tr><th>Política</th><th>Nombre</th><th>Estado</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Política 1</td><td>Control de Acceso</td><td>Implementado</td></tr>
+      <tr><td>Política 2</td><td>Cifrado y Protección de Datos</td><td>Implementado</td></tr>
+      <tr><td>Política 3</td><td>Seguridad en Operaciones</td><td>Implementado</td></tr>
+      <tr><td>Política 4</td><td>Seguridad en Comunicaciones</td><td>Implementado</td></tr>
+      <tr><td>Política 5</td><td>Gestión de Incidentes</td><td>Implementado</td></tr>
+      <tr><td>Política 6</td><td>Continuidad del Negocio</td><td>Implementado</td></tr>
+      <tr><td>Política 7</td><td>Gestión de Proveedores</td><td>Implementado</td></tr>
+      <tr><td>Política 8</td><td>Desarrollo Seguro</td><td>Implementado</td></tr>
+    </tbody>
+  </table>
+
+  <h2>10. Control de Versiones</h2>
+  <table>
+    <thead>
+      <tr><th>Versión</th><th>Fecha</th><th>Cambios</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1.0</td><td>Enero 2026</td><td>Versión inicial con 8 políticas de seguridad de la información</td></tr>
+      <tr><td>1.1</td><td>Junio 2026</td><td>Agregada política CI/CD con OIDC, actualización de monitoreo (Grafana Alloy + cAdvisor)</td></tr>
+    </tbody>
+  </table>
+  <p>Próxima revisión: Junio 2027</p>
+
+  <hr>
+
+  <div class="firmas">
+    <table class="firmas-table">
+      <tbody>
+        <tr>
+          <td class="firma-col">
+            <p class="firma-nombre"><strong>Felix Palacio</strong></p>
+            <p class="firma-cargo">Representante Legal</p>
+            <p class="firma-empresa">IDEAL SOFTWARE S.A.S</p>
+            <p class="firma-nit">NIT: 902.027.596-7</p>
+          </td>
+          <td class="firma-col">
+            <p class="firma-nombre"><strong>Ricardo Cermeño Bolaño</strong></p>
+            <p class="firma-cargo">Director de Tecnología</p>
+            <p class="firma-empresa">IDEAL SOFTWARE S.A.S</p>
+            <p class="firma-nit">NIT: 902.027.596-7</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

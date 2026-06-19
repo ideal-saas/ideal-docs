@@ -1,0 +1,135 @@
+<div class="sheet page-break" id="s7">
+
+<h2>7. Continuidad de la Prestación del Servicio</h2>
+
+<h3>7.1 Backups y Recuperación de Datos</h3>
+
+<h4>7.1.1 Backups Operativos</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>Componente</th>
+      <th>Tipo</th>
+      <th>Frecuencia</th>
+      <th>Retención</th>
+      <th>Responsable</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>PostgreSQL (Lightsail Managed DB)</td>
+      <td>Snapshot automático</td>
+      <td>Diario (ventana 04:00-04:30 UTC)</td>
+      <td>7 días</td>
+      <td>AWS Lightsail (automático)</td>
+    </tr>
+    <tr>
+      <td>MySQL (Lightsail Managed DB)</td>
+      <td>Snapshot automático</td>
+      <td>Diario (ventana 04:00-04:30 UTC)</td>
+      <td>7 días</td>
+      <td>AWS Lightsail (automático)</td>
+    </tr>
+    <tr>
+      <td>Configuración Docker Compose y Makefiles</td>
+      <td>Repositorio Git (GitHub)</td>
+      <td>Continuo (por cada commit)</td>
+      <td>Ilimitado (historial Git)</td>
+      <td>Equipo de Desarrollo</td>
+    </tr>
+    <tr>
+      <td>Imágenes Docker</td>
+      <td>GitHub Container Registry (ghcr.io)</td>
+      <td>Por cada build de CI/CD</td>
+      <td>Ilimitado (inmutables)</td>
+      <td>CI/CD Pipeline (automático)</td>
+    </tr>
+    <tr>
+      <td>Configuración Terraform (IaC)</td>
+      <td>Repositorio Git (GitHub) + Terraform State</td>
+      <td>Continuo + state tras cada apply</td>
+      <td>Ilimitado (historial Git y versiones de state)</td>
+      <td>Equipo de Desarrollo</td>
+    </tr>
+    <tr>
+      <td>Certificados TLS (Let's Encrypt)</td>
+      <td>Renovación automática</td>
+      <td>Cada 60 días</td>
+      <td>Gestionado por Caddy</td>
+      <td>Caddy (automático)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>7.1.2 Conservación de Documentos Electrónicos (Art. 632 E.T.)</h4>
+<p>El artículo 632 del Estatuto Tributario colombiano exige la conservación de documentos electrónicos por un mínimo de 10 años. La plataforma cumple este requisito mediante el almacenamiento directo de todos los documentos generados en <strong>AWS S3</strong> a través del servicio <code>dian-api-iac</code>, sin límite de retención.</p>
+<ul>
+  <li>Cada documento electrónico (factura, nota crédito/débito, documento soporte, nómina, ajuste) se almacena en S3 en el momento de su generación, sin caducidad.</li>
+  <li>Los documentos se almacenan con su hash SHA-256 para verificación de integridad.</li>
+  <li>Los metadatos de trazabilidad (NIT empresa, tipo documento, fecha de emisión, CUFE/CUDE) se indexan en la base de datos para consulta y recuperación inmediata.</li>
+  <li>AWS S3 garantiza una durabilidad del 99.999999999% (11 nueves) sobre los objetos almacenados.</li>
+</ul>
+
+<h3>7.2 Alta Disponibilidad</h3>
+<p>Todos los contenedores Docker utilizan <code>restart: unless-stopped</code> con healthchecks definidos, asegurando el reinicio automático ante fallos. Las bases de datos Lightsail Managed DB incluyen failover gestionado por AWS con backups diarios automáticos. El monitoreo se realiza desde fuera de la infraestructura (UptimeRobot + Grafana Cloud) para garantizar alertas independientes del estado de los servidores.</p>
+<p>La plataforma implementa el patrón <strong>Transactional Outbox</strong> para Kafka: los eventos de emisión de documentos se escriben en la base de datos dentro de la misma transacción que los datos de negocio, garantizando atomicidad y cero pérdida de eventos. Si Kafka está temporalmente indisponible, el evento permanece persistido en la tabla outbox de la base de datos hasta su publicación exitosa, eliminando cualquier riesgo de pérdida de documentos por fallos del broker de mensajería.</p>
+
+<h3>7.3 Escenarios de Recuperación</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Escenario</th>
+      <th>Procedimiento</th>
+      <th>Tiempo Estimado</th>
+      <th>Pérdida de Datos</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Caída de un microservicio</td>
+      <td>Docker reinicia automáticamente (restart: unless-stopped). Si no se recupera, notificar al equipo.</td>
+      <td>≤ 30 segundos</td>
+      <td>Ninguna (transacciones en curso pueden reintentarse)</td>
+    </tr>
+    <tr>
+      <td>Caída de instancia Lightsail</td>
+      <td>Lightsail reinicia la instancia automáticamente. Si no se recupera, restaurar desde snapshot de instancia.</td>
+      <td>5-15 minutos</td>
+      <td>Ninguna (datos en DB externa)</td>
+    </tr>
+    <tr>
+      <td>Corrupción de base de datos</td>
+      <td>Restaurar desde el último snapshot diario de Lightsail Managed DB (Point-in-Time Recovery).</td>
+      <td>30-60 minutos</td>
+      <td>Máximo 24 horas (datos posteriores al último snapshot)</td>
+    </tr>
+    <tr>
+      <td>Fallo de disco de instancia</td>
+      <td>Crear nueva instancia desde snapshot de Lightsail. Restaurar configuración desde repositorios Git. Levantar servicios con make up.</td>
+      <td>45-90 minutos</td>
+      <td>Ninguna (configuración en Git, datos en DB externa)</td>
+    </tr>
+    <tr>
+      <td>Desastre total (pérdida de región AWS)</td>
+      <td>Crear infraestructura en región alternativa usando Terraform. Restaurar bases de datos desde snapshots. Desplegar servicios. Actualizar DNS.</td>
+      <td>4-8 horas</td>
+      <td>Máximo 24 horas (depende de disponibilidad de snapshots cross-region)</td>
+    </tr>
+    <tr>
+      <td>Pérdida de configuración Docker/Terraform</td>
+      <td>Clonar repositorios desde GitHub. Ejecutar terraform apply para infraestructura. make up para servicios.</td>
+      <td>30-60 minutos</td>
+      <td>Ninguna (todo en Git)</td>
+    </tr>
+    <tr>
+      <td>Ataque de ransomware o compromiso de seguridad</td>
+      <td>Aislar instancias afectadas (detener firewalls, rotar credenciales). Restaurar desde snapshots limpios anteriores al incidente. Análisis forense post-mortem obligatorio.</td>
+      <td>2-4 horas</td>
+      <td>Máximo 24 horas (restauración desde último snapshot limpio)</td>
+    </tr>
+  </tbody>
+</table>
+
+</div>

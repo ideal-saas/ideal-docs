@@ -1,0 +1,115 @@
+<div class="sheet page-break">
+
+  <h3>3. Activos de Red — Docker Networks</h3>
+  <p>La topología completa de redes (7 redes Docker aisladas con sus servicios asociados y proyectos de origen) se documenta en el documento principal, Sección 5.4. Las redes se listan a continuación para referencia de inventario:</p>
+  <table>
+    <thead>
+      <tr><th>ID</th><th>Red</th><th>Proyecto Origen</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>NET-001</td><td>accounting-iac_accounting-net</td><td>accounting-iac</td></tr>
+      <tr><td>NET-002</td><td>dian-api-iac_api-dian-net</td><td>dian-api-iac</td></tr>
+      <tr><td>NET-003</td><td>kafka-iac_kafka-net</td><td>kafka-iac</td></tr>
+      <tr><td>NET-004</td><td>kafka-iac_kafkaui-net</td><td>kafka-iac</td></tr>
+      <tr><td>NET-005</td><td>ideal-app-iac_ideal-app-net</td><td>ideal-app-iac</td></tr>
+      <tr><td>NET-006</td><td>monitoring-iac_monitoring-net</td><td>monitoring-iac</td></tr>
+      <tr><td>NET-007</td><td>ideal-admin-iac_admin-net</td><td>ideal-admin-iac</td></tr>
+    </tbody>
+  </table>
+
+  <h3>4. Activos de Software — Herramientas de Plataforma</h3>
+  <table>
+    <thead>
+      <tr><th>ID</th><th>Herramienta</th><th>Versión</th><th>Propósito</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>PLT-001</td><td>Docker Engine</td><td>24.x</td><td>Runtime de contenedores</td></tr>
+      <tr><td>PLT-002</td><td>Docker Compose</td><td>v2.x</td><td>Orquestación local multi-contenedor</td></tr>
+      <tr><td>PLT-003</td><td>GNU Make</td><td>4.x</td><td>Automatización de tareas de despliegue y operaciones</td></tr>
+      <tr><td>PLT-004</td><td>Ubuntu Server</td><td>22.04 LTS</td><td>Sistema operativo de servidores</td></tr>
+      <tr><td>PLT-005</td><td>Terraform</td><td>1.x</td><td>Provisionamiento de infraestructura cloud (AWS Lightsail)</td></tr>
+      <tr><td>PLT-006</td><td>Apollo Rover</td><td>0.x</td><td>Composición de supergraph schema para Apollo Federation</td></tr>
+      <tr><td>PLT-007</td><td>GitHub Actions</td><td>—</td><td>CI/CD — build, test y deploy automatizado</td></tr>
+      <tr><td>PLT-008</td><td>GitHub Container Registry</td><td>—</td><td>Registro de imágenes Docker</td></tr>
+      <tr><td>PLT-009</td><td>GitLab Container Registry</td><td>—</td><td>Registro de imágenes Docker (legado)</td></tr>
+      <tr><td>PLT-010</td><td>OIDC (GitHub ↔ AWS)</td><td>—</td><td>Autenticación sin secretos de larga duración para despliegues</td></tr>
+    </tbody>
+  </table>
+
+  <h3>5. Servicios Externos (Terceros)</h3>
+  <table>
+    <thead>
+      <tr><th>ID</th><th>Servicio</th><th>Propósito</th><th>Proveedor</th><th>Criticidad</th></tr>
+    </thead>
+    <tbody>
+      <tr id="EXT-001"><td>EXT-001</td><td>AWS Lightsail</td><td>Infraestructura de cómputo (instancias virtuales)</td><td>Amazon Web Services</td><td>Crítica</td></tr>
+      <tr id="EXT-002"><td>EXT-002</td><td>AWS Lightsail Managed DB</td><td>Bases de datos gestionadas PostgreSQL 16 y MySQL 8.0</td><td>Amazon Web Services</td><td>Crítica</td></tr>
+      <tr id="EXT-003"><td>EXT-003</td><td>GitHub</td><td>Repositorios de código fuente, CI/CD (Actions), registro de imágenes (GHCR)</td><td>Microsoft</td><td>Alta</td></tr>
+      <tr id="EXT-004"><td>EXT-004</td><td>Docker Hub</td><td>Imágenes base para construcción de contenedores</td><td>Docker Inc.</td><td>Media</td></tr>
+      <tr id="EXT-005"><td>EXT-005</td><td>Let's Encrypt</td><td>Certificados TLS gratuitos para todos los dominios</td><td>ISRG</td><td>Alta</td></tr>
+      <tr id="EXT-006"><td>EXT-006</td><td>GoDaddy / AWS Route 53</td><td>Registro de dominios (GoDaddy) y gestión DNS (Route 53)</td><td>GoDaddy Inc. / Amazon Web Services</td><td>Alta</td></tr>
+      <tr id="EXT-007"><td>EXT-007</td><td>DIAN</td><td>Plataforma de facturación electrónica — gobierno colombiano</td><td>Gobierno de Colombia</td><td>Crítica</td></tr>
+      <tr id="EXT-008"><td>EXT-008</td><td>Grafana Cloud</td><td>Métricas, logs y dashboards centralizados (planeado)</td><td>Grafana Labs</td><td>Media</td></tr>
+    </tbody>
+  </table>
+
+  <h3>6. Clasificación de Datos</h3>
+  <table>
+    <thead>
+      <tr><th>ID</th><th>Categoría</th><th>Tipo de Dato</th><th>Nivel de Sensibilidad</th><th>Residencia</th></tr>
+    </thead>
+    <tbody>
+      <tr id="DAT-001"><td>DAT-001</td><td>Información Fiscal</td><td>Documentos tributarios, facturas electrónicas, declaraciones DIAN</td><td>Crítico</td><td>Colombia</td></tr>
+      <tr id="DAT-002"><td>DAT-002</td><td>Datos de Nómina</td><td>Información de empleados, salarios, prestaciones sociales</td><td>Confidencial</td><td>Colombia</td></tr>
+      <tr id="DAT-003"><td>DAT-003</td><td>Información Contable</td><td>Libros contables, PUC, asientos, estados financieros</td><td>Confidencial</td><td>Colombia</td></tr>
+      <tr id="DAT-004"><td>DAT-004</td><td>Datos de Clientes</td><td>Información de clientes y proveedores, NIT, datos de contacto</td><td>Confidencial</td><td>Colombia</td></tr>
+      <tr id="DAT-005"><td>DAT-005</td><td>Logs de Aplicación</td><td>Registros de actividad de servicios y aplicaciones</td><td>Interno</td><td>Colombia</td></tr>
+      <tr id="DAT-006"><td>DAT-006</td><td>Métricas y Monitoreo</td><td>Datos de rendimiento, uso de recursos, disponibilidad</td><td>Interno</td><td>Colombia</td></tr>
+      <tr id="DAT-007"><td>DAT-007</td><td>Configuraciones</td><td>Archivos de configuración de servicios, redes, despliegues</td><td>Restringido</td><td>Colombia</td></tr>
+      <tr id="DAT-008"><td>DAT-008</td><td>Credenciales</td><td>Contraseñas, tokens, llaves SSH, secretos de API</td><td>Crítico</td><td>Colombia</td></tr>
+    </tbody>
+  </table>
+
+  <h3>7. Resumen de Costos Mensuales</h3>
+  <p><em>Los costos de infraestructura están disponibles para revisión bajo solicitud formal. No se incluyen en este documento de acreditación.</em></p>
+
+  <h3>8. Matriz de Responsabilidades (RACI)</h3>
+  <table>
+    <thead>
+      <tr><th>#</th><th>Actividad</th><th>Director Tecnología</th><th>Equipo de Desarrollo</th><th>AWS</th><th>DIAN</th><th>GitHub</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Gestión de infraestructura cloud</td><td>A</td><td>R</td><td>C</td><td>—</td><td>—</td></tr>
+      <tr><td>2</td><td>Seguridad a nivel de sistema operativo</td><td>A</td><td>R</td><td>—</td><td>—</td><td>—</td></tr>
+      <tr><td>3</td><td>Desarrollo de aplicaciones</td><td>A</td><td>R</td><td>—</td><td>—</td><td>—</td></tr>
+      <tr><td>4</td><td>Gestión de bases de datos</td><td>A</td><td>R</td><td>C</td><td>—</td><td>—</td></tr>
+      <tr><td>5</td><td>Monitoreo y alertas</td><td>A</td><td>R</td><td>—</td><td>—</td><td>—</td></tr>
+      <tr><td>6</td><td>CI/CD y despliegues</td><td>A</td><td>R</td><td>—</td><td>—</td><td>I</td></tr>
+      <tr><td>7</td><td>Gestión de certificados TLS</td><td>A</td><td>R</td><td>—</td><td>—</td><td>—</td></tr>
+      <tr><td>8</td><td>Facturación electrónica DIAN</td><td>A</td><td>R</td><td>—</td><td>I</td><td>—</td></tr>
+    </tbody>
+    <tfoot>
+      <tr><td colspan="6">R = Responsable &nbsp; A = Aprobador &nbsp; C = Consultado &nbsp; I = Informado</td></tr>
+    </tfoot>
+  </table>
+
+  <h3>9. Control de Versiones</h3>
+  <table>
+    <thead>
+      <tr><th>Versión</th><th>Fecha</th><th>Cambios</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1.0</td><td>Enero 2026</td><td>Versión inicial del inventario de activos tecnológicos</td></tr>
+      <tr><td>1.1</td><td>Junio 2026</td><td>Corrección de redes Docker (7 redes, orden canónico NET-006/NET-007), imágenes corregidas (Caddy, Apollo Router, Kafka, Kafka UI, Alloy, cAdvisor, consumers), nombres de consumers actualizados, costos movidos a confidencialidad empresarial, dominio actualizado a idealsoluciones.com.co, IPs de servidor no divulgadas</td></tr>
+    </tbody>
+  </table>
+  <p>Próxima revisión: Junio 2027</p>
+
+  <hr>
+  <p class="firma">
+    <strong>Ricardo Cermeño Bolaño</strong><br>
+    Director de Tecnología<br>
+    IDEAL SOFTWARE S.A.S<br>
+    NIT: 902.027.596-7
+  </p>
+</div>

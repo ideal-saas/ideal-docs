@@ -1,0 +1,13 @@
+# Archivos pesados / no necesarios para Pages
+*.pdf
+*.docx
+personal.md
+
+# Versiones previas del HTML
+punto-8-infraestructura_*.html
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store

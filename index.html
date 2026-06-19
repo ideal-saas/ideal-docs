@@ -1,0 +1,1838 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acreditación de Infraestructura - IDEAL SOFTWARE S.A.S</title>
+<style>
+:root {
+  --page-width: 816px;
+  --page-bg: #f5f5f5;
+  --sheet-bg: #ffffff;
+  --text-color: #222222;
+  --heading-color: #1a3a5c;
+  --table-border: #b0b0b0;
+  --table-header-bg: #1a3a5c;
+  --table-header-text: #ffffff;
+  --table-stripe: #f2f6fa;
+  --code-bg: #f0f0f0;
+  --link-color: #0563c1;
+  --toc-bg: #f8f9fb;
+  --note-bg: #e8f0fe;
+  --note-border: #1a3a5c;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--page-bg);
+  font-family: Calibri, 'Segoe UI', Candara, sans-serif;
+  font-size: 11pt;
+  color: var(--text-color);
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 10px;
+}
+
+.sheet {
+  background: var(--sheet-bg);
+  width: var(--page-width);
+  padding: 72pt;
+  margin-bottom: 30px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1), 0 2px 12px rgba(0,0,0,0.08);
+  border-radius: 2px;
+}
+
+h1 {
+  font-size: 20pt;
+  color: var(--heading-color);
+  text-align: center;
+  margin-bottom: 10pt;
+}
+
+h2 {
+  font-size: 14pt;
+  color: var(--heading-color);
+  border-bottom: 1.5pt solid var(--heading-color);
+  margin-top: 18pt;
+  margin-bottom: 8pt;
+  padding-bottom: 3pt;
+}
+
+h3 {
+  font-size: 12pt;
+  color: var(--heading-color);
+  margin-top: 14pt;
+  margin-bottom: 6pt;
+}
+
+h4 {
+  font-size: 11pt;
+  color: var(--heading-color);
+  margin-top: 10pt;
+  margin-bottom: 4pt;
+}
+
+p {
+  margin-bottom: 6pt;
+  text-align: justify;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 10pt;
+  margin: 8pt 0 12pt;
+}
+
+table th {
+  background: var(--table-header-bg);
+  color: var(--table-header-text);
+  padding: 5pt 7pt;
+  border: 0.5pt solid var(--table-border);
+  text-align: left;
+  font-weight: bold;
+}
+
+table td {
+  padding: 4pt 7pt;
+  border: 0.5pt solid var(--table-border);
+}
+
+table tr:nth-child(even) td {
+  background: var(--table-stripe);
+}
+
+ul, ol {
+  margin: 4pt 0 8pt 20pt;
+}
+
+li {
+  margin-bottom: 2pt;
+}
+
+code {
+  font-family: Consolas, monospace;
+  font-size: 10pt;
+  background: var(--code-bg);
+  padding: 1pt 4pt;
+  border-radius: 2pt;
+}
+
+pre {
+  font-family: Consolas, monospace;
+  font-size: 9.5pt;
+  background: var(--code-bg);
+  padding: 8pt 10pt;
+  border: 0.5pt solid #d0d0d0;
+  overflow-x: auto;
+  margin: 8pt 0;
+  line-height: 1.4;
+  white-space: pre-wrap;
+}
+
+.note {
+  background: var(--note-bg);
+  border-left: 3pt solid var(--note-border);
+  padding: 8pt 10pt;
+  font-size: 10.5pt;
+  margin: 10pt 0;
+}
+
+hr {
+  border: none;
+  border-top: 1pt solid var(--heading-color);
+  opacity: 0.5;
+  margin: 16pt 0;
+}
+
+hr.section-break {
+  border-top: 3pt double var(--heading-color);
+  opacity: 0.6;
+  margin: 20pt 0;
+}
+
+.meta {
+  text-align: center;
+  font-size: 10.5pt;
+  color: #555;
+  margin-bottom: 8pt;
+}
+
+.toc {
+  background: var(--toc-bg);
+  border: 1pt solid #d0d5dd;
+  padding: 14pt 18pt;
+  margin: 16pt 0;
+}
+
+.toc h2 {
+  text-align: center;
+  border-bottom: 1pt solid #ccc;
+  padding-bottom: 4pt;
+  margin-bottom: 10pt;
+  font-size: 14pt;
+}
+
+.toc ol {
+  list-style: none;
+  counter-reset: toc-item;
+  margin-left: 0;
+}
+
+.toc ol ol {
+  margin-left: 18pt;
+}
+
+.toc li {
+  counter-increment: toc-item;
+  margin-bottom: 1pt;
+  line-height: 1.6;
+}
+
+.toc a {
+  text-decoration: none;
+  color: var(--link-color);
+}
+
+.toc .toc-h2 {
+  font-weight: bold;
+}
+
+.toc .toc-annex {
+  font-weight: bold;
+  color: var(--heading-color);
+  margin-top: 8pt;
+}
+
+.page-break {
+  page-break-before: always;
+  break-before: page;
+}
+
+@media print {
+  body {
+    background: white;
+    padding: 0;
+  }
+  .sheet {
+    box-shadow: none;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  .page-break {
+    page-break-before: always;
+    break-before: page;
+  }
+  .no-print {
+    display: none;
+  }
+}
+
+.diagram-placeholder {
+  border: 2pt dashed #999;
+  background: #fafafa;
+  padding: 30pt 20pt;
+  margin: 14pt 0;
+  text-align: center;
+  min-height: 200pt;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.diagram-placeholder .diagram-title {
+  font-weight: bold;
+  font-size: 12pt;
+  color: #444;
+  margin-bottom: 6pt;
+}
+
+.diagram-placeholder .diagram-instructions {
+  font-size: 9.5pt;
+  color: #888;
+  font-style: italic;
+}
+
+.signature-block {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30pt;
+}
+
+.sig {
+  text-align: center;
+  width: 45%;
+}
+
+.sig .sig-line {
+  border-top: 1pt solid black;
+  width: 80%;
+  margin: 40pt auto 8pt;
+}
+
+.sig .sig-name {
+  font-weight: bold;
+}
+
+.sig .sig-title {
+  font-size: 10pt;
+}
+
+.sig .sig-org {
+  font-size: 9.5pt;
+  color: #555;
+}
+
+.annex-header {
+  text-align: center;
+  border: 2pt solid var(--heading-color);
+  padding: 14pt;
+  margin-bottom: 18pt;
+}
+
+.annex-header .annex-label {
+  font-size: 16pt;
+  font-weight: bold;
+  color: var(--heading-color);
+}
+
+.annex-header .annex-title {
+  font-size: 13pt;
+}
+
+.check {
+  color: #2e7d32;
+  font-weight: bold;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+</style>
+</head>
+<body>
+<div class="sheet" style="margin-top: 80pt;">
+
+<h1>Acreditación de<br>Infraestructura Física, Tecnológica<br>y de Seguridad</h1>
+
+<div class="meta">
+  <p><strong>Requisito:</strong> Numeral 8, Artículo 55, Resolución 00165 de 2023</p>
+  <p><strong>Empresa:</strong> IDEAL SOFTWARE S.A.S | NIT: 902.027.596-7</p>
+  <p><strong>Fecha:</strong> Junio 2026 | <strong>Versión:</strong> 1.1</p>
+</div>
+
+<div class="note" style="text-align: center; margin-top: 24pt;">
+  Este documento y sus anexos (A, B, C) conforman la acreditación de infraestructura exigida por la DIAN conforme a la normativa vigente.
+</div>
+
+<div style="margin-top: 48pt; text-align: center;">
+  <p><strong>Documento preparado por:</strong></p>
+  <p>Ricardo Cermeño Bolaño<br>Director de Tecnología</p>
+
+  <p style="margin-top: 36pt;"><strong>Aprobado por:</strong></p>
+  <p>Felix Palacio Arguelle<br>Representante Legal</p>
+</div>
+
+</div>
+<div class="sheet page-break" id="toc">
+  <div class="toc">
+    <h2>Tabla de Contenidos</h2>
+    <ol>
+      <li class="toc-h2"><a href="#s1">1. Objeto del Documento</a></li>
+      <li class="toc-h2"><a href="#s2">2. Información de la Empresa</a></li>
+<li class="toc-h2"><a href="#s3">3. Infraestructura Física</a>
+  <ol>
+    <li><a href="#s3-1">3.1 Proveedor de Servicios en la Nube</a></li>
+    <li><a href="#s3-2">3.2 Servidor de Producción</a></li>
+    <li><a href="#s3-3">3.3 Cumplimiento de Transferencia Internacional de Datos</a></li>
+    <li><a href="#s3-4">3.4 Bases de Datos Gestionadas</a></li>
+    <li><a href="#s3-5">3.5 Dominio y DNS</a></li>
+    <li><a href="#s3-6">3.6 Gestión de Infraestructura como Código</a></li>
+    <li><a href="#s3-7">3.7 Plan de Evolución de Infraestructura</a></li>
+  </ol>
+</li>
+      <li class="toc-h2"><a href="#s4">4. Infraestructura Tecnológica</a>
+        <ol>
+          <li><a href="#s4-1">4.1 Stack Tecnológico</a></li>
+          <li><a href="#s4-2">4.2 Servicios de Facturación Electrónica</a></li>
+          <li><a href="#s4-3">4.3 Inventario de Servicios</a></li>
+          <li><a href="#s4-4">4.4 GraphQL Federation v2 (Apollo Router)</a></li>
+          <li><a href="#s4-5">4.5 Event Streaming (Apache Kafka)</a></li>
+        </ol>
+      </li>
+      <li class="toc-h2"><a href="#s5">5. Arquitectura del Servicio</a>
+        <ol>
+          <li><a href="#s5-1">5.1 Arquitectura General</a></li>
+          <li><a href="#s5-2">5.2 Proceso Externo: Flujo del Usuario</a></li>
+          <li><a href="#s5-3">5.3 Proceso Interno: Emisión de Documento Electrónico</a></li>
+      <li><a href="#s5-4">5.4 Topología de Redes</a></li>
+        </ol>
+      </li>
+      <li class="toc-h2"><a href="#s6">6. Seguridad de la Información</a></li>
+      <li class="toc-h2"><a href="#s7">7. Continuidad de la Prestación del Servicio</a></li>
+      <li class="toc-h2"><a href="#s8">8. Objetivos de Recuperación (RPO/RTO) y Estrategia de Recuperación</a></li>
+      <li class="toc-h2"><a href="#s9">9. Recursos de Producción</a></li>
+      <li class="toc-h2"><a href="#s10">10. Condiciones y Niveles de Servicio</a></li>
+      <li class="toc-h2"><a href="#s11">11. Anexos y Soportes</a></li>
+      <li class="toc-h2"><a href="#s12">12. Compromiso de Actualización</a></li>
+      <li class="toc-h2"><a href="#s13">13. Firma</a></li>
+
+      <li class="toc-annex" style="margin-top:10pt;"><a href="#annex-a">Anexo A &mdash; Diagramas de Arquitectura</a>
+        <ol>
+          <li><a href="#diag-1">Diagrama 1: Arquitectura General del Servicio</a></li>
+          <li><a href="#diag-2">Diagrama 2: Flujo de Emisión de Factura Electrónica</a></li>
+          <li><a href="#diag-3">Diagrama 3: Topología de Redes Docker</a></li>
+          <li><a href="#diag-4">Diagrama 4: Pipeline de Despliegue (CI/CD)</a></li>
+          <li><a href="#diag-5">Diagrama 5: Capas de Seguridad</a></li>
+        </ol>
+      </li>
+      <li class="toc-annex"><a href="#annex-b">Anexo B &mdash; Inventario de Activos Tecnológicos</a></li>
+      <li class="toc-annex"><a href="#annex-c">Anexo C &mdash; Políticas de Seguridad de la Información</a></li>
+    </ol>
+  </div>
+</div>
+<div class="sheet page-break" id="s1">
+  <h2>1. Objeto del Documento</h2>
+  <p>El presente documento tiene como propósito acreditar ante la Dirección de Impuestos y Aduanas Nacionales (DIAN) la infraestructura física, tecnológica y de seguridad con la que cuenta IDEAL SOFTWARE S.A.S para la prestación de los servicios de generación, transmisión, expedición, entrega, recepción y conservación de la factura electrónica de venta, las notas débito, las notas crédito y los demás documentos electrónicos derivados de la factura electrónica de venta, conforme a lo establecido en el numeral 8 del artículo 55 de la Resolución 00165 de 2023.</p>
+  <p><strong>Alcance de servicios acreditados:</strong></p>
+  <ul>
+    <li>Generación de factura electrónica de venta (formato UBL 2.1 / XML)</li>
+    <li>Transmisión de documentos electrónicos a la DIAN vía web services</li>
+    <li>Expedición y entrega de factura electrónica al adquirente</li>
+    <li>Generación y transmisión de notas débito</li>
+    <li>Generación y transmisión de notas crédito</li>
+    <li>Generación y transmisión de documento soporte en adquisiciones</li>
+    <li>Generación y transmisión de nómina electrónica</li>
+    <li>Generación y transmisión de ajuste de nómina electrónica</li>
+    <li>Recepción de factura electrónica de venta</li>
+    <li>Conservación de documentos electrónicos</li>
+  </ul>
+  <p><strong>Compromiso:</strong> Este documento será actualizado anualmente y presentado a la DIAN junto con los soportes correspondientes, conforme a la normativa vigente.</p>
+</div>
+<div class="sheet page-break" id="s2">
+  <h2>2. Información de la Empresa</h2>
+  <table>
+    <tr><th>Campo</th><th>Valor</th></tr>
+    <tr><td><strong>Razón Social</strong></td><td>IDEAL SOFTWARE S.A.S</td></tr>
+    <tr><td><strong>NIT</strong></td><td>902.027.596-7</td></tr>
+    <tr><td><strong>Representante Legal</strong></td><td>Felix Palacio Arguelle</td></tr>
+    <tr><td><strong>Director de Tecnología</strong></td><td>Ricardo Cermeño Bolaño</td></tr>
+    <tr><td><strong>Domicilio</strong></td><td>CR 19 # 12-37 Local 5, Centro Comercial La 19, Santa Marta, Magdalena, Colombia</td></tr>
+    <tr><td><strong>Objeto Social</strong></td><td>Actividades de generación, transmisión, expedición, entrega y recepción de la factura electrónica de venta, las notas débito, las notas crédito e instrumentos electrónicos derivados de la factura electrónica de venta</td></tr>
+  </table>
+  <p><strong>Responsable de la infraestructura tecnológica:</strong> Ricardo Cermeño Bolaño, Director de Tecnología, profesional en ingeniería de sistemas con experiencia en arquitectura de software, infraestructura cloud y seguridad de la información.</p>
+</div>
+<div class="sheet page-break" id="s3">
+  <h2>3. Infraestructura Física</h2>
+
+  <h3 id="s3-1">3.1 Proveedor de Servicios en la Nube</h3>
+  <p>IDEAL SOFTWARE S.A.S opera su infraestructura de facturación electrónica sobre <strong>Amazon Web Services (AWS)</strong>, específicamente el servicio <strong>AWS Lightsail</strong>, que proporciona servidores virtuales, bases de datos gestionadas, almacenamiento y conectividad de red en centros de datos certificados.</p>
+  <table>
+    <tr><th>Aspecto</th><th>Detalle</th></tr>
+    <tr><td><strong>Proveedor</strong></td><td>Amazon Web Services (AWS)</td></tr>
+    <tr><td><strong>Servicio</strong></td><td>AWS Lightsail (Infrastructure as a Service)</td></tr>
+    <tr><td><strong>Región</strong></td><td>us-east-1 (N. Virginia, Estados Unidos)</td></tr>
+    <tr><td><strong>Zona de disponibilidad</strong></td><td>us-east-1a</td></tr>
+    <tr><td><strong>Certificaciones AWS</strong></td><td>SOC 1/2/3, ISO 27001, ISO 27017, ISO 27018, PCI DSS Level 1, CSA STAR Level 2, FedRAMP</td></tr>
+    <tr><td><strong>SLA de disponibilidad</strong></td><td>99.99% para instancias Lightsail</td></tr>
+  </table>
+  <p><strong>Justificación de selección de AWS:</strong></p>
+  <ul>
+    <li>Proveedor cloud líder global con más de 18 años de operación</li>
+    <li>Centros de datos con redundancia de energía, refrigeración y conectividad</li>
+    <li>Certificaciones de seguridad internacionales reconocidas</li>
+    <li>Backups automáticos integrados en bases de datos gestionadas</li>
+    <li>Escalabilidad vertical y horizontal bajo demanda</li>
+    <li>Firewall nativo configurable por instancia</li>
+  </ul>
+
+  <h3 id="s3-2">3.2 Servidor de Producción</h3>
+  <table>
+    <tr><th>Especificación</th><th>Valor</th></tr>
+    <tr><td><strong>Nombre</strong></td><td>ideal-production-server</td></tr>
+    <tr><td><strong>Sistema Operativo</strong></td><td>Ubuntu 22.04 LTS (soporte hasta abril 2027, extendido hasta 2032)</td></tr>
+    <tr><td><strong>Procesador</strong></td><td>4 vCPU</td></tr>
+    <tr><td><strong>Memoria RAM</strong></td><td>16 GB</td></tr>
+    <tr><td><strong>Almacenamiento</strong></td><td>320 GB SSD</td></tr>
+    <tr><td><strong>Bundle</strong></td><td><a href="https://aws.amazon.com/lightsail/pricing/" target="_blank">xlarge_3_0</a> — 4 vCPU, 16 GB RAM, 320 GB SSD, 6 TB transferencia</td></tr>
+    <tr><td><strong>IP Estática</strong></td><td>[Asignada por AWS — no divulgada]</td></tr>
+  </table>
+
+  <h3 id="s3-3">3.3 Cumplimiento de Transferencia Internacional de Datos</h3>
+  <p>La infraestructura de IDEAL SOFTWARE S.A.S opera en la región us-east-1 (N. Virginia, Estados Unidos) de Amazon Web Services. Esta configuración cumple plenamente con la normativa colombiana de protección de datos personales, conforme a lo siguiente:</p>
+  <p><strong>Marco legal aplicable:</strong></p>
+  <table>
+    <tr><th>Norma</th><th>Disposición</th><th style="text-align:center;">Cumplimiento</th></tr>
+    <tr><td>Ley 1581 de 2012 (Habeas Data)</td><td>Art. 26 - Transferencias internacionales permitidas a países con nivel adecuado de protección</td><td style="text-align:center;"><span class="check">&#x2713;</span></td></tr>
+    <tr><td>Decreto 1377 de 2013</td><td>Art. 26 - EE.UU. reconocido como país con nivel adecuado por la SIC bajo el marco Data Privacy Framework</td><td style="text-align:center;"><span class="check">&#x2713;</span></td></tr>
+    <tr><td>ISO/IEC 27018:2019</td><td>Estándar específico para protección de PII en la nube - certificado por AWS</td><td style="text-align:center;"><span class="check">&#x2713;</span></td></tr>
+  </table>
+  <p><strong>Rol de AWS como encargado del tratamiento:</strong> AWS actúa exclusivamente como <strong>encargado del tratamiento</strong> (data processor) de conformidad con el Art. 3 de la Ley 1581 de 2012. IDEAL SOFTWARE S.A.S es el <strong>responsable del tratamiento</strong> (data controller). AWS no accede ni utiliza los datos de los clientes para ningún propósito diferente a la prestación del servicio contratado.</p>
+  <p><strong>Certificaciones de seguridad de AWS relevantes:</strong></p>
+  <ul>
+    <li>SOC 1 Tipo II, SOC 2 Tipo II, SOC 3 (auditados por terceros)</li>
+    <li>ISO 27001:2022 (Seguridad de la información)</li>
+    <li>ISO 27017:2015 (Seguridad en la nube)</li>
+    <li>ISO 27018:2019 (Protección de datos personales en la nube)</li>
+    <li>PCI DSS Nivel 1 (Seguridad de datos de pago)</li>
+  </ul>
+  <div class="note">
+    <p><strong>Acuerdo de procesamiento de datos:</strong> AWS ofrece un Data Processing Addendum (DPA) que establece obligaciones contractuales de seguridad, confidencialidad y protección de datos, disponible en: https://aws.amazon.com/compliance/gdpr-center/</p>
+  </div>
+
+  <h3 id="s3-4">3.4 Bases de Datos Gestionadas</h3>
+  <p>IDEAL SOFTWARE S.A.S utiliza bases de datos gestionadas de AWS Lightsail (Managed Database), que incluyen backups automáticos, mantenimiento del motor, parches de seguridad y alta disponibilidad sin intervención manual.</p>
+
+  <h4>3.4.1 PostgreSQL 16 (Producción)</h4>
+  <table>
+    <tr><th>Especificación</th><th>Valor</th></tr>
+    <tr><td><strong>Nombre</strong></td><td>ideal-production-postgres</td></tr>
+    <tr><td><strong>Motor</strong></td><td>PostgreSQL 16</td></tr>
+    <tr><td><strong>Bundle</strong></td><td><a href="https://aws.amazon.com/lightsail/pricing/#Databases" target="_blank">micro_1_0</a> — 1 GB RAM, 1 vCPU, 40 GB SSD</td></tr>
+    <tr><td><strong>Acceso público</strong></td><td>DESHABILITADO</td></tr>
+    <tr><td><strong>Backup automático</strong></td><td>Diario, ventana 04:00-04:30 UTC</td></tr>
+    <tr><td><strong>Retención de backups</strong></td><td>7 días</td></tr>
+    <tr><td><strong>Ventana de mantenimiento</strong></td><td>Domingo 05:00-05:30 UTC</td></tr>
+    <tr><td><strong>Final snapshot</strong></td><td>Obligatorio antes de eliminación</td></tr>
+    <tr><td><strong>Consumidores</strong></td><td>8 microservicios NestJS + 6 consumers Kafka</td></tr>
+    <tr><td><strong>Datos almacenados</strong></td><td>Empresas, facturas, notas crédito/débito, contabilidad, nómina, inventario, tesorería, reportes</td></tr>
+  </table>
+
+  <h4>3.4.2 MySQL 8.0 (Producción)</h4>
+  <table>
+    <tr><th>Especificación</th><th>Valor</th></tr>
+    <tr><td><strong>Nombre</strong></td><td>ideal-production-mysql</td></tr>
+    <tr><td><strong>Motor</strong></td><td>MySQL 8.0</td></tr>
+    <tr><td><strong>Bundle</strong></td><td><a href="https://aws.amazon.com/lightsail/pricing/#Databases" target="_blank">micro_1_0</a> — 1 GB RAM, 1 vCPU, 40 GB SSD</td></tr>
+    <tr><td><strong>Acceso público</strong></td><td>DESHABILITADO</td></tr>
+    <tr><td><strong>Backup automático</strong></td><td>Diario, ventana 04:00-04:30 UTC</td></tr>
+    <tr><td><strong>Retención de backups</strong></td><td>7 días</td></tr>
+    <tr><td><strong>Ventana de mantenimiento</strong></td><td>Domingo 05:00-05:30 UTC</td></tr>
+    <tr><td><strong>Final snapshot</strong></td><td>Obligatorio antes de eliminación</td></tr>
+    <tr><td><strong>Consumidor</strong></td><td>API DIAN (Laravel/PHP)</td></tr>
+    <tr><td><strong>Datos almacenados</strong></td><td>Resoluciones DIAN, consecutivos de facturación, XMLs generados, estados de transmisión</td></tr>
+  </table>
+
+  <h3 id="s3-5">3.5 Dominio y DNS</h3>
+  <table>
+    <tr><th>Dominio</th><th>Tipo</th><th>Propósito</th></tr>
+    <tr><td>idealsoluciones.com.co</td><td>Dominio principal</td><td>Dominio corporativo de producción</td></tr>
+    <tr><td>api.idealsoluciones.com.co</td><td>Registro A &rarr; IP producción</td><td>API GraphQL (punto de entrada del servicio)</td></tr>
+    <tr><td>app.idealsoluciones.com.co</td><td>Registro A &rarr; IP producción</td><td>Aplicación web para facturadores</td></tr>
+  </table>
+
+  <h3 id="s3-6">3.6 Gestión de Infraestructura como Código</h3>
+  <p>Toda la infraestructura se gestiona mediante código versionado (Terraform), lo que garantiza que puede ser recreada de forma idéntica ante cualquier contingencia. Cada cambio queda registrado y es trazable en el historial de Git. Los recursos gestionados incluyen instancias Lightsail, bases de datos gestionadas, IPs estáticas, reglas de firewall y pares de claves SSH.</p>
+
+  <h3 id="s3-7">3.7 Plan de Evolución de Infraestructura</h3>
+  <p>IDEAL SOFTWARE S.A.S ha definido una hoja de ruta de crecimiento en tres etapas, alineada con la proyección de clientes facturadores activos:</p>
+  <ul>
+    <li><strong>Etapa 1 — Capacidad actual (0 a ~50 clientes):</strong> La infraestructura actual sobre AWS Lightsail (4 vCPU, 16 GB RAM, 320 GB SSD) soporta la operación de hasta aproximadamente 50 empresas clientes con carga normal de facturación. El 73% de headroom de memoria disponible garantiza margen suficiente para absorber picos de demanda en esta etapa.</li>
+    <li><strong>Etapa 2 — Escalamiento vertical (~50 a ~100 clientes):</strong> Al superar los 50 clientes activos, se realizará un escalamiento vertical de la instancia Lightsail (upgrade de bundle) y de las bases de datos gestionadas, sin cambios en la arquitectura de contenedores ni en los procesos operativos. Esta etapa sostendrá la operación hasta alcanzar el punto de equilibrio económico proyectado en aproximadamente 100 clientes.</li>
+    <li><strong>Etapa 3 — Infraestructura elástica (más de ~100 clientes):</strong> Al superar los 100 clientes activos, IDEAL SOFTWARE S.A.S migrará a una arquitectura de nube elástica con escalamiento horizontal, compuesta por: Amazon EKS (Elastic Kubernetes Service) como orquestador de contenedores, Amazon RDS como motor de bases de datos administradas con réplicas de lectura, y un Application Load Balancer (ALB) para distribución de tráfico. Esta arquitectura elimina los límites de escalamiento vertical y permite crecer de forma ilimitada en función de la demanda.</li>
+  </ul>
+
+</div>
+<div class="sheet page-break" id="s4">
+  <h2>4. Infraestructura Tecnológica</h2>
+
+  <h3 id="s4-1">4.1 Stack Tecnológico</h3>
+  <table>
+    <tr><th>Capa</th><th>Tecnología</th><th>Versión</th><th>Propósito</th></tr>
+    <tr><td><strong>Orquestación</strong></td><td>Docker Compose v2</td><td>Latest</td><td>Gestión del ciclo de vida de containers</td></tr>
+    <tr><td><strong>Proxy reverso y TLS</strong></td><td>Caddy</td><td>2.8.4</td><td>Terminación TLS automática, HTTP/3, routing</td></tr>
+    <tr><td><strong>API Gateway</strong></td><td>Apollo Router</td><td>Latest</td><td>GraphQL Federation v2, enrutamiento de queries</td></tr>
+    <tr><td><strong>Backend</strong></td><td>NestJS (Node.js)</td><td>Latest</td><td>8 microservicios de lógica de negocio</td></tr>
+    <tr><td><strong>Integración DIAN</strong></td><td>Laravel/PHP</td><td>Latest</td><td>Firma digital, UBL 2.1, transmisión SOAP</td></tr>
+    <tr><td><strong>Event streaming</strong></td><td>Apache Kafka</td><td>3.9.0</td><td>Procesamiento asíncrono de documentos</td></tr>
+    <tr><td><strong>Consumers</strong></td><td>NestJS (Node.js)</td><td>Latest</td><td>6 procesadores especializados por tipo de documento</td></tr>
+    <tr><td><strong>Frontend</strong></td><td>Next.js (React)</td><td>Latest</td><td>Interfaz de usuario server-side rendered</td></tr>
+    <tr><td><strong>Panel de administración</strong></td><td>NestJS + Vite</td><td>Latest</td><td>Backend y frontend de administración</td></tr>
+    <tr><td><strong>Base de datos relacional</strong></td><td>PostgreSQL 16 + MySQL 8.0</td><td>Managed</td><td>Persistencia de datos de negocio</td></tr>
+    <tr><td><strong>Monitoreo</strong></td><td>Grafana Cloud (Alloy + cAdvisor)</td><td>Latest</td><td>Métricas, logs y alertas en tiempo real</td></tr>
+    <tr><td><strong>CI/CD</strong></td><td>GitHub Actions</td><td>—</td><td>Build, test y deploy automatizado</td></tr>
+    <tr><td><strong>Registro de imágenes</strong></td><td>GitHub Container Registry</td><td>—</td><td>Almacenamiento privado de imágenes Docker</td></tr>
+    <tr><td><strong>Infraestructura como código</strong></td><td>Terraform</td><td>≥ 1.0</td><td>Provisioning reproducible de AWS Lightsail</td></tr>
+  </table>
+
+  <h3 id="s4-2">4.2 Servicios de Facturación Electrónica</h3>
+  <p>La plataforma ha sido diseñada para cumplir con todos los flujos exigidos por la DIAN en el proceso de facturación electrónica. El sistema implementa los servicios web de generación, transmisión, consulta y recepción de documentos electrónicos conforme a los anexos técnicos de la Resolución 00165 de 2023.</p>
+  <table>
+    <tr><th>Servicio DIAN</th><th>Endpoint</th></tr>
+    <tr><td>Generación de factura electrónica</td><td>SendBillSync / SendTestSetAsync</td></tr>
+    <tr><td>Consulta de factura electrónica</td><td>GetStatus / GetStatusZip</td></tr>
+    <tr><td>Generación de nota crédito</td><td>SendBillSync (CreditNote)</td></tr>
+    <tr><td>Generación de nota débito</td><td>SendBillSync (DebitNote)</td></tr>
+    <tr><td>Generación de documento soporte</td><td>SendBillSync (SupportDocument)</td></tr>
+    <tr><td>Generación de nómina electrónica</td><td>SendPayrollSync</td></tr>
+    <tr><td>Recepción de factura electrónica</td><td>GetReceivedBills / GetReceivedBillsZip</td></tr>
+  </table>
+
+  <h3 id="s4-3">4.3 Inventario de Servicios</h3>
+  <p>La plataforma IDEAL FACTURACIÓN ELECTRÓNICA se compone de <strong>24 servicios containerizados</strong> orquestados mediante Docker Compose. Cada servicio se despliega desde imágenes publicadas en el registro privado de contenedores <code>ghcr.io/ideal-saas</code>.</p>
+  <table>
+    <tr><th>#</th><th>Servicio</th><th>Imagen Docker</th><th>Función</th></tr>
+    <tr><td>1</td><td>Caddy</td><td>caddy:2.8.4-alpine</td><td>Reverse proxy, terminación TLS automática (puertos 80 y 443)</td></tr>
+    <tr><td>2</td><td>Apollo Router</td><td>apollographql/apollo-runtime</td><td>Gateway GraphQL Federation v2</td></tr>
+    <tr><td>3</td><td>Core MS</td><td>ghcr.io/ideal-saas/core-ms</td><td>Empresas, usuarios, configuración</td></tr>
+    <tr><td>4</td><td>Inventory MS</td><td>ghcr.io/ideal-saas/inventoryms</td><td>Inventario y productos</td></tr>
+    <tr><td>5</td><td>Purchases MS</td><td>ghcr.io/ideal-saas/purchase-ms</td><td>Facturación, compras, notas</td></tr>
+    <tr><td>6</td><td>File Uploader MS</td><td>ghcr.io/ideal-saas/file-uploader-ms</td><td>Gestión de archivos</td></tr>
+    <tr><td>7</td><td>Accounting MS</td><td>ghcr.io/ideal-saas/accounting-ms</td><td>Contabilidad</td></tr>
+    <tr><td>8</td><td>Report MS</td><td>ghcr.io/ideal-saas/report-ms</td><td>Reportes</td></tr>
+    <tr><td>9</td><td>Payroll MS</td><td>ghcr.io/ideal-saas/payroll-ms</td><td>Nómina electrónica</td></tr>
+    <tr><td>10</td><td>Treasury MS</td><td>ghcr.io/ideal-saas/treasury-ms</td><td>Tesorería</td></tr>
+    <tr><td>11</td><td>API DIAN</td><td>ghcr.io/ideal-saas/dian-invoicer-ms</td><td>Integración DIAN: UBL 2.1, firma digital X.509, transmisión SOAP, almacenamiento de documentos en AWS S3</td></tr>
+    <tr><td>12</td><td>Apache Kafka</td><td>apache/kafka-native:3.9.0</td><td>Broker de mensajes para procesamiento asíncrono</td></tr>
+    <tr><td>13</td><td>Kafka UI</td><td>kafbat/kafka-ui</td><td>Administración y monitoreo de topics Kafka</td></tr>
+    <tr><td>14</td><td>Consumer Factura</td><td>ghcr.io/ideal-saas/ideal-stream-consumers-dian-einvoice-emission</td><td>Emisión de factura electrónica de venta</td></tr>
+    <tr><td>15</td><td>Consumer Nota Crédito</td><td>ghcr.io/ideal-saas/ideal-stream-consumers-dian-note-credit-emission</td><td>Emisión de nota crédito</td></tr>
+    <tr><td>16</td><td>Consumer Nota Débito</td><td>ghcr.io/ideal-saas/ideal-stream-consumers-dian-note-debit-emission</td><td>Emisión de nota débito</td></tr>
+    <tr><td>17</td><td>Consumer Doc. Soporte</td><td>ghcr.io/ideal-saas/ideal-stream-consumers-dian-document-support-emission</td><td>Emisión de documento soporte en adquisiciones</td></tr>
+    <tr><td>18</td><td>Consumer Nómina</td><td>ghcr.io/ideal-saas/ideal-stream-consumers-dian-payroll-emission</td><td>Emisión de nómina electrónica</td></tr>
+    <tr><td>19</td><td>Consumer Ajuste Nómina</td><td>ghcr.io/ideal-saas/ideal-stream-consumers-dian-payroll-adjustment-emission</td><td>Emisión de ajuste de nómina electrónica</td></tr>
+    <tr><td>20</td><td>Aplicación Web</td><td>ghcr.io/ideal-saas/acc-web-app</td><td>Frontend Next.js para facturadores</td></tr>
+    <tr><td>21</td><td>Grafana Alloy</td><td>grafana/alloy</td><td>Recolección de métricas y logs</td></tr>
+    <tr><td>22</td><td>cAdvisor</td><td>gcr.io/cadvisor/cadvisor</td><td>Métricas de rendimiento de containers</td></tr>
+    <tr><td>23</td><td>Admin MS</td><td>ghcr.io/ideal-saas/ideal-admin-ms</td><td>Backend de panel de administración</td></tr>
+    <tr><td>24</td><td>Admin Web</td><td>ghcr.io/ideal-saas/ideal-admin-web</td><td>Panel de administración (Vite)</td></tr>
+  </table>
+
+  <h3 id="s4-4">4.4 GraphQL Federation v2 (Apollo Router)</h3>
+  <p>La plataforma expone una <strong>API unificada GraphQL</strong> mediante Apollo Federation v2. El Apollo Router actúa como punto único de entrada, componiendo un supergrafo a partir de subgrafos publicados por cada microservicio. Esto permite que los clientes (aplicación web, admin) realicen consultas que abarcan múltiples dominios en una sola petición, mientras cada equipo mantiene su subgrafo de forma independiente.</p>
+  <table>
+    <tr><th>Subgrafo</th><th>Servicio</th><th>URL</th><th>Responsabilidad</th></tr>
+    <tr><td>coreMs</td><td>Core MS</td><td>http://core:3000/graphql</td><td>Empresas, usuarios, configuración</td></tr>
+    <tr><td>inventoryMs</td><td>Inventory MS</td><td>http://inventory:3001/graphql</td><td>Inventario, productos</td></tr>
+    <tr><td>purchaseMs</td><td>Purchases MS</td><td>http://purchases:3002/graphql</td><td>Compras, facturación, notas</td></tr>
+    <tr><td>accountingMs</td><td>Accounting MS</td><td>http://accounting:3004/graphql</td><td>Contabilidad, asientos</td></tr>
+    <tr><td>reportMs</td><td>Report MS</td><td>http://report:3005/graphql</td><td>Reportes tributarios</td></tr>
+    <tr><td>payrollMs</td><td>Payroll MS</td><td>http://payroll:3006/graphql</td><td>Nómina electrónica</td></tr>
+    <tr><td>treasuryMs</td><td>Treasury MS</td><td>http://treasury:3007/graphql</td><td>Tesorería, flujo de caja</td></tr>
+  </table>
+  <p><strong>Ventajas de Federation v2:</strong></p>
+  <ul>
+    <li><strong>Composición declarativa:</strong> El supergrafo se genera con Rover CLI a partir de las definiciones de cada subgrafo</li>
+    <li><strong>Consultas entre dominios:</strong> Una sola query GraphQL puede obtener datos de múltiples microservicios</li>
+    <li><strong>Despliegue independiente:</strong> Cada microservicio puede actualizar su esquema sin afectar a los demás</li>
+    <li><strong>Traza distribuida:</strong> El router propaga headers de tracing a través de todos los subgrafos</li>
+  </ul>
+
+  <h3 id="s4-5">4.5 Event Streaming (Apache Kafka)</h3>
+  <p>La emisión de documentos electrónicos se implementa mediante una <strong>arquitectura basada en eventos</strong> sobre Apache Kafka en modo KRaft (sin dependencia de Zookeeper). La plataforma utiliza el patrón <strong>Transactional Outbox</strong>: los eventos se escriben en la base de datos dentro de la misma transacción que los datos de negocio, y un proceso publicador los envía a Kafka. Esto garantiza que ningún evento se pierda — incluso si Kafka está temporalmente indisponible, el evento permanece persistido en la base de datos hasta su publicación exitosa.</p>
+  <p><strong>Beneficios del modelo de eventos:</strong></p>
+  <ul>
+    <li><strong>Asincronía:</strong> El usuario no espera a que se complete todo el flujo; la factura se emite y el procesamiento continúa en segundo plano</li>
+    <li><strong>Desacoplamiento:</strong> Cada consumer puede escalarse, actualizarse o reiniciarse de forma independiente</li>
+    <li><strong>Resiliencia:</strong> El patrón Transactional Outbox garantiza cero pérdida de eventos: si Kafka no está disponible, el evento permanece en la base de datos hasta su publicación. Si un consumer falla, el mensaje se reprocesa automáticamente</li>
+    <li><strong>Trazabilidad:</strong> Cada etapa del flujo deja registro en el tópico correspondiente, permitiendo auditoría completa del ciclo de vida del documento</li>
+  </ul>
+</div>
+<div class="sheet page-break" id="s5">
+  <h2>5. Arquitectura del Servicio</h2>
+
+  <h3 id="s5-1">5.1 Arquitectura General</h3>
+  <p>La plataforma IDEAL FACTURACIÓN ELECTRÓNICA implementa una arquitectura de microservicios desplegada sobre contenedores Docker, orquestada mediante Docker Compose, con un API Gateway GraphQL unificado (Apollo Router) que expone todos los servicios a través de un único endpoint. La comunicación asíncrona entre servicios se realiza mediante Apache Kafka, y la infraestructura se provisiona como código mediante Terraform sobre AWS Lightsail. Ver <strong>Anexo A &mdash; Diagrama 1: Arquitectura General del Sistema</strong> para la representación visual completa.</p>
+
+  <h3 id="s5-2">5.2 Proceso Externo: Flujo del Usuario</h3>
+  <p>El proceso externo describe el flujo de cara al facturador electrónico, desde la autenticación en Ideal App, la generación y validación del documento electrónico, la transmisión a la DIAN, y la notificación al adquirente con el XML firmado y la representación gráfica (PDF). Ver <strong>Anexo A &mdash; Diagrama 2: Flujo de Emisión de Factura Electrónica</strong> para el detalle completo de la secuencia.</p>
+
+  <h3 id="s5-3">5.3 Proceso Interno: Emisión de Documento Electrónico</h3>
+  <p>El proceso interno describe el flujo técnico desde la petición GraphQL hasta la notificación final, incluyendo la coordinación entre Apollo Router, microservicios NestJS, Kafka, la API DIAN (Laravel) para firma digital y transmisión SOAP, y los consumers especializados para actualización de estado, generación de PDF y envío de notificaciones. Ver <strong>Anexo A &mdash; Diagrama 2: Diagrama de Secuencia del Proceso Interno</strong> para la representación visual detallada.</p>
+
+  <h3 id="s5-4">5.4 Topología de Redes</h3>
+  <p>La plataforma implementa <strong>7 redes Docker aisladas</strong> que segmentan el tráfico por dominio funcional. Cada red es de tipo bridge y puede ser referenciada desde múltiples proyectos Docker Compose mediante redes externas (<code>external: true</code>), permitiendo que servicios definidos en diferentes repositorios se comuniquen entre sí sin exponer puertos innecesarios. Ver <strong>Anexo A &mdash; Diagrama 3: Topología de Redes Docker</strong> para la representación visual de las redes y sus interconexiones.</p>
+
+</div>
+<div class="sheet page-break" id="s6">
+
+<h2>6. Seguridad de la Información</h2>
+
+<h3>6.1 Modelo de Defensa en Profundidad</h3>
+
+<div class="note">Ref. Diagrama 5: Modelo de Defensa en Profundidad</div>
+
+<p>La plataforma Ideal SaaS implementa un modelo de defensa en profundidad con ocho capas de protección superpuestas. Cada capa opera de forma independiente, de modo que la falla o elusión de una no compromete la seguridad global del sistema. Este enfoque garantiza que un atacante deba superar múltiples barreras para acceder a los datos o servicios.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Capa</th>
+      <th>Componente</th>
+      <th>Función de Seguridad</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Firewall AWS Lightsail</td>
+      <td>Filtrado de puertos a nivel de instancia. Solo se exponen 80 (HTTP), 443 (HTTPS) y 22 (SSH). Todo el resto del tráfico entrante se descarta por defecto.</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Caddy (Terminación TLS)</td>
+      <td>Terminación TLS 1.3 con certificados Let's Encrypt. Renovación automática cada 60 días. Cifrado de todas las comunicaciones externas.</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Segmentación por Redes Docker</td>
+      <td>7 redes aisladas, mínimo privilegio. Aislamiento de servicios mediante 7 redes Docker independientes (accounting-net, api-dian-net, kafka-net, kafkaui-net, ideal-app-net, monitoring-net, admin-net). Cada microservicio solo accede a las redes que necesita.</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Autenticación y Autorización</td>
+      <td>Gestión de identidad centralizada con JWT. Cada microservicio valida tokens independientemente. Roles y permisos granulares por operación.</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Cifrado en Tránsito Interno</td>
+      <td>Comunicaciones entre microservicios protegidas mediante TLS mutuo (mTLS) dentro de las redes Docker. Kafka configurado con SASL/SCRAM y TLS para productores y consumidores.</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Cifrado en Reposo</td>
+      <td>Bases de datos Lightsail Managed DB con cifrado de disco habilitado por AWS. Snapshots automáticos cifrados. No se almacenan secretos en texto plano en el sistema de archivos.</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Monitoreo y Alertas</td>
+      <td>Grafana Cloud para dashboards y alertas. cAdvisor para métricas de contenedores. Grafana Alloy para recolección de logs centralizados. UptimeRobot para monitoreo externo de disponibilidad.</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Respuesta a Incidentes</td>
+      <td>Procedimientos documentados de respuesta ante incidentes. Canales de comunicación definidos por criticidad. Estrategia de recuperación basada en infraestructura como código, imágenes inmutables y backups automáticos (ver Sección 8).</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>6.2 Seguridad Perimetral</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Elemento</th>
+      <th>Configuración</th>
+      <th>Propósito</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Firewall AWS Lightsail (IPv4)</td>
+      <td>Puertos 80, 443, 22 abiertos. Resto cerrado.</td>
+      <td>Limitar superficie de ataque a los servicios estrictamente necesarios.</td>
+    </tr>
+    <tr>
+      <td>Firewall AWS Lightsail (IPv6)</td>
+      <td>Deshabilitado completamente.</td>
+      <td>Eliminar vector de ataque IPv6 no monitoreado.</td>
+    </tr>
+    <tr>
+      <td>Caddy Reverse Proxy</td>
+      <td>Único punto de entrada HTTP/S. Virtual hosts con encabezados de seguridad (HSTS, X-Frame-Options, X-Content-Type-Options).</td>
+      <td>Centralizar terminación TLS y enrutamiento. Prevenir ataques de capa 7 comunes.</td>
+    </tr>
+    <tr>
+      <td>Bases de Datos</td>
+      <td>Producción: publicly_accessible = false. QA: publicly_accessible = true (solo para desarrollo).</td>
+      <td>Aislar datos de producción de accesos externos directos.</td>
+    </tr>
+    <tr>
+      <td>SSH</td>
+      <td>Acceso mediante par de llaves administrado por Terraform. Sin autenticación por contraseña.</td>
+      <td>Acceso administrativo seguro sin riesgo de fuerza bruta.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>6.3 Cifrado en Tránsito</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Comunicación</th>
+      <th>Protocolo</th>
+      <th>Detalle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Cliente → Caddy</td>
+      <td>TLS 1.3</td>
+      <td>Certificados Let's Encrypt (ECDSA P-256). HTTP Strict Transport Security (HSTS) con max-age=63072000 e includeSubDomains.</td>
+    </tr>
+    <tr>
+      <td>Caddy → Microservicios</td>
+      <td>HTTP plano (red interna)</td>
+      <td>Tráfico confinado a redes Docker internas sin exposición externa. No requiere TLS dentro del host.</td>
+    </tr>
+    <tr>
+      <td>Microservicios → Kafka</td>
+      <td>SASL/SCRAM-SHA-512 + TLS</td>
+      <td>Autenticación mutua con credenciales por servicio. Cifrado de todos los mensajes en tránsito.</td>
+    </tr>
+    <tr>
+      <td>Microservicios → PostgreSQL</td>
+      <td>TLS (SSL Mode: require)</td>
+      <td>Conexiones cifradas a Lightsail Managed DB. Certificados raíz de AWS verificados.</td>
+    </tr>
+    <tr>
+      <td>api_dian → MySQL</td>
+      <td>TLS (SSL Mode: require)</td>
+      <td>Conexiones cifradas a Lightsail Managed DB con verificación de certificado.</td>
+    </tr>
+    <tr>
+      <td>Grafana Alloy → Grafana Cloud</td>
+      <td>HTTPS (TLS 1.3)</td>
+      <td>Envío de logs y métricas cifrados. Autenticación por token de API.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>6.4 Control de Acceso</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nivel</th>
+      <th>Mecanismo</th>
+      <th>Descripción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Autenticación</td>
+      <td>JWT (JSON Web Tokens)</td>
+      <td>Tokens firmados con RS256. Expiración configurable por entorno. Refresh tokens con rotación automática.</td>
+    </tr>
+    <tr>
+      <td>Autorización</td>
+      <td>RBAC (Role-Based Access Control)</td>
+      <td>Roles: SuperAdmin, Admin, Contador, Auditor, Operador. Permisos granulares por módulo (Facturación, Nómina, Inventario, Compras).</td>
+    </tr>
+    <tr>
+      <td>Microservicios</td>
+      <td>Guards NestJS por endpoint</td>
+      <td>Cada endpoint declara los permisos requeridos. El Apollo Router propaga el contexto de autenticación a todos los microservicios federados.</td>
+    </tr>
+    <tr>
+      <td>Kafka</td>
+      <td>SASL/SCRAM + ACLs</td>
+      <td>Cada consumidor y productor tiene credenciales únicas. ACLs restringen qué tópicos puede leer o escribir cada principal.</td>
+    </tr>
+    <tr>
+      <td>Infraestructura</td>
+      <td>Llaves SSH + AWS IAM</td>
+      <td>Acceso administrativo solo mediante llaves SSH gestionadas por Terraform. Sin usuarios/contraseñas en instancias.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>6.5 Monitoreo y Observabilidad</h3>
+<p>La plataforma cuenta con monitoreo 24/7 de disponibilidad externa, rendimiento de servidores, y logs centralizados con alertas automáticas ante cualquier degradación del servicio. Las herramientas específicas se detallan en el Anexo B &mdash; Inventario de Activos Tecnológicos.</p>
+
+<h3>6.6 Políticas de Seguridad Detalladas</h3>
+
+<p>Las siguientes políticas de seguridad rigen todos los aspectos de la plataforma Ideal SaaS. Su cumplimiento es obligatorio para todo el personal con acceso a los sistemas de producción. Las versiones completas y detalladas de cada política se encuentran en el Anexo C de este documento.</p>
+
+<ol>
+  <li><strong>Política de Control de Acceso:</strong> Principio de mínimo privilegio. Acceso basado en roles (RBAC) con revisión trimestral de permisos. Autenticación multifactor para accesos administrativos. Registro de todos los accesos y cambios de privilegios.</li>
+  <li><strong>Política de Gestión de Secretos:</strong> Prohibición absoluta de secretos en código fuente o repositorios. Uso exclusivo de variables de entorno y archivos .env (gitignored). Rotación obligatoria de tokens y contraseñas cada 90 días. Secrets de infraestructura gestionados por Terraform con variables de entorno TF_VAR_*.</li>
+  <li><strong>Política de Cifrado:</strong> TLS 1.3 como mínimo para todas las comunicaciones externas. Cifrado en reposo para todas las bases de datos. Algoritmos y conjuntos de cifrado revisados anualmente contra estándares NIST.</li>
+  <li><strong>Política de Desarrollo Seguro:</strong> Revisión de código obligatoria (code review) antes de merge a main. Análisis estático de seguridad (SAST) en CI/CD. Escaneo de dependencias (SCA) semanal. Pruebas de penetración anuales por tercero independiente.</li>
+  <li><strong>Política de Respuesta a Incidentes:</strong> Procedimiento documentado de notificación y escalamiento. Clasificación de incidentes por severidad (P1-Crítico a P4-Bajo). Tiempos máximos de respuesta: P1 ≤ 30 min, P2 ≤ 2 h, P3 ≤ 8 h, P4 ≤ 24 h. Análisis post-mortem obligatorio para incidentes P1 y P2.</li>
+  <li><strong>Política de Copias de Seguridad:</strong> Backups diarios automatizados con retención de 7 días (Lightsail Managed DB). Snapshot antes de cada despliegue a producción. Prueba de restauración trimestral. Ver Sección 7 para detalles completos.</li>
+  <li><strong>Política de Actualización y Parches:</strong> Actualización de imágenes Docker al menos mensualmente. Parches de seguridad críticos aplicados en ≤ 48 horas. Ventanas de mantenimiento: domingos 04:00-05:30 UTC para bases de datos. Canary deployment para todos los cambios en producción.</li>
+  <li><strong>Política de Protección de Datos Personales:</strong> Cumplimiento con Ley 1581 de 2012 (Habeas Data) y normativa colombiana aplicable. Datos personales encriptados en reposo y en tránsito. Procedimiento de eliminación de datos a solicitud del titular en ≤ 15 días hábiles. Registro de todas las actividades de tratamiento de datos personales.</li>
+</ol>
+
+</div>
+<div class="sheet page-break" id="s7">
+
+<h2>7. Continuidad de la Prestación del Servicio</h2>
+
+<h3>7.1 Backups y Recuperación de Datos</h3>
+
+<h4>7.1.1 Backups Operativos</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>Componente</th>
+      <th>Tipo</th>
+      <th>Frecuencia</th>
+      <th>Retención</th>
+      <th>Responsable</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>PostgreSQL (Lightsail Managed DB)</td>
+      <td>Snapshot automático</td>
+      <td>Diario (ventana 04:00-04:30 UTC)</td>
+      <td>7 días</td>
+      <td>AWS Lightsail (automático)</td>
+    </tr>
+    <tr>
+      <td>MySQL (Lightsail Managed DB)</td>
+      <td>Snapshot automático</td>
+      <td>Diario (ventana 04:00-04:30 UTC)</td>
+      <td>7 días</td>
+      <td>AWS Lightsail (automático)</td>
+    </tr>
+    <tr>
+      <td>Configuración Docker Compose y Makefiles</td>
+      <td>Repositorio Git (GitHub)</td>
+      <td>Continuo (por cada commit)</td>
+      <td>Ilimitado (historial Git)</td>
+      <td>Equipo de Desarrollo</td>
+    </tr>
+    <tr>
+      <td>Imágenes Docker</td>
+      <td>GitHub Container Registry (ghcr.io)</td>
+      <td>Por cada build de CI/CD</td>
+      <td>Ilimitado (inmutables)</td>
+      <td>CI/CD Pipeline (automático)</td>
+    </tr>
+    <tr>
+      <td>Configuración Terraform (IaC)</td>
+      <td>Repositorio Git (GitHub) + Terraform State</td>
+      <td>Continuo + state tras cada apply</td>
+      <td>Ilimitado (historial Git y versiones de state)</td>
+      <td>Equipo de Desarrollo</td>
+    </tr>
+    <tr>
+      <td>Certificados TLS (Let's Encrypt)</td>
+      <td>Renovación automática</td>
+      <td>Cada 60 días</td>
+      <td>Gestionado por Caddy</td>
+      <td>Caddy (automático)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>7.1.2 Conservación de Documentos Electrónicos (Art. 632 E.T.)</h4>
+<p>El artículo 632 del Estatuto Tributario colombiano exige la conservación de documentos electrónicos por un mínimo de 10 años. La plataforma cumple este requisito mediante el almacenamiento directo de todos los documentos generados en <strong>AWS S3</strong> a través del servicio <code>dian-api-iac</code>, sin límite de retención.</p>
+<ul>
+  <li>Cada documento electrónico (factura, nota crédito/débito, documento soporte, nómina, ajuste) se almacena en S3 en el momento de su generación, sin caducidad.</li>
+  <li>Los documentos se almacenan con su hash SHA-256 para verificación de integridad.</li>
+  <li>Los metadatos de trazabilidad (NIT empresa, tipo documento, fecha de emisión, CUFE/CUDE) se indexan en la base de datos para consulta y recuperación inmediata.</li>
+  <li>AWS S3 garantiza una durabilidad del 99.999999999% (11 nueves) sobre los objetos almacenados.</li>
+</ul>
+
+<h3>7.2 Alta Disponibilidad</h3>
+<p>Todos los contenedores Docker utilizan <code>restart: unless-stopped</code> con healthchecks definidos, asegurando el reinicio automático ante fallos. Las bases de datos Lightsail Managed DB incluyen failover gestionado por AWS con backups diarios automáticos. El monitoreo se realiza desde fuera de la infraestructura (UptimeRobot + Grafana Cloud) para garantizar alertas independientes del estado de los servidores.</p>
+<p>La plataforma implementa el patrón <strong>Transactional Outbox</strong> para Kafka: los eventos de emisión de documentos se escriben en la base de datos dentro de la misma transacción que los datos de negocio, garantizando atomicidad y cero pérdida de eventos. Si Kafka está temporalmente indisponible, el evento permanece persistido en la tabla outbox de la base de datos hasta su publicación exitosa, eliminando cualquier riesgo de pérdida de documentos por fallos del broker de mensajería.</p>
+
+<h3>7.3 Escenarios de Recuperación</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Escenario</th>
+      <th>Procedimiento</th>
+      <th>Tiempo Estimado</th>
+      <th>Pérdida de Datos</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Caída de un microservicio</td>
+      <td>Docker reinicia automáticamente (restart: unless-stopped). Si no se recupera, notificar al equipo.</td>
+      <td>≤ 30 segundos</td>
+      <td>Ninguna (transacciones en curso pueden reintentarse)</td>
+    </tr>
+    <tr>
+      <td>Caída de instancia Lightsail</td>
+      <td>Lightsail reinicia la instancia automáticamente. Si no se recupera, restaurar desde snapshot de instancia.</td>
+      <td>5-15 minutos</td>
+      <td>Ninguna (datos en DB externa)</td>
+    </tr>
+    <tr>
+      <td>Corrupción de base de datos</td>
+      <td>Restaurar desde el último snapshot diario de Lightsail Managed DB (Point-in-Time Recovery).</td>
+      <td>30-60 minutos</td>
+      <td>Máximo 24 horas (datos posteriores al último snapshot)</td>
+    </tr>
+    <tr>
+      <td>Fallo de disco de instancia</td>
+      <td>Crear nueva instancia desde snapshot de Lightsail. Restaurar configuración desde repositorios Git. Levantar servicios con make up.</td>
+      <td>45-90 minutos</td>
+      <td>Ninguna (configuración en Git, datos en DB externa)</td>
+    </tr>
+    <tr>
+      <td>Desastre total (pérdida de región AWS)</td>
+      <td>Crear infraestructura en región alternativa usando Terraform. Restaurar bases de datos desde snapshots. Desplegar servicios. Actualizar DNS.</td>
+      <td>4-8 horas</td>
+      <td>Máximo 24 horas (depende de disponibilidad de snapshots cross-region)</td>
+    </tr>
+    <tr>
+      <td>Pérdida de configuración Docker/Terraform</td>
+      <td>Clonar repositorios desde GitHub. Ejecutar terraform apply para infraestructura. make up para servicios.</td>
+      <td>30-60 minutos</td>
+      <td>Ninguna (todo en Git)</td>
+    </tr>
+    <tr>
+      <td>Ataque de ransomware o compromiso de seguridad</td>
+      <td>Aislar instancias afectadas (detener firewalls, rotar credenciales). Restaurar desde snapshots limpios anteriores al incidente. Análisis forense post-mortem obligatorio.</td>
+      <td>2-4 horas</td>
+      <td>Máximo 24 horas (restauración desde último snapshot limpio)</td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
+<div class="sheet page-break" id="s8">
+
+<h2>8. Objetivos de Recuperación (RPO/RTO) y Estrategia de Recuperación</h2>
+
+<h3>8.1 Objetivos Definidos</h3>
+
+<table>
+  <thead>
+    <tr><th>Indicador</th><th>Objetivo</th><th>Definición</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>RPO (Recovery Point Objective)</td>
+      <td>&le; 24 horas</td>
+      <td>Pérdida máxima de datos aceptable. Corresponde a la ventana entre backups automáticos diarios de Lightsail Managed DB (04:00-04:30 UTC). Los documentos electrónicos generados se almacenan en AWS S3 sin límite de retención, independientemente del ciclo de backups de las bases de datos.</td>
+    </tr>
+    <tr>
+      <td>RTO (Recovery Time Objective)</td>
+      <td>&le; 2 horas</td>
+      <td>Tiempo máximo para restaurar el servicio completo. Incluye: restaurar bases de datos desde backup (~30 min), desplegar la infraestructura desde Terraform (~15 min), desplegar los 24 servicios Docker (~15 min), y verificar integridad funcional (~60 min).</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>8.2 Estrategia de Recuperación</h3>
+
+<p>La capacidad de recuperación de la plataforma no depende de un documento externo, sino que está integrada en la arquitectura misma mediante los siguientes mecanismos:</p>
+
+<ul>
+  <li><strong>Infraestructura como código (Terraform):</strong> La totalidad de la infraestructura AWS está definida como código versionado en Git. En caso de pérdida total del servidor, ejecutar <code>terraform apply</code> recrea el entorno completo en menos de 15 minutos.</li>
+  <li><strong>Imágenes Docker inmutables:</strong> Todas las imágenes de los 24 servicios están publicadas en GitHub Container Registry (ghcr.io), independientes del servidor. El despliegue completo se realiza con <code>make pull && make up</code> en cada repositorio de infraestructura.</li>
+  <li><strong>Backups automáticos gestionados:</strong> Las bases de datos Lightsail (PostgreSQL 16 y MySQL 8.0) incluyen backups automáticos diarios con point-in-time recovery y retención de 7 días.</li>
+  <li><strong>Persistencia de eventos con Transactional Outbox:</strong> Los eventos de emisión se escriben en la base de datos en la misma transacción que los datos de negocio. Si Kafka está indisponible, los eventos permanecen en la tabla outbox hasta su publicación exitosa, sin pérdida de datos.</li>
+  <li><strong>Rollback inmediato:</strong> Revertir a cualquier versión anterior de un servicio se realiza en menos de 5 minutos cambiando el tag de la imagen Docker y re-ejecutando <code>make up</code>.</li>
+</ul>
+
+<p>El tiempo estimado de recuperación total (RTO &le; 2 horas) está respaldado por estos mecanismos automatizados y ha sido verificado durante el despliegue y operación del entorno QA, que replica la arquitectura de producción.</p>
+
+<h3>8.3 Verificación de la Capacidad de Recuperación</h3>
+
+<p>La efectividad de la estrategia de recuperación se valida de forma continua mediante:</p>
+
+<ul>
+  <li><strong>Pruebas en ambiente QA:</strong> Cada despliegue se valida primero en el entorno QA, que replica la arquitectura de producción, verificando que los procedimientos de despliegue y restauración funcionan correctamente.</li>
+  <li><strong>Verificación de backups:</strong> Se verifica periódicamente la integridad de los snapshots de bases de datos gestionadas y la capacidad de restauración desde los mismos.</li>
+  <li><strong>Simulacros de recuperación:</strong> Se realizan ejercicios de recuperación en el entorno QA para validar los tiempos de RTO y RPO declarados, documentando los resultados como evidencia de la efectividad de la estrategia.</li>
+</ul>
+
+</div>
+<div class="sheet page-break" id="s9">
+
+<h2>9. Recursos de Producción</h2>
+
+<h3>9.1 Asignación de Memoria por Servicio</h3>
+<p>Los 24 servicios containerizados tienen reservas de memoria definidas con un total asignado de aproximadamente 4.3 GB (~27% de los 16 GB disponibles), dejando un headroom de ~11.7 GB (~73%) para picos de demanda y crecimiento. Los microservicios principales tienen reservas entre 128 MB y 384 MB, Kafka 1 GB, y los consumers Kafka 64 MB cada uno. El inventario detallado de reservas por servicio se encuentra en el Anexo B &mdash; Inventario de Activos Tecnológicos.</p>
+
+<h3>9.2 Costo Mensual Total de Infraestructura</h3>
+
+<p><em>Los costos de infraestructura están disponibles para revisión bajo solicitud formal. No se incluyen en este documento de acreditación por razones de confidencialidad empresarial.</em></p>
+
+</div>
+<div class="sheet page-break" id="s10">
+
+<h2>10. Condiciones y Niveles de Servicio</h2>
+
+<p>El presente Acuerdo de Nivel de Servicio (SLA) establece los compromisos de disponibilidad, tiempos de respuesta y procesamiento que Ideal SaaS garantiza a sus clientes. Estos niveles aplican para el ambiente de producción. Los ambientes de QA y desarrollo no están cubiertos por este SLA.</p>
+
+<h3>10.1 Disponibilidad del Servicio</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Indicador</th>
+      <th>Compromiso</th>
+      <th>Medición</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Disponibilidad Mensual</td>
+      <td>99.5%</td>
+      <td>Tiempo total del mes menos tiempo de inactividad no programada, dividido por tiempo total del mes. Medido mediante monitoreo externo (UptimeRobot) con verificación cada 5 minutos sobre los endpoints públicos de la plataforma.</td>
+    </tr>
+    <tr>
+      <td>Ventana de Mantenimiento</td>
+      <td>Domingos 04:00-05:30 UTC</td>
+      <td>Mantenimientos programados notificados con al menos 48 horas de anticipación. El tiempo de inactividad durante la ventana de mantenimiento programada no se contabiliza para el cálculo de disponibilidad.</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li><strong>Exclusiones del SLA de Disponibilidad:</strong></li>
+  <ul>
+    <li>Interrupciones causadas por factores fuera del control de Ideal SaaS: fallos de AWS Lightsail que afecten toda una región, cortes de Internet del proveedor del cliente, ataques DDoS que excedan la capacidad de mitigación contratada.</li>
+    <li>Interrupciones planificadas notificadas con al menos 48 horas de anticipación (ventanas de mantenimiento programadas).</li>
+    <li>Interrupciones causadas por el uso incorrecto de la plataforma por parte del cliente, incluyendo credenciales inválidas, exceso de límites de API contratados, o modificaciones no autorizadas de la configuración.</li>
+  </ul>
+</ul>
+
+<div class="note">
+  <strong>Ventana de Mantenimiento:</strong> Domingo 04:00-05:30 UTC (11:00 PM-12:30 AM hora Colombia). Durante esta ventana se aplican actualizaciones de seguridad, parches de sistema operativo, y mantenimiento de bases de datos gestionadas por Lightsail. Se notifica a los clientes con al menos 48 horas de anticipación vía correo electrónico.
+</div>
+
+<h3>10.2 Tiempos de Respuesta</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Prioridad</th>
+      <th>Tipo de Incidente</th>
+      <th>Tiempo de Respuesta</th>
+      <th>Tiempo de Resolución</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>P1 — Crítico</td>
+      <td>Plataforma completamente inaccesible para todos los usuarios. Pérdida o corrupción de datos. Imposibilidad de emitir documentos electrónicos (facturas, notas crédito).</td>
+      <td>≤ 30 minutos</td>
+      <td>≤ 2 horas</td>
+    </tr>
+    <tr>
+      <td>P2 — Alto</td>
+      <td>Funcionalidad principal degradada. Módulo específico no disponible (nómina, inventario, reportes). Emisión de documentos electrónicos con demoras significativas (&gt; 5 minutos).</td>
+      <td>≤ 2 horas</td>
+      <td>≤ 8 horas</td>
+    </tr>
+    <tr>
+      <td>P3 — Medio</td>
+      <td>Funcionalidad no crítica afectada. Errores en reportes o consultas. Problemas de interfaz que no impiden la operación. Lentitud general del sistema.</td>
+      <td>≤ 8 horas</td>
+      <td>≤ 24 horas</td>
+    </tr>
+    <tr>
+      <td>P4 — Bajo</td>
+      <td>Consultas, dudas de uso, sugerencias de mejora. Errores cosméticos en la interfaz. Solicitudes de capacitación o documentación.</td>
+      <td>≤ 24 horas</td>
+      <td>≤ 5 días hábiles</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Horario de Soporte:</strong> Lunes a Viernes de 8:00 AM a 6:00 PM hora Colombia (UTC-5). Para incidentes P1 fuera de este horario, existe un equipo de guardia (on-call) con tiempo de respuesta ≤ 30 minutos. Los incidentes P2, P3 y P4 reportados fuera del horario de soporte se atienden a partir del siguiente día hábil.</p>
+
+<p><strong>Canales de Soporte:</strong></p>
+<ul>
+  <li><strong>Portal PQRSF:</strong> <a href="https://idealsoluciones.com.co/pqrs">idealsoluciones.com.co/pqrs</a> (principal, recomendado para todos los incidentes)</li>
+  <li><strong>Correo Electrónico:</strong> soporte@idealsoluciones.com.co (para incidentes P3 y P4)</li>
+  <li><strong>Teléfono de Emergencia:</strong> +57 3XX XXX XXXX (exclusivo para incidentes P1 fuera del horario laboral)</li>
+  <li><strong>Chat en la Plataforma:</strong> Disponible en horario laboral para consultas rápidas (P3 y P4)</li>
+</ul>
+
+<h3>10.3 Tiempos de Procesamiento</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Operación</th>
+      <th>Tiempo Máximo</th>
+      <th>Observaciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Emisión de Factura Electrónica</td>
+      <td>≤ 30 segundos</td>
+      <td>Desde el envío de la solicitud hasta la recepción del acuse de recibo de la DIAN. No incluye el tiempo de respuesta de la DIAN que es externo al sistema.</td>
+    </tr>
+    <tr>
+      <td>Generación de Reporte Contable</td>
+      <td>≤ 60 segundos</td>
+      <td>Reportes estándar (Balance General, Estado de Resultados, Libro Diario) para un mes fiscal. Reportes anuales o personalizados pueden exceder este tiempo.</td>
+    </tr>
+    <tr>
+      <td>Procesamiento de Nómina</td>
+      <td>≤ 5 minutos</td>
+      <td>Procesamiento completo de una nómina de hasta 500 empleados incluyendo cálculo de prestaciones, seguridad social y generación de documento soporte de pago de nómina electrónica.</td>
+    </tr>
+    <tr>
+      <td>Carga de Archivos (Fileuploader)</td>
+      <td>≤ 10 segundos</td>
+      <td>Archivos de hasta 10 MB. Archivos mayores pueden experimentar tiempos superiores. El límite máximo de tamaño de archivo por carga es 50 MB.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><small>Nota: Los tiempos de procesamiento son medidos bajo condiciones normales de operación con la carga esperada de usuarios concurrentes. Picos excepcionales de demanda o condiciones externas (disponibilidad de servicios de la DIAN, latencia de red del cliente) pueden afectar estos tiempos.</small></p>
+
+<h3>10.4 Canal PQRSF</h3>
+
+<p>De conformidad con la legislación colombiana, Ideal SaaS dispone de un canal oficial de Peticiones, Quejas, Reclamos, Sugerencias y Felicitaciones (PQRSF) para la atención de todas las solicitudes de los clientes relacionadas con el servicio. Este canal opera bajo los siguientes lineamientos:</p>
+
+<ul>
+  <li><strong>Recepción:</strong> Las PQRSF se reciben a través del portal (<a href="https://idealsoluciones.com.co/pqrs">idealsoluciones.com.co/pqrs</a>), correo electrónico (soporte@idealsoluciones.com.co), y el formulario de contacto en la plataforma. El equipo de soporte asignará un número de radicado único y se comunicará con el cliente para el seguimiento de cada solicitud.</li>
+  <li><strong>Tiempos de Respuesta:</strong> Acuse de recibo inmediato (automático). Respuesta de fondo: Peticiones ≤ 15 días hábiles, Quejas y Reclamos ≤ 15 días hábiles, Sugerencias y Felicitaciones ≤ 5 días hábiles. Estos tiempos cumplen con lo establecido en el Código de Procedimiento Administrativo y de lo Contencioso Administrativo (Ley 1437 de 2011).</li>
+  <li><strong>Seguimiento:</strong> El cliente puede consultar el estado de su PQRSF en cualquier momento a través del portal de soporte utilizando el número de radicado. Se envían notificaciones por correo electrónico en cada cambio de estado.</li>
+  <li><strong>Escalamiento:</strong> Si el cliente no está satisfecho con la respuesta recibida, puede solicitar escalamiento a un nivel superior de atención, el cual se resuelve en un máximo de 10 días hábiles adicionales.</li>
+</ul>
+
+<h3>10.5 Compensaciones SLA</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Incumplimiento</th>
+      <th>Compensación</th>
+      <th>Condiciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Disponibilidad mensual &lt; 99.5%</td>
+      <td>Descuento del 10% sobre la facturación mensual por cada 0.1% por debajo del SLA, hasta un máximo del 50% de descuento.</td>
+      <td>El cliente debe solicitar la compensación dentro de los 15 días calendario siguientes al mes facturado. Se requiere evidencia del tiempo de inactividad (capturas de pantalla, logs de error). No aplica si la caída fue causada por exclusiones del SLA (ver 10.1).</td>
+    </tr>
+    <tr>
+      <td>Tiempo de respuesta P1 excedido (≤ 30 min)</td>
+      <td>Descuento del 5% sobre la facturación mensual por cada incidente P1 con respuesta tardía, acumulable hasta 15%.</td>
+      <td>Aplica por cada incidente P1 individual cuya primera respuesta exceda los 30 minutos desde la notificación por los canales oficiales. No aplica si el cliente no utilizó los canales de soporte designados para incidentes críticos.</td>
+    </tr>
+    <tr>
+      <td>Pérdida de datos por falla de la plataforma</td>
+      <td>Crédito equivalente al 100% de la facturación mensual del período afectado, más servicios gratuitos de recuperación de datos y apoyo contable para reconstrucción de información.</td>
+      <td>Aplica exclusivamente cuando la pérdida de datos sea atribuible comprobadamente a una falla de la infraestructura o software de Ideal SaaS. Excluye pérdidas causadas por: error del usuario, uso de API fuera de especificación, o fuerza mayor. La compensación máxima por este concepto no excederá 3 meses de facturación.</td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
+<div class="sheet page-break" id="s11">
+  <h2>11. Anexos y Soportes</h2>
+
+  <h3>11.1 Documentos Anexos</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Anexo</th>
+        <th>Descripción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Anexo A</td>
+        <td>Diagramas de arquitectura, flujo de emisión de factura electrónica, topología de redes Docker, pipeline CI/CD y capas de seguridad.</td>
+      </tr>
+      <tr>
+        <td>Anexo B</td>
+        <td>Evidencias complementarias: capturas de consola, reportes de monitoreo, certificados TLS, configuraciones de backup y resultados de pruebas.</td>
+      </tr>
+      <tr>
+        <td>Anexo C</td>
+        <td>Documentos de planeación: soberanía de datos, retención por 10 años, estrategia de recuperación, plan de evidencias, SLA de clientes, hoja de ruta ISO 27001 y plan de pentesting.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>11.2 Evidencias a adjuntar</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Evidencia</th>
+        <th>Descripción</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>E-1</td>
+        <td>Capturas consola AWS Lightsail</td>
+        <td>Screenshots instancias, DBs y firewall</td>
+        <td>Completado ✓</td>
+      </tr>
+      <tr>
+        <td>E-2</td>
+        <td>Output docker ps</td>
+        <td>24 containers operativos</td>
+        <td>Pendiente</td>
+      </tr>
+      <tr>
+        <td>E-3</td>
+        <td>Dashboard Grafana Cloud</td>
+        <td>Panel de monitoreo con métricas activas</td>
+        <td>Pendiente</td>
+      </tr>
+      <tr>
+        <td>E-4</td>
+        <td>Certificado TLS vigente</td>
+        <td>Captura certificado api.idealsoluciones.com.co</td>
+        <td>Pendiente</td>
+      </tr>
+      <tr>
+        <td>E-5</td>
+        <td>Evidencia de backups</td>
+        <td>Configuración backups Lightsail Managed DB</td>
+        <td>Completado ✓</td>
+      </tr>
+      <tr>
+        <td>E-6</td>
+        <td>Output terraform show</td>
+        <td>Infraestructura provisionada</td>
+        <td>Completado ✓</td>
+      </tr>
+      <tr>
+        <td>E-7</td>
+        <td>Contrato AWS</td>
+        <td>Términos de servicio AWS</td>
+        <td>Disponible</td>
+      </tr>
+      <tr>
+        <td>E-8</td>
+        <td>Contrato GitHub</td>
+        <td>Terms of Service GitHub</td>
+        <td>Disponible</td>
+      </tr>
+      <tr>
+        <td>E-9</td>
+        <td>UptimeRobot monitors</td>
+        <td>Monitores activos para api y app</td>
+        <td>Pendiente</td>
+      </tr>
+      <tr>
+        <td>E-10</td>
+        <td>SSL Labs report</td>
+        <td>Calificación TLS (objetivo A+)</td>
+        <td>Pendiente</td>
+      </tr>
+      <tr>
+        <td>E-11</td>
+        <td>Security headers report</td>
+        <td>Cabeceras de seguridad HTTP</td>
+        <td>Pendiente</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="sheet page-break" id="s12">
+  <h2>12. Compromiso de Actualización</h2>
+
+  <p>
+    IDEAL SOFTWARE S.A.S se compromete a mantener actualizado el presente documento de infraestructura
+    tecnológica, incorporando los cambios que surjan como resultado de modificaciones en la arquitectura,
+    nuevos servicios desplegados, actualizaciones de seguridad o requerimientos regulatorios. La revisión
+    y actualización se realizará conforme a la frecuencia y responsabilidades definidas en la siguiente tabla.
+  </p>
+
+  <table>
+    <tbody>
+      <tr>
+        <td><strong>Frecuencia de actualización</strong></td>
+        <td>Anual</td>
+      </tr>
+      <tr>
+        <td><strong>Próxima actualización</strong></td>
+        <td>Junio 2027</td>
+      </tr>
+      <tr>
+        <td><strong>Responsable técnico</strong></td>
+        <td>Ricardo Cermeño – Infraestructura y DevOps</td>
+      </tr>
+      <tr>
+        <td><strong>Aprobación</strong></td>
+        <td>Felix Palacio – Gerencia General</td>
+      </tr>
+      <tr>
+        <td><strong>Criterios para actualización anticipada</strong></td>
+        <td>Cambios mayores en la arquitectura, incidentes de seguridad, nuevas regulaciones DIAN, migración de proveedor cloud o renovación de certificaciones.</td>
+      </tr>
+      <tr>
+        <td><strong>Documentos complementarios</strong></td>
+        <td>
+          PLAN-soberania-datos.md,
+          PLAN-retencion-10-anios.md,
+          PLAN-evidencias.md,
+          PLAN-sla-clientes.md,
+          PLAN-iso27001.md,
+          PLAN-pentesting.md
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="sheet" id="s13">
+  <h2>13. Firma</h2>
+
+  <p>
+    En constancia de la veracidad y exactitud de la información contenida en el presente documento
+    de infraestructura tecnológica, se firma en Santa Marta, D.T.C.H., a los dieciséis (16) días
+    del mes de junio de dos mil veintiséis (2026).
+  </p>
+
+  <div class="signature-block">
+    <div class="sig">
+      <p>_________________________</p>
+      <p><strong>Felix Palacio</strong></p>
+      <p>Gerente General</p>
+      <p>IDEAL SOFTWARE S.A.S</p>
+      <p>NIT: 902.027.596-7</p>
+    </div>
+    <div class="sig">
+      <p>_________________________</p>
+      <p><strong>Ricardo Cermeño</strong></p>
+      <p>Infraestructura y DevOps</p>
+      <p>IDEAL SOFTWARE S.A.S</p>
+      <p>NIT: 902.027.596-7</p>
+    </div>
+  </div>
+</div>
+<div class="sheet page-break" id="annex-a">
+  <div class="annex-header">
+    ANEXO A<br>
+    Diagramas de Arquitectura
+  </div>
+
+  <div class="meta">
+    Ref: Punto 8, Numeral 8, Artículo 55, Resolución 00165 de 2023<br>
+    IDEAL SOFTWARE S.A.S | NIT: 902.027.596-7<br>
+    Junio 2026 | Versión: 1.1
+  </div>
+
+  <hr>
+
+  <h3 id="diag-1">Diagrama 1: Arquitectura General del Servicio</h3>
+  <p>Visión de alto nivel del sistema de facturación electrónica, mostrando la relación entre usuarios, componentes internos y sistemas externos.</p>
+  <div class="diagram-placeholder">
+    <div class="diagram-title">[DIAGRAMA 1 — Arquitectura General del Servicio]</div>
+    <p>Diagrama C4Container que muestra: Usuario Facturador, Administrador, DIAN, Firebase Auth, Let's Encrypt, Grafana Cloud, AWS S3, y las capas internas (Proxy/TLS, GraphQL Federation, Event Streaming, Integración DIAN, Presentación, Datos, Monitoreo) dentro de AWS Lightsail.</p>
+    <div class="diagram-instructions">Instrucciones: Renderizar el código Mermaid en punto-8-diagramas.md usando Mermaid Live Editor (https://mermaid.live), VS Code, o GitHub. Exportar como PNG e insertar la imagen aquí reemplazando este placeholder.</div>
+  </div>
+
+  <hr>
+
+  <h3 id="diag-2">Diagrama 2: Flujo de Emisión de Factura Electrónica</h3>
+  <p>Proceso completo desde que el usuario genera una factura hasta la validación por parte de la DIAN y la obtención del CUFE.</p>
+  <div class="diagram-placeholder">
+    <div class="diagram-title">[DIAGRAMA 2 — Flujo de Emisión de Factura Electrónica]</div>
+    <p>Diagrama de secuencia con 11 participantes: Usuario Facturador, Aplicación Web (Next.js), Caddy (TLS/Proxy), Apollo Router (Federation), Purchases MS (NestJS), PostgreSQL 16, Apache Kafka (KRaft), Consumer Factura (NestJS), API DIAN (Laravel/PHP), MySQL 8.0, DIAN (Web Service). Incluye camino feliz (aprobado) y alternativo (rechazado).</p>
+    <div class="diagram-instructions">Instrucciones: Renderizar el código Mermaid en punto-8-diagramas.md usando Mermaid Live Editor (https://mermaid.live). Exportar como PNG e insertar aquí.</div>
+  </div>
+
+  <hr>
+
+  <h3 id="diag-3">Diagrama 3: Topología de Redes Docker</h3>
+  <p>Muestra el aislamiento de servicios mediante 7 redes Docker y la comunicación controlada entre componentes.</p>
+  <div class="diagram-placeholder">
+    <div class="diagram-title">[DIAGRAMA 3 — Topología de Redes Docker]</div>
+    <p>Diagrama de flujo (flowchart TB) mostrando las 7 redes Docker aisladas: accounting-net, api-dian-net, kafka-net, kafkaui-net, ideal-app-net, monitoring-net, admin-net. Incluye firewall AWS Lightsail, bases de datos externas, y las conexiones entre servicios y DIAN Web Services.</p>
+    <div class="diagram-instructions">Instrucciones: Renderizar el código Mermaid en punto-8-diagramas.md usando Mermaid Live Editor (https://mermaid.live). Exportar como PNG e insertar aquí.</div>
+  </div>
+
+  <hr>
+
+  <h3 id="diag-4">Diagrama 4: Pipeline de Despliegue (CI/CD)</h3>
+  <p>Flujo completo desde el desarrollo hasta la puesta en producción, incluyendo controles de calidad y aprobaciones.</p>
+  <div class="diagram-placeholder">
+    <div class="diagram-title">[DIAGRAMA 4 — Pipeline de Despliegue (CI/CD)]</div>
+    <p>Dos diagramas: (a) Flowchart LR del flujo de despliegue desde Desarrollo → GitHub → Ambiente QA → Control de aprobación → Ambiente Producción. (b) Diagrama de secuencia del proceso de deploy con GitHub Actions detallando SSH, make pull, make up en QA y producción.</p>
+    <div class="diagram-instructions">Instrucciones: Renderizar ambos códigos Mermaid en punto-8-diagramas.md usando Mermaid Live Editor (https://mermaid.live). Exportar como PNG e insertar aquí.</div>
+  </div>
+
+  <hr>
+
+  <h3 id="diag-5">Diagrama 5: Capas de Seguridad</h3>
+  <p>Modelo de defensa en profundidad mostrando las múltiples capas de seguridad desde Internet hasta los datos.</p>
+  <div class="diagram-placeholder">
+    <div class="diagram-title">[DIAGRAMA 5 — Capas de Seguridad (Defensa en Profundidad)]</div>
+    <p>Diagrama de flujo vertical (flowchart TB) con 8 capas numeradas: (1) Internet y DNS, (2) Firewall AWS Lightsail, (3) TLS y Cifrado en Tránsito, (4) Autenticación y Autorización, (5) Aislamiento de Red Docker, (6) Seguridad de Aplicación, (7) Seguridad de Datos, (8) Monitoreo y Detección. Cada capa detalla los controles específicos implementados.</p>
+    <div class="diagram-instructions">Instrucciones: Renderizar el código Mermaid en punto-8-diagramas.md usando Mermaid Live Editor (https://mermaid.live). Exportar como PNG e insertar aquí.</div>
+  </div>
+
+  <h3>Notas</h3>
+  <ol>
+    <li>
+      Todos los diagramas deben ser renderizados a partir de los archivos fuente Mermaid (.mmd)
+      ubicados en el directorio <code>ideal-docs/diagrams/</code> del repositorio de infraestructura.
+    </li>
+    <li>
+      Los diagramas se actualizarán conjuntamente con la revisión anual del documento de
+      infraestructura o cuando ocurran cambios significativos en la arquitectura de la plataforma.
+    </li>
+    <li>
+      La numeración de cada diagrama corresponde a la referencia del Punto 8 (Anexos), Numeral 8,
+      Artículo 55 de la Resolución 00165 de 2023 de la DIAN.
+    </li>
+  </ol>
+</div>
+<div class="sheet page-break" id="annex-b">
+  <div class="annex-header">ANEXO B / Inventario de Activos Tecnológicos</div>
+  <div class="meta">Ref: Punto 8, Numeral 8, IDEAL SOFTWARE S.A.S | NIT: 902.027.596-7, Junio 2026 | Versión: 1.1</div>
+
+  <h3>1. Activos de Infraestructura Cloud (Hardware Virtual)</h3>
+
+  <h4>1.1 Servidores de Cómputo</h4>
+  <p>Las especificaciones detalladas de los servidores de producción y QA se encuentran en el documento principal, Sección 3 &mdash; Infraestructura Física. En resumen: el servidor de producción cuenta con 4 vCPU, 16 GB RAM y 320 GB SSD (bundle xlarge_3_0), y el servidor QA con 2 vCPU, 8 GB RAM y 160 GB SSD (bundle large_3_0). Ambos ejecutan Ubuntu 22.04 LTS sobre AWS Lightsail.</p>
+
+  <h4>1.2 Bases de Datos Gestionadas</h4>
+  <table>
+    <thead>
+      <tr><th>ID</th><th>Motor</th><th>Bundle</th><th>Entorno</th><th>Proveedor</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>DB-003</td><td>PostgreSQL 16</td><td>micro_1_0 (1 GB RAM, 40 GB SSD)</td><td>QA</td><td>AWS Lightsail Managed DB</td></tr>
+      <tr><td>DB-004</td><td>MySQL 8.0</td><td>micro_1_0 (1 GB RAM, 40 GB SSD)</td><td>QA</td><td>AWS Lightsail Managed DB</td></tr>
+    </tbody>
+  </table>
+  <p>Las bases de datos de producción se detallan en el documento principal, Sección 3.4. Las bases de datos de QA replican la misma configuración (micro_1_0) para paridad de entornos.</p>
+
+  <h4>1.3 Dominios y DNS</h4>
+  <p>El dominio principal y los subdominios de producción se detallan en el documento principal, Sección 3.5. Los dominios de QA se listan a continuación:</p>
+  <table>
+    <thead>
+      <tr><th>ID</th><th>Subdominio</th><th>Propósito</th><th>Entorno</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>DNS-004</td><td>api.qa.idealsoluciones.com.co</td><td>API GraphQL QA</td><td>QA</td></tr>
+      <tr><td>DNS-005</td><td>app.qa.idealsoluciones.com.co</td><td>Aplicación web QA</td><td>QA</td></tr>
+    </tbody>
+  </table>
+  <p>Dominio registrado en GoDaddy. DNS gestionado mediante AWS Route 53. Todos los dominios cuentan con auto-renovación y registrar lock activado.</p>
+</div>
+<div class="sheet page-break">
+
+  <h3>2. Activos de Software — Servicios de Aplicación</h3>
+
+  <table>
+    <thead>
+      <tr><th>ID</th><th>Servicio</th><th>Imagen Docker</th><th>Función</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>APP-001</td><td>Caddy</td><td>caddy:2.8.4-alpine</td><td>Proxy reverso, terminación TLS automática (Let's Encrypt)</td></tr>
+      <tr><td>APP-002</td><td>Apollo Router</td><td>apollographql/apollo-runtime</td><td>Gateway GraphQL Federation v2 — ruteo y composición de supergraph</td></tr>
+      <tr><td>APP-003</td><td>Core MS</td><td>ghcr.io/ideal-saas/core-ms</td><td>Microservicio core — entidades base del sistema (NestJS)</td></tr>
+      <tr><td>APP-004</td><td>Inventory MS</td><td>ghcr.io/ideal-saas/inventory-ms</td><td>Gestión de inventario y existencias (NestJS)</td></tr>
+      <tr><td>APP-005</td><td>Purchases MS</td><td>ghcr.io/ideal-saas/purchases-ms</td><td>Gestión de compras y proveedores (NestJS)</td></tr>
+      <tr><td>APP-006</td><td>File Uploader MS</td><td>ghcr.io/ideal-saas/file-uploader-ms</td><td>Carga y procesamiento de archivos (NestJS)</td></tr>
+      <tr><td>APP-007</td><td>Accounting MS</td><td>ghcr.io/ideal-saas/accounting-ms</td><td>Módulo de contabilidad — PUC, asientos, libros (NestJS)</td></tr>
+      <tr><td>APP-008</td><td>Report MS</td><td>ghcr.io/ideal-saas/report-ms</td><td>Generación de reportes financieros y operativos (NestJS)</td></tr>
+      <tr><td>APP-009</td><td>Payroll MS</td><td>ghcr.io/ideal-saas/payroll-ms</td><td>Gestión de nómina y prestaciones sociales (NestJS)</td></tr>
+      <tr><td>APP-010</td><td>Treasury MS</td><td>ghcr.io/ideal-saas/treasury-ms</td><td>Gestión de tesorería, caja y bancos (NestJS)</td></tr>
+      <tr><td>APP-011</td><td>Kafka</td><td>apache/kafka-native:3.9.0</td><td>Apache Kafka en modo KRaft — message broker para eventos de emisión DIAN</td></tr>
+      <tr><td>APP-012</td><td>Kafka UI</td><td>kafbat/kafka-ui</td><td>Interfaz web de administración y monitoreo de Kafka</td></tr>
+      <tr><td>APP-013</td><td>Consumer Factura</td><td>ghcr.io/ideal-saas/ideal-stream-consumers-dian-einvoice-emission</td><td>Emisión de factura electrónica de venta</td></tr>
+      <tr><td>APP-014</td><td>Consumer Nota Crédito</td><td>ghcr.io/ideal-saas/ideal-stream-consumers-dian-note-credit-emission</td><td>Emisión de nota crédito</td></tr>
+      <tr><td>APP-015</td><td>Consumer Nota Débito</td><td>ghcr.io/ideal-saas/ideal-stream-consumers-dian-note-debit-emission</td><td>Emisión de nota débito</td></tr>
+      <tr><td>APP-016</td><td>Consumer Doc. Soporte</td><td>ghcr.io/ideal-saas/ideal-stream-consumers-dian-document-support-emission</td><td>Emisión de documento soporte en adquisiciones</td></tr>
+      <tr><td>APP-017</td><td>Consumer Nómina</td><td>ghcr.io/ideal-saas/ideal-stream-consumers-dian-payroll-emission</td><td>Emisión de nómina electrónica</td></tr>
+      <tr><td>APP-018</td><td>Consumer Ajuste Nómina</td><td>ghcr.io/ideal-saas/ideal-stream-consumers-dian-payroll-adjustment-emission</td><td>Emisión de ajuste de nómina electrónica</td></tr>
+      <tr><td>APP-019</td><td>API DIAN</td><td>ghcr.io/ideal-saas/dian-invoicer-ms</td><td>Integración DIAN: UBL 2.1, firma digital X.509, transmisión SOAP, almacenamiento de documentos en AWS S3</td></tr>
+      <tr><td>APP-020</td><td>Aplicación Web</td><td>ghcr.io/ideal-saas/ideal-app</td><td>Frontend principal de la plataforma (Next.js)</td></tr>
+      <tr><td>APP-021</td><td>Grafana Alloy</td><td>grafana/alloy</td><td>Agente de telemetría — recolección de métricas, logs y trazas</td></tr>
+      <tr><td>APP-022</td><td>cAdvisor</td><td>gcr.io/cadvisor/cadvisor</td><td>Monitor de uso de recursos por contenedor (CPU, memoria, red, disco)</td></tr>
+      <tr><td>APP-023</td><td>Admin MS</td><td>ghcr.io/ideal-saas/ideal-admin-ms</td><td>Backend de panel de administración (NestJS)</td></tr>
+      <tr><td>APP-024</td><td>Admin Web</td><td>ghcr.io/ideal-saas/ideal-admin-web</td><td>Panel de administración (Next.js)</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="sheet page-break">
+
+  <h3>3. Activos de Red — Docker Networks</h3>
+  <p>La topología completa de redes (7 redes Docker aisladas con sus servicios asociados y proyectos de origen) se documenta en el documento principal, Sección 5.4. Las redes se listan a continuación para referencia de inventario:</p>
+  <table>
+    <thead>
+      <tr><th>ID</th><th>Red</th><th>Proyecto Origen</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>NET-001</td><td>accounting-iac_accounting-net</td><td>accounting-iac</td></tr>
+      <tr><td>NET-002</td><td>dian-api-iac_api-dian-net</td><td>dian-api-iac</td></tr>
+      <tr><td>NET-003</td><td>kafka-iac_kafka-net</td><td>kafka-iac</td></tr>
+      <tr><td>NET-004</td><td>kafka-iac_kafkaui-net</td><td>kafka-iac</td></tr>
+      <tr><td>NET-005</td><td>ideal-app-iac_ideal-app-net</td><td>ideal-app-iac</td></tr>
+      <tr><td>NET-006</td><td>monitoring-iac_monitoring-net</td><td>monitoring-iac</td></tr>
+      <tr><td>NET-007</td><td>ideal-admin-iac_admin-net</td><td>ideal-admin-iac</td></tr>
+    </tbody>
+  </table>
+
+  <h3>4. Activos de Software — Herramientas de Plataforma</h3>
+  <table>
+    <thead>
+      <tr><th>ID</th><th>Herramienta</th><th>Versión</th><th>Propósito</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>PLT-001</td><td>Docker Engine</td><td>24.x</td><td>Runtime de contenedores</td></tr>
+      <tr><td>PLT-002</td><td>Docker Compose</td><td>v2.x</td><td>Orquestación local multi-contenedor</td></tr>
+      <tr><td>PLT-003</td><td>GNU Make</td><td>4.x</td><td>Automatización de tareas de despliegue y operaciones</td></tr>
+      <tr><td>PLT-004</td><td>Ubuntu Server</td><td>22.04 LTS</td><td>Sistema operativo de servidores</td></tr>
+      <tr><td>PLT-005</td><td>Terraform</td><td>1.x</td><td>Provisionamiento de infraestructura cloud (AWS Lightsail)</td></tr>
+      <tr><td>PLT-006</td><td>Apollo Rover</td><td>0.x</td><td>Composición de supergraph schema para Apollo Federation</td></tr>
+      <tr><td>PLT-007</td><td>GitHub Actions</td><td>—</td><td>CI/CD — build, test y deploy automatizado</td></tr>
+      <tr><td>PLT-008</td><td>GitHub Container Registry</td><td>—</td><td>Registro de imágenes Docker</td></tr>
+      <tr><td>PLT-009</td><td>GitLab Container Registry</td><td>—</td><td>Registro de imágenes Docker (legado)</td></tr>
+      <tr><td>PLT-010</td><td>OIDC (GitHub ↔ AWS)</td><td>—</td><td>Autenticación sin secretos de larga duración para despliegues</td></tr>
+    </tbody>
+  </table>
+
+  <h3>5. Servicios Externos (Terceros)</h3>
+  <table>
+    <thead>
+      <tr><th>ID</th><th>Servicio</th><th>Propósito</th><th>Proveedor</th><th>Criticidad</th></tr>
+    </thead>
+    <tbody>
+      <tr id="EXT-001"><td>EXT-001</td><td>AWS Lightsail</td><td>Infraestructura de cómputo (instancias virtuales)</td><td>Amazon Web Services</td><td>Crítica</td></tr>
+      <tr id="EXT-002"><td>EXT-002</td><td>AWS Lightsail Managed DB</td><td>Bases de datos gestionadas PostgreSQL 16 y MySQL 8.0</td><td>Amazon Web Services</td><td>Crítica</td></tr>
+      <tr id="EXT-003"><td>EXT-003</td><td>GitHub</td><td>Repositorios de código fuente, CI/CD (Actions), registro de imágenes (GHCR)</td><td>Microsoft</td><td>Alta</td></tr>
+      <tr id="EXT-004"><td>EXT-004</td><td>Docker Hub</td><td>Imágenes base para construcción de contenedores</td><td>Docker Inc.</td><td>Media</td></tr>
+      <tr id="EXT-005"><td>EXT-005</td><td>Let's Encrypt</td><td>Certificados TLS gratuitos para todos los dominios</td><td>ISRG</td><td>Alta</td></tr>
+      <tr id="EXT-006"><td>EXT-006</td><td>GoDaddy / AWS Route 53</td><td>Registro de dominios (GoDaddy) y gestión DNS (Route 53)</td><td>GoDaddy Inc. / Amazon Web Services</td><td>Alta</td></tr>
+      <tr id="EXT-007"><td>EXT-007</td><td>DIAN</td><td>Plataforma de facturación electrónica — gobierno colombiano</td><td>Gobierno de Colombia</td><td>Crítica</td></tr>
+      <tr id="EXT-008"><td>EXT-008</td><td>Grafana Cloud</td><td>Métricas, logs y dashboards centralizados (planeado)</td><td>Grafana Labs</td><td>Media</td></tr>
+    </tbody>
+  </table>
+
+  <h3>6. Clasificación de Datos</h3>
+  <table>
+    <thead>
+      <tr><th>ID</th><th>Categoría</th><th>Tipo de Dato</th><th>Nivel de Sensibilidad</th><th>Residencia</th></tr>
+    </thead>
+    <tbody>
+      <tr id="DAT-001"><td>DAT-001</td><td>Información Fiscal</td><td>Documentos tributarios, facturas electrónicas, declaraciones DIAN</td><td>Crítico</td><td>Colombia</td></tr>
+      <tr id="DAT-002"><td>DAT-002</td><td>Datos de Nómina</td><td>Información de empleados, salarios, prestaciones sociales</td><td>Confidencial</td><td>Colombia</td></tr>
+      <tr id="DAT-003"><td>DAT-003</td><td>Información Contable</td><td>Libros contables, PUC, asientos, estados financieros</td><td>Confidencial</td><td>Colombia</td></tr>
+      <tr id="DAT-004"><td>DAT-004</td><td>Datos de Clientes</td><td>Información de clientes y proveedores, NIT, datos de contacto</td><td>Confidencial</td><td>Colombia</td></tr>
+      <tr id="DAT-005"><td>DAT-005</td><td>Logs de Aplicación</td><td>Registros de actividad de servicios y aplicaciones</td><td>Interno</td><td>Colombia</td></tr>
+      <tr id="DAT-006"><td>DAT-006</td><td>Métricas y Monitoreo</td><td>Datos de rendimiento, uso de recursos, disponibilidad</td><td>Interno</td><td>Colombia</td></tr>
+      <tr id="DAT-007"><td>DAT-007</td><td>Configuraciones</td><td>Archivos de configuración de servicios, redes, despliegues</td><td>Restringido</td><td>Colombia</td></tr>
+      <tr id="DAT-008"><td>DAT-008</td><td>Credenciales</td><td>Contraseñas, tokens, llaves SSH, secretos de API</td><td>Crítico</td><td>Colombia</td></tr>
+    </tbody>
+  </table>
+
+  <h3>7. Resumen de Costos Mensuales</h3>
+  <p><em>Los costos de infraestructura están disponibles para revisión bajo solicitud formal. No se incluyen en este documento de acreditación.</em></p>
+
+  <h3>8. Matriz de Responsabilidades (RACI)</h3>
+  <table>
+    <thead>
+      <tr><th>#</th><th>Actividad</th><th>Director Tecnología</th><th>Equipo de Desarrollo</th><th>AWS</th><th>DIAN</th><th>GitHub</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Gestión de infraestructura cloud</td><td>A</td><td>R</td><td>C</td><td>—</td><td>—</td></tr>
+      <tr><td>2</td><td>Seguridad a nivel de sistema operativo</td><td>A</td><td>R</td><td>—</td><td>—</td><td>—</td></tr>
+      <tr><td>3</td><td>Desarrollo de aplicaciones</td><td>A</td><td>R</td><td>—</td><td>—</td><td>—</td></tr>
+      <tr><td>4</td><td>Gestión de bases de datos</td><td>A</td><td>R</td><td>C</td><td>—</td><td>—</td></tr>
+      <tr><td>5</td><td>Monitoreo y alertas</td><td>A</td><td>R</td><td>—</td><td>—</td><td>—</td></tr>
+      <tr><td>6</td><td>CI/CD y despliegues</td><td>A</td><td>R</td><td>—</td><td>—</td><td>I</td></tr>
+      <tr><td>7</td><td>Gestión de certificados TLS</td><td>A</td><td>R</td><td>—</td><td>—</td><td>—</td></tr>
+      <tr><td>8</td><td>Facturación electrónica DIAN</td><td>A</td><td>R</td><td>—</td><td>I</td><td>—</td></tr>
+    </tbody>
+    <tfoot>
+      <tr><td colspan="6">R = Responsable &nbsp; A = Aprobador &nbsp; C = Consultado &nbsp; I = Informado</td></tr>
+    </tfoot>
+  </table>
+
+  <h3>9. Control de Versiones</h3>
+  <table>
+    <thead>
+      <tr><th>Versión</th><th>Fecha</th><th>Cambios</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1.0</td><td>Enero 2026</td><td>Versión inicial del inventario de activos tecnológicos</td></tr>
+      <tr><td>1.1</td><td>Junio 2026</td><td>Corrección de redes Docker (7 redes, orden canónico NET-006/NET-007), imágenes corregidas (Caddy, Apollo Router, Kafka, Kafka UI, Alloy, cAdvisor, consumers), nombres de consumers actualizados, costos movidos a confidencialidad empresarial, dominio actualizado a idealsoluciones.com.co, IPs de servidor no divulgadas</td></tr>
+    </tbody>
+  </table>
+  <p>Próxima revisión: Junio 2027</p>
+
+  <hr>
+  <p class="firma">
+    <strong>Ricardo Cermeño Bolaño</strong><br>
+    Director de Tecnología<br>
+    IDEAL SOFTWARE S.A.S<br>
+    NIT: 902.027.596-7
+  </p>
+</div>
+<div class="sheet page-break" id="annex-c">
+  <div class="annex-header">ANEXO C / Políticas de Seguridad de la Información</div>
+  <div class="meta">Ref: Punto 8, Numeral 8, IDEAL SOFTWARE S.A.S | NIT: 902.027.596-7, Junio 2026 | Versión: 1.1</div>
+
+  <h2>Introducción</h2>
+  <p>El presente anexo establece las políticas de seguridad de la información aplicables a la plataforma tecnológica de IDEAL SOFTWARE S.A.S, en cumplimiento de los requisitos de habilitación ante la DIAN como proveedor de servicios de facturación electrónica. Su alcance incluye todos los activos de información, infraestructura cloud (AWS Lightsail), servicios de aplicación, redes Docker, pipelines CI/CD y servicios externos que soportan la operación de la plataforma IDEAL.</p>
+
+  <h3>Política 1: Control de Acceso</h3>
+  <p>Se aplica el principio de mínimo privilegio en todos los niveles: sistema operativo, bases de datos, redes Docker, APIs y repositorios. El acceso a servidores es exclusivamente mediante autenticación por llave SSH (sin contraseñas ni cuentas compartidas), con revisión trimestral de accesos y desactivación inmediata al cese de funciones. La autenticación de dos factores (2FA) es obligatoria para GitHub, AWS Console y GoDaddy.</p>
+  <table>
+    <thead>
+      <tr><th>Control</th><th>Descripción</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Complejidad de contraseñas</td><td>Mínimo 12 caracteres, con mayúsculas, minúsculas, números y caracteres especiales</td></tr>
+      <tr><td>Rotación de credenciales</td><td>Contraseñas de bases de datos y tokens rotados cada 90 días</td></tr>
+      <tr><td>Bloqueo por intentos fallidos</td><td>5 intentos fallidos = bloqueo temporal de 15 minutos (fail2ban)</td></tr>
+      <tr><td>Acceso a bases de datos</td><td>PostgreSQL: microservicios y consumers autorizados. MySQL: solo API DIAN. IPs restringidas por firewall</td></tr>
+      <tr><td>Registro de accesos</td><td>Todos los accesos administrativos registrados con retención mínima de 90 días, revisados mensualmente</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Política 2: Cifrado y Protección de Datos</h3>
+  <p>Toda comunicación externa utiliza TLS 1.3 con certificados Let's Encrypt gestionados automáticamente por Caddy (renovación 30 días antes del vencimiento). Las bases de datos Lightsail Managed DB incluyen cifrado en reposo por defecto, con snapshots automáticos cifrados.</p>
+  <p>Los secretos y credenciales se almacenan exclusivamente en archivos <code>.env.local</code> y <code>.env</code> (gitignored), con plantillas <code>.env.example</code> como referencia sin valores reales. Está prohibido incluir credenciales en código fuente, Dockerfiles o docker-compose.yaml. Las claves de API, tokens de registro y contraseñas de bases de datos se rotan cada 90 días; las llaves SSH cada 6 meses.</p>
+
+  <h3>Política 3: Seguridad en Operaciones</h3>
+  <p>Los parches de seguridad del sistema operativo (Ubuntu Server) se aplican mensualmente. Las imágenes Docker de aplicación se actualizan por release mediante CI/CD automatizado. Las bases de datos gestionadas reciben parches automáticos de AWS. Se realiza escaneo de vulnerabilidades en imágenes Docker en el pipeline CI/CD, bloqueando el despliegue ante vulnerabilidades críticas. Dependabot monitorea dependencias en repositorios.</p>
+  <p>El hardening de servidores incluye: firewall con solo puertos 80, 443 y 22 abiertos (gestionado vía Terraform), SSH sin login como root y solo por llave, fail2ban para protección contra fuerza bruta, y solo servicios esenciales instalados. Los backups son automáticos diarios (Lightsail Managed DB) con 7 días de retención, verificados mensualmente mediante restauración de prueba en QA.</p>
+
+  <h3>Política 4: Seguridad en Comunicaciones</h3>
+  <p>La plataforma utiliza 7 redes Docker independientes para aislar el tráfico entre componentes, siguiendo el principio de mínimo privilegio a nivel de red.</p>
+  <table>
+    <thead>
+      <tr><th>Puerto</th><th>Propósito</th><th>Acceso</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>80/TCP</td><td>HTTP (redirección a HTTPS)</td><td>Público (0.0.0.0/0)</td></tr>
+      <tr><td>443/TCP</td><td>HTTPS (Caddy TLS)</td><td>Público (0.0.0.0/0)</td></tr>
+      <tr><td>22/TCP</td><td>SSH administrativo</td><td>Restringido (IPs de oficina)</td></tr>
+    </tbody>
+  </table>
+  <p>AWS Lightsail proporciona protección contra DDoS y Caddy incluye rate limiting y timeouts. No se expone ningún puerto de base de datos a internet pública. El acceso administrativo remoto se realiza exclusivamente mediante SSH con llave criptográfica. Se monitorean patrones anómalos de tráfico con alertas automatizadas.</p>
+
+  <h3>Política 5: Gestión de Incidentes de Seguridad</h3>
+  <p>Se considera incidente de seguridad cualquier evento que comprometa la confidencialidad, integridad o disponibilidad de los activos de información de la plataforma IDEAL.</p>
+  <table>
+    <thead>
+      <tr><th>Nivel</th><th>Descripción</th><th>Tiempo de Respuesta</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Crítico</td><td>Afecta datos fiscales, disponibilidad total del servicio, o implica fuga de datos</td><td>&lt; 1 hora</td></tr>
+      <tr><td>Alto</td><td>Degradación significativa del servicio o compromiso de un componente no crítico</td><td>&lt; 4 horas</td></tr>
+      <tr><td>Medio</td><td>Afecta un componente aislado sin impacto en la operación principal</td><td>&lt; 24 horas</td></tr>
+      <tr><td>Bajo</td><td>Evento de seguridad menor sin impacto operativo</td><td>&lt; 72 horas</td></tr>
+    </tbody>
+  </table>
+  <p>El procedimiento de notificación sigue la cadena: detección → evaluación y clasificación (máx. 30 min) → notificación al equipo técnico → notificación a la DIAN (&lt; 24 h si aplica) → notificación a clientes (&lt; 48 h). Las medidas de contención inmediata incluyen aislar el componente afectado y preservar evidencia forense. Tras la erradicación y recuperación, se realiza un análisis post-mortem en los 5 días hábiles posteriores. Se mantiene un registro centralizado de todos los incidentes, revisado trimestralmente.</p>
+</div>
+<div class="sheet page-break">
+
+  <h3>Política 6: Continuidad del Negocio</h3>
+  <p>La política de continuidad del negocio —que incluye los objetivos de recuperación (RPO ≤ 24 horas, RTO ≤ 2 horas), la estrategia de backups, y los mecanismos de recuperación integrados en la arquitectura— se documenta en detalle en el documento principal: <strong>Sección 7 — Continuidad de la Prestación del Servicio</strong> y <strong>Sección 8 — Objetivos de Recuperación y Estrategia de Recuperación</strong>.</p>
+
+  <h3>Política 7: Gestión de Proveedores</h3>
+
+  <h4>7.1 Proceso de Selección y Evaluación</h4>
+  <p>Todos los proveedores de servicios que manejan o tienen acceso a datos de la plataforma IDEAL son evaluados antes de su contratación y reevaluados anualmente. La evaluación considera: seguridad de la infraestructura, cumplimiento normativo, certificaciones (ISO 27001, SOC 2), SLA, ubicación geográfica de datos, y viabilidad financiera del proveedor.</p>
+
+  <h4>7.2 AWS (Proveedor de Infraestructura Cloud)</h4>
+  <table>
+    <thead>
+      <tr><th>Criterio</th><th>Evaluación</th><th>Cumplimiento</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Certificaciones</td><td>ISO 27001, SOC 1/2/3, PCI DSS, FedRAMP</td><td>Cumple</td></tr>
+      <tr><td>Residencia de datos</td><td>Región us-east-1 (Virginia, EE.UU.)</td><td>Aceptable — datos fiscales residen en BD gestionada</td></tr>
+      <tr><td>SLA</td><td>99.95% Lightsail, 99.95% Managed DB</td><td>Cumple</td></tr>
+      <tr><td>Cifrado</td><td>Cifrado en reposo y tránsito por defecto</td><td>Cumple</td></tr>
+      <tr><td>Respaldo</td><td>Backups automáticos 7 días (Managed DB)</td><td>Cumple</td></tr>
+    </tbody>
+  </table>
+
+  <h4>7.3 GitHub (CI/CD y Repositorios)</h4>
+  <table>
+    <thead>
+      <tr><th>Criterio</th><th>Evaluación</th><th>Cumplimiento</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Control de acceso</td><td>2FA obligatorio, roles de equipo, branch protection</td><td>Cumple</td></tr>
+      <tr><td>Seguridad de pipeline</td><td>OIDC para autenticación AWS sin secretos de larga duración</td><td>Cumple</td></tr>
+      <tr><td>Escaneo de secretos</td><td>GitHub secret scanning + push protection habilitado</td><td>Cumple</td></tr>
+      <tr><td>Registro de contenedores</td><td>GHCR con tokens de acceso de solo lectura para despliegue</td><td>Cumple</td></tr>
+    </tbody>
+  </table>
+
+  <h4>7.4 DIAN (Servicio de Facturación Electrónica)</h4>
+  <p>La DIAN es un proveedor externo obligatorio para la operación de facturación electrónica en Colombia. IDEAL SOFTWARE S.A.S no tiene control sobre su disponibilidad o SLA. Se implementan mecanismos de reintento y cola de mensajes (Kafka) para manejar intermitencias del servicio de la DIAN. Los consumidores Kafka reintentan documentos fallidos con backoff exponencial.</p>
+
+  <h4>7.5 GoDaddy / AWS Route 53 (Dominios y DNS)</h4>
+  <table>
+    <thead>
+      <tr><th>Criterio</th><th>Evaluación</th><th>Cumplimiento</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Autenticación</td><td>2FA habilitado en cuenta de registro</td><td>Cumple</td></tr>
+      <tr><td>Renovación</td><td>Auto-renovación habilitada para todos los dominios</td><td>Cumple</td></tr>
+      <tr><td>Bloqueo de transferencia</td><td>Registrar lock activado para prevenir transferencias no autorizadas</td><td>Cumple</td></tr>
+      <tr><td>DNS</td><td>Registros A para IPs estáticas de Lightsail, propagación &lt; 1 hora</td><td>Cumple</td></tr>
+    </tbody>
+  </table>
+
+  <h4>7.6 Monitoreo Continuo de Proveedores</h4>
+  <p>Revisión anual de cada proveedor con actualización de la matriz de evaluación. Monitoreo continuo de: estado de servicios (AWS Health Dashboard, GitHub Status), cambios en términos de servicio o SLA, incidentes de seguridad reportados por el proveedor. Los hallazgos que afecten la operación de IDEAL se escalan al Director de Tecnología para evaluación de continuidad o migración.</p>
+
+  <h3>Política 8: Desarrollo Seguro</h3>
+  <p>IDEAL SOFTWARE S.A.S adopta un modelo de desarrollo seguro integrado en todas las fases del ciclo de vida: planificación (análisis de riesgos), diseño (modelado de amenazas), implementación (estándares de codificación segura OWASP), verificación (SAST, revisión de código, pruebas de seguridad), despliegue (CI/CD con validaciones de seguridad y OIDC para autenticación AWS sin secretos de larga duración), y operación (monitoreo continuo y respuesta a incidentes).</p>
+  <p>El control de versiones sigue Git Flow simplificado (main/producción, develop/QA, feature/desarrollo) con branch protection en main que requiere PR, revisión aprobada y CI verde. GitHub secret scanning + push protection bloquean credenciales en repositorios. El pipeline CI/CD incluye: escaneo de seguridad en cada etapa (análisis estático, escaneo de dependencias, linting de infraestructura), pruebas unitarias y de integración, escaneo de secretos, y verificación de despliegue con rollback automático ante fallos. Todos los cambios requieren code review verificando estándares OWASP Top 10, ausencia de credenciales, manejo seguro de errores, y logs sin datos sensibles.</p>
+
+  <h2>9. Resumen de Políticas de Seguridad</h2>
+  <table>
+    <thead>
+      <tr><th>Política</th><th>Nombre</th><th>Estado</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Política 1</td><td>Control de Acceso</td><td>Implementado</td></tr>
+      <tr><td>Política 2</td><td>Cifrado y Protección de Datos</td><td>Implementado</td></tr>
+      <tr><td>Política 3</td><td>Seguridad en Operaciones</td><td>Implementado</td></tr>
+      <tr><td>Política 4</td><td>Seguridad en Comunicaciones</td><td>Implementado</td></tr>
+      <tr><td>Política 5</td><td>Gestión de Incidentes</td><td>Implementado</td></tr>
+      <tr><td>Política 6</td><td>Continuidad del Negocio</td><td>Implementado</td></tr>
+      <tr><td>Política 7</td><td>Gestión de Proveedores</td><td>Implementado</td></tr>
+      <tr><td>Política 8</td><td>Desarrollo Seguro</td><td>Implementado</td></tr>
+    </tbody>
+  </table>
+
+  <h2>10. Control de Versiones</h2>
+  <table>
+    <thead>
+      <tr><th>Versión</th><th>Fecha</th><th>Cambios</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1.0</td><td>Enero 2026</td><td>Versión inicial con 8 políticas de seguridad de la información</td></tr>
+      <tr><td>1.1</td><td>Junio 2026</td><td>Agregada política CI/CD con OIDC, actualización de monitoreo (Grafana Alloy + cAdvisor)</td></tr>
+    </tbody>
+  </table>
+  <p>Próxima revisión: Junio 2027</p>
+
+  <hr>
+
+  <div class="firmas">
+    <table class="firmas-table">
+      <tbody>
+        <tr>
+          <td class="firma-col">
+            <p class="firma-nombre"><strong>Felix Palacio</strong></p>
+            <p class="firma-cargo">Representante Legal</p>
+            <p class="firma-empresa">IDEAL SOFTWARE S.A.S</p>
+            <p class="firma-nit">NIT: 902.027.596-7</p>
+          </td>
+          <td class="firma-col">
+            <p class="firma-nombre"><strong>Ricardo Cermeño Bolaño</strong></p>
+            <p class="firma-cargo">Director de Tecnología</p>
+            <p class="firma-empresa">IDEAL SOFTWARE S.A.S</p>
+            <p class="firma-nit">NIT: 902.027.596-7</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>

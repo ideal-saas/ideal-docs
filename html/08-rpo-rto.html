@@ -1,0 +1,49 @@
+<div class="sheet page-break" id="s8">
+
+<h2>8. Objetivos de Recuperación (RPO/RTO) y Estrategia de Recuperación</h2>
+
+<h3>8.1 Objetivos Definidos</h3>
+
+<table>
+  <thead>
+    <tr><th>Indicador</th><th>Objetivo</th><th>Definición</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>RPO (Recovery Point Objective)</td>
+      <td>&le; 24 horas</td>
+      <td>Pérdida máxima de datos aceptable. Corresponde a la ventana entre backups automáticos diarios de Lightsail Managed DB (04:00-04:30 UTC). Los documentos electrónicos generados se almacenan en AWS S3 sin límite de retención, independientemente del ciclo de backups de las bases de datos.</td>
+    </tr>
+    <tr>
+      <td>RTO (Recovery Time Objective)</td>
+      <td>&le; 2 horas</td>
+      <td>Tiempo máximo para restaurar el servicio completo. Incluye: restaurar bases de datos desde backup (~30 min), desplegar la infraestructura desde Terraform (~15 min), desplegar los 24 servicios Docker (~15 min), y verificar integridad funcional (~60 min).</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>8.2 Estrategia de Recuperación</h3>
+
+<p>La capacidad de recuperación de la plataforma no depende de un documento externo, sino que está integrada en la arquitectura misma mediante los siguientes mecanismos:</p>
+
+<ul>
+  <li><strong>Infraestructura como código (Terraform):</strong> La totalidad de la infraestructura AWS está definida como código versionado en Git. En caso de pérdida total del servidor, ejecutar <code>terraform apply</code> recrea el entorno completo en menos de 15 minutos.</li>
+  <li><strong>Imágenes Docker inmutables:</strong> Todas las imágenes de los 24 servicios están publicadas en GitHub Container Registry (ghcr.io), independientes del servidor. El despliegue completo se realiza con <code>make pull && make up</code> en cada repositorio de infraestructura.</li>
+  <li><strong>Backups automáticos gestionados:</strong> Las bases de datos Lightsail (PostgreSQL 16 y MySQL 8.0) incluyen backups automáticos diarios con point-in-time recovery y retención de 7 días.</li>
+  <li><strong>Persistencia de eventos con Transactional Outbox:</strong> Los eventos de emisión se escriben en la base de datos en la misma transacción que los datos de negocio. Si Kafka está indisponible, los eventos permanecen en la tabla outbox hasta su publicación exitosa, sin pérdida de datos.</li>
+  <li><strong>Rollback inmediato:</strong> Revertir a cualquier versión anterior de un servicio se realiza en menos de 5 minutos cambiando el tag de la imagen Docker y re-ejecutando <code>make up</code>.</li>
+</ul>
+
+<p>El tiempo estimado de recuperación total (RTO &le; 2 horas) está respaldado por estos mecanismos automatizados y ha sido verificado durante el despliegue y operación del entorno QA, que replica la arquitectura de producción.</p>
+
+<h3>8.3 Verificación de la Capacidad de Recuperación</h3>
+
+<p>La efectividad de la estrategia de recuperación se valida de forma continua mediante:</p>
+
+<ul>
+  <li><strong>Pruebas en ambiente QA:</strong> Cada despliegue se valida primero en el entorno QA, que replica la arquitectura de producción, verificando que los procedimientos de despliegue y restauración funcionan correctamente.</li>
+  <li><strong>Verificación de backups:</strong> Se verifica periódicamente la integridad de los snapshots de bases de datos gestionadas y la capacidad de restauración desde los mismos.</li>
+  <li><strong>Simulacros de recuperación:</strong> Se realizan ejercicios de recuperación en el entorno QA para validar los tiempos de RTO y RPO declarados, documentando los resultados como evidencia de la efectividad de la estrategia.</li>
+</ul>
+
+</div>
