@@ -565,7 +565,6 @@ IDEAL SOFTWARE S.A.S se compromete a mantener actualizado el presente documento 
 | **Responsable de la actualización** | Ricardo Cermeño Bolaño - Director de Tecnología |
 | **Aprobación** | Felix Palacio Arguelle - Representante Legal |
 | **Criterios de actualización anticipada** | Cambio de proveedor cloud, cambio de arquitectura, nuevo servicio crítico, incidente de seguridad significativo |
-| **Documentos complementarios** | PLAN-soberania-datos.md, PLAN-retencion-10-anios.md, PLAN-evidencias.md, PLAN-sla-clientes.md, PLAN-iso27001.md, PLAN-pentesting.md |
 
 ---
 
