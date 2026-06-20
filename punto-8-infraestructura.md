@@ -126,12 +126,12 @@ AWS ofrece un Data Processing Addendum (DPA) que establece obligaciones contract
 
 IDEAL SOFTWARE S.A.S utiliza bases de datos gestionadas de AWS Lightsail (Managed Database), que incluyen backups automáticos, mantenimiento del motor, parches de seguridad y alta disponibilidad sin intervención manual.
 
-#### 3.4.1 PostgreSQL 16 (Producción)
+#### 3.4.1 PostgreSQL 15 (Producción)
 
 | Especificación | Valor |
 |----------------|-------|
 | **Nombre** | ideal-production-postgres |
-| **Motor** | PostgreSQL 16 |
+| **Motor** | PostgreSQL 15 |
 | **Bundle** | micro_1_0 (1 GB RAM, 1 vCPU, 40 GB SSD) |
 | **Acceso público** | DESHABILITADO |
 | **Backup automático** | Diario, ventana 04:00-04:30 UTC |
@@ -197,7 +197,7 @@ IDEAL SOFTWARE S.A.S ha definido una hoja de ruta de crecimiento en tres etapas,
 | Event streaming | Apache Kafka | 3.9.0 | Procesamiento asíncrono de documentos |
 | Consumers | NestJS (Node.js) | Latest | 6 procesadores especializados por tipo de documento |
 | Frontend | Next.js (React) | Latest | Interfaz de usuario server-side rendered |
-| Base de datos relacional | PostgreSQL 16 + MySQL 8.0 | Managed | Persistencia de datos de negocio |
+| Base de datos relacional | PostgreSQL 15 + MySQL 8.0 | Managed | Persistencia de datos de negocio |
 | Monitoreo | Grafana Cloud (Alloy + cAdvisor) | Latest | Métricas, logs y alertas en tiempo real |
 | CI/CD | GitHub Actions | - | Build, test y deploy automatizado |
 | Registro de imágenes | GitHub Container Registry | - | Almacenamiento privado de imágenes Docker |
@@ -215,7 +215,7 @@ La plataforma presta los siguientes servicios de facturación electrónica confo
 | **Expedición** | Emisión del documento con el CUFE asignado por la DIAN | Purchases MS, Payroll MS |
 | **Entrega** | Puesta a disposición del documento al adquirente | Aplicación Web, API GraphQL |
 | **Recepción** | Recepción de facturas electrónicas de venta de proveedores | Core MS, Purchases MS |
-| **Conservación** | Almacenamiento seguro de documentos electrónicos con integridad garantizada | PostgreSQL 16 + MySQL 8.0 (backups automáticos) |
+| **Conservación** | Almacenamiento seguro de documentos electrónicos con integridad garantizada | PostgreSQL 15 + MySQL 8.0 (backups automáticos) |
 
 ### 4.3 Inventario de Servicios
 
@@ -296,7 +296,7 @@ El usuario accede a la plataforma a través de la aplicación web (`app.idealsol
 
 ### 5.3 Proceso Interno: Emisión de Documento Electrónico
 
-Internamente, el microservicio correspondiente recibe la solicitud, persiste el documento en PostgreSQL 16, y publica un evento en Kafka. El consumer especializado consume el mensaje e invoca la API DIAN, que construye el XML UBL 2.1, aplica la firma X.509, calcula el CUFE/CUDE (SHA-384), y transmite el documento firmado a los web services de la DIAN vía SOAP/HTTPS. La respuesta de la DIAN (aprobación o rechazo) es procesada por el consumer, que actualiza el estado en base de datos y dispara las notificaciones correspondientes.
+Internamente, el microservicio correspondiente recibe la solicitud, persiste el documento en PostgreSQL 15, y publica un evento en Kafka. El consumer especializado consume el mensaje e invoca la API DIAN, que construye el XML UBL 2.1, aplica la firma X.509, calcula el CUFE/CUDE (SHA-384), y transmite el documento firmado a los web services de la DIAN vía SOAP/HTTPS. La respuesta de la DIAN (aprobación o rechazo) es procesada por el consumer, que actualiza el estado en base de datos y dispara las notificaciones correspondientes.
 
 **Ver Anexo A — Diagrama 2: Flujo de Emisión de Factura Electrónica**
 
@@ -436,7 +436,7 @@ La capacidad de recuperación de la plataforma no depende de un documento extern
 
 - **Infraestructura como código (Terraform):** La totalidad de la infraestructura AWS (instancias Lightsail, bases de datos gestionadas, IPs estáticas, reglas de firewall) está definida como código versionado en Git. En caso de pérdida total del servidor, ejecutar `terraform apply` recrea el entorno completo en menos de 15 minutos.
 - **Imágenes Docker inmutables:** Todas las imágenes de los 24 servicios están publicadas en GitHub Container Registry (ghcr.io), independientes del servidor. El despliegue completo se realiza con `make pull && make up` en cada repositorio de infraestructura.
-- **Backups automáticos gestionados:** Las bases de datos Lightsail (PostgreSQL 16 y MySQL 8.0) incluyen backups automáticos diarios con point-in-time recovery y retención de 7 días. La restauración se realiza desde la consola de AWS sin intervención manual compleja.
+- **Backups automáticos gestionados:** Las bases de datos Lightsail (PostgreSQL 15 y MySQL 8.0) incluyen backups automáticos diarios con point-in-time recovery y retención de 7 días. La restauración se realiza desde la consola de AWS sin intervención manual compleja.
 - **Persistencia de eventos con Transactional Outbox:** Los eventos de emisión de documentos se escriben en la base de datos dentro de la misma transacción que los datos de negocio. Si Kafka está indisponible, los eventos permanecen en la tabla outbox hasta su publicación exitosa, garantizando cero pérdida de eventos.
 - **Rollback inmediato:** El despliegue de cualquier versión anterior de un servicio se realiza en menos de 5 minutos revirtiendo el tag de la imagen Docker en GHCR y ejecutando `make up`.
 

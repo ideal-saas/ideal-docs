@@ -29,7 +29,7 @@
 <ul>
   <li><strong>Infraestructura como código (Terraform):</strong> La totalidad de la infraestructura AWS está definida como código versionado en Git. En caso de pérdida total del servidor, ejecutar <code>terraform apply</code> recrea el entorno completo en menos de 15 minutos.</li>
   <li><strong>Imágenes Docker inmutables:</strong> Todas las imágenes de los 24 servicios están publicadas en GitHub Container Registry (ghcr.io), independientes del servidor. El despliegue completo se realiza con <code>make pull && make up</code> en cada repositorio de infraestructura.</li>
-  <li><strong>Backups automáticos gestionados:</strong> Las bases de datos Lightsail (PostgreSQL 16 y MySQL 8.0) incluyen backups automáticos diarios con point-in-time recovery y retención de 7 días.</li>
+  <li><strong>Backups automáticos gestionados:</strong> Las bases de datos Lightsail (PostgreSQL 15 y MySQL 8.0) incluyen backups automáticos diarios con point-in-time recovery y retención de 7 días.</li>
   <li><strong>Persistencia de eventos con Transactional Outbox:</strong> Los eventos de emisión se escriben en la base de datos en la misma transacción que los datos de negocio. Si Kafka está indisponible, los eventos permanecen en la tabla outbox hasta su publicación exitosa, sin pérdida de datos.</li>
   <li><strong>Rollback inmediato:</strong> Revertir a cualquier versión anterior de un servicio se realiza en menos de 5 minutos cambiando el tag de la imagen Docker y re-ejecutando <code>make up</code>.</li>
 </ul>

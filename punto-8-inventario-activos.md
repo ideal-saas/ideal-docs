@@ -14,11 +14,11 @@ Las especificaciones de los servidores de producción y QA se encuentran documen
 
 ### 1.2 Bases de Datos Gestionadas
 
-Las bases de datos de producción (PostgreSQL 16 y MySQL 8.0, ambas micro_1_0) se documentan en el documento principal (§3.4). A continuación se listan las réplicas del ambiente QA:
+Las bases de datos de producción (PostgreSQL 15 y MySQL 8.0, ambas micro_1_0) se documentan en el documento principal (§3.4). A continuación se listan las réplicas del ambiente QA:
 
 | ID | Nombre | Motor | Acceso Público | Backup | Propósito |
 |:---:|--------|-------|:---:|--------|---------|
-| DB-003 | ideal-qa-postgres | PostgreSQL 16 | SI (solo QA) | Diario 04:00 UTC (7 días) | Réplica QA de PostgreSQL |
+| DB-003 | ideal-qa-postgres | PostgreSQL 15 | SI (solo QA) | Diario 04:00 UTC (7 días) | Réplica QA de PostgreSQL |
 | DB-004 | ideal-qa-mysql | MySQL 8.0 | SI (solo QA) | Diario 04:00 UTC (7 días) | Réplica QA de MySQL |
 
 ### 1.4 Dominios y DNS
@@ -147,7 +147,7 @@ La topología de las 7 redes Docker se documenta en el documento principal (§5.
 
 | Versión | Fecha | Cambio | Responsable |
 |:---:|--------|--------|-------------|
-| 1.1 | Junio 2026 | Actualización con servicios de administración, PostgreSQL 16, bundles micro_1_0; redacción de IPs, corrección red consumers, alineación bundles micro_1_0 | Ricardo Cermeño Bolaño - CTO |
+| 1.1 | Junio 2026 | Actualización con servicios de administración, PostgreSQL 15, bundles micro_1_0; redacción de IPs, corrección red consumers, alineación bundles micro_1_0 | Ricardo Cermeño Bolaño - CTO |
 
 **Próxima revisión programada:** Junio 2027
 
