@@ -14,57 +14,37 @@
 
   <h3 id="diag-1">Diagrama 1: Arquitectura General del Servicio</h3>
   <p>Visión de alto nivel del sistema de facturación electrónica, mostrando la relación entre usuarios, componentes internos y sistemas externos.</p>
-  <div class="diagram-placeholder">
-    <div class="diagram-title">[DIAGRAMA 1 — Arquitectura General del Servicio]</div>
-    <p>Diagrama C4Container que muestra: Usuario Facturador, Administrador, DIAN, Firebase Auth, Let's Encrypt, Grafana Cloud, AWS S3, y las capas internas (Proxy/TLS, GraphQL Federation, Event Streaming, Integración DIAN, Presentación, Datos, Monitoreo) dentro de AWS Lightsail.</p>
-    <div class="diagram-instructions">Instrucciones: Renderizar el código Mermaid en punto-8-diagramas.md usando Mermaid Live Editor (https://mermaid.live), VS Code, o GitHub. Exportar como PNG e insertar la imagen aquí reemplazando este placeholder.</div>
-  </div>
+  <img src="diagrams/01-arquitectura-general.drawio.png" alt="Arquitectura General del Servicio" style="width:100%; margin:10pt 0;">
 
   <hr>
 
   <h3 id="diag-2">Diagrama 2: Flujo de Emisión de Factura Electrónica</h3>
   <p>Proceso completo desde que el usuario genera una factura hasta la validación por parte de la DIAN y la obtención del CUFE.</p>
-  <div class="diagram-placeholder">
-    <div class="diagram-title">[DIAGRAMA 2 — Flujo de Emisión de Factura Electrónica]</div>
-    <p>Diagrama de secuencia con 11 participantes: Usuario Facturador, Aplicación Web (Next.js), Caddy (TLS/Proxy), Apollo Router (Federation), Purchases MS (NestJS), PostgreSQL 15, Apache Kafka (KRaft), Consumer Factura (NestJS), API DIAN (Laravel/PHP), MySQL 8.0, DIAN (Web Service). Incluye camino feliz (aprobado) y alternativo (rechazado).</p>
-    <div class="diagram-instructions">Instrucciones: Renderizar el código Mermaid en punto-8-diagramas.md usando Mermaid Live Editor (https://mermaid.live). Exportar como PNG e insertar aquí.</div>
-  </div>
+  <img src="diagrams/02-flujo-emision-factura.drawio.png" alt="Flujo de Emisión de Factura Electrónica" style="width:100%; margin:10pt 0;">
 
   <hr>
 
   <h3 id="diag-3">Diagrama 3: Topología de Redes Docker</h3>
   <p>Muestra el aislamiento de servicios mediante 7 redes Docker y la comunicación controlada entre componentes.</p>
-  <div class="diagram-placeholder">
-    <div class="diagram-title">[DIAGRAMA 3 — Topología de Redes Docker]</div>
-    <p>Diagrama de flujo (flowchart TB) mostrando las 7 redes Docker aisladas: accounting-net, api-dian-net, kafka-net, kafkaui-net, ideal-app-net, monitoring-net, admin-net. Incluye firewall AWS Lightsail, bases de datos externas, y las conexiones entre servicios y DIAN Web Services.</p>
-    <div class="diagram-instructions">Instrucciones: Renderizar el código Mermaid en punto-8-diagramas.md usando Mermaid Live Editor (https://mermaid.live). Exportar como PNG e insertar aquí.</div>
-  </div>
+  <img src="diagrams/03-topologia-redes.drawio.png" alt="Topología de Redes Docker" style="width:100%; margin:10pt 0;">
 
   <hr>
 
   <h3 id="diag-4">Diagrama 4: Pipeline de Despliegue (CI/CD)</h3>
   <p>Flujo completo desde el desarrollo hasta la puesta en producción, incluyendo controles de calidad y aprobaciones.</p>
-  <div class="diagram-placeholder">
-    <div class="diagram-title">[DIAGRAMA 4 — Pipeline de Despliegue (CI/CD)]</div>
-    <p>Dos diagramas: (a) Flowchart LR del flujo de despliegue desde Desarrollo → GitHub → Ambiente QA → Control de aprobación → Ambiente Producción. (b) Diagrama de secuencia del proceso de deploy con GitHub Actions detallando SSH, make pull, make up en QA y producción.</p>
-    <div class="diagram-instructions">Instrucciones: Renderizar ambos códigos Mermaid en punto-8-diagramas.md usando Mermaid Live Editor (https://mermaid.live). Exportar como PNG e insertar aquí.</div>
-  </div>
+  <img src="diagrams/04-pipeline-cicd.drawio.png" alt="Pipeline de Despliegue CI/CD" style="width:100%; margin:10pt 0;">
 
   <hr>
 
   <h3 id="diag-5">Diagrama 5: Capas de Seguridad</h3>
   <p>Modelo de defensa en profundidad mostrando las múltiples capas de seguridad desde Internet hasta los datos.</p>
-  <div class="diagram-placeholder">
-    <div class="diagram-title">[DIAGRAMA 5 — Capas de Seguridad (Defensa en Profundidad)]</div>
-    <p>Diagrama de flujo vertical (flowchart TB) con 8 capas numeradas: (1) Internet y DNS, (2) Firewall AWS Lightsail, (3) TLS y Cifrado en Tránsito, (4) Autenticación y Autorización, (5) Aislamiento de Red Docker, (6) Seguridad de Aplicación, (7) Seguridad de Datos, (8) Monitoreo y Detección. Cada capa detalla los controles específicos implementados.</p>
-    <div class="diagram-instructions">Instrucciones: Renderizar el código Mermaid en punto-8-diagramas.md usando Mermaid Live Editor (https://mermaid.live). Exportar como PNG e insertar aquí.</div>
-  </div>
+  <img src="diagrams/05-capas-seguridad.drawio.png" alt="Capas de Seguridad" style="width:100%; margin:10pt 0;">
 
   <h3>Notas</h3>
   <ol>
     <li>
-      Todos los diagramas deben ser renderizados a partir de los archivos fuente Mermaid (.mmd)
-      ubicados en el directorio <code>ideal-docs/diagrams/</code> del repositorio de infraestructura.
+      Los diagramas fueron generados con draw.io a partir del archivo fuente <code>punto-8-diagramas.md</code>.
+      Los archivos editables (.drawio) se encuentran en <code>diagrams/</code>.
     </li>
     <li>
       Los diagramas se actualizarán conjuntamente con la revisión anual del documento de
