@@ -1,0 +1,69 @@
+%% Flujo de Emisión de Factura Electrónica
+sequenceDiagram
+    autonumber
+    actor Usuario as Usuario Facturador
+    participant App as Aplicación Web<br/>(Next.js)
+    participant Caddy as Caddy<br/>(TLS/Proxy)
+    participant Router as Apollo Router<br/>(Federation)
+    participant Purchases as Purchases MS<br/>(NestJS)
+    participant DB as PostgreSQL 15<br/>(Lightsail)
+    participant Kafka as Apache Kafka<br/>(KRaft)
+    participant Consumer as Consumer Factura<br/>(NestJS)
+    participant DIAN_API as API DIAN<br/>(Laravel/PHP)
+    participant MySQL as MySQL 8.0<br/>(Lightsail)
+    participant DIAN as DIAN<br/>(Web Service)
+
+    Usuario->>+App: Crea factura electrónica
+    App->>+Caddy: POST /graphql (HTTPS TLS 1.3)
+    Caddy->>+Router: Proxy HTTP :4000
+    Router->>+Purchases: Mutation createInvoice
+
+    Purchases->>+DB: Valida datos empresa y resolución
+    DB-->>-Purchases: Datos validados
+
+    Purchases->>+DB: Persiste factura (estado: PENDIENTE)
+    DB-->>-Purchases: Factura guardada con ID
+
+    Purchases->>Kafka: Publica evento "invoice.emission"
+    Note over Kafka: Topic: einvoice-emission<br/>Partición asignada automáticamente
+
+    Purchases-->>-Router: Respuesta: factura creada (estado: EN_PROCESO)
+    Router-->>-Caddy: GraphQL Response
+    Caddy-->>-App: HTTPS Response
+    App-->>-Usuario: Factura en proceso de emisión
+
+    Note over Kafka,Consumer: Procesamiento asíncrono
+
+    Kafka->>+Consumer: Consume mensaje del topic
+    Consumer->>+DIAN_API: POST /api/ubl2.1/invoice
+
+    DIAN_API->>+MySQL: Obtiene resolución y consecutivo
+    MySQL-->>-DIAN_API: Resolución DIAN vigente
+
+    DIAN_API->>DIAN_API: Construye XML UBL 2.1
+    DIAN_API->>DIAN_API: Aplica firma digital (X.509)
+    DIAN_API->>DIAN_API: Calcula CUFE (SHA-384)
+
+    DIAN_API->>+DIAN: Transmite XML firmado (SOAP/HTTPS)
+
+    alt Validación exitosa
+        DIAN-->>-DIAN_API: Respuesta: Documento VALIDADO + CUFE
+        DIAN_API->>MySQL: Actualiza estado: APROBADO
+        DIAN_API-->>-Consumer: Respuesta exitosa con CUFE
+
+        Consumer->>+DB: Actualiza factura (estado: APROBADA, CUFE)
+        DB-->>-Consumer: Actualizada
+
+        Consumer-->>-Kafka: ACK - mensaje procesado
+
+        Note over Usuario: Notificación: Factura aprobada por DIAN
+    else Validación rechazada
+        DIAN-->>DIAN_API: Respuesta: RECHAZADO + errores
+        DIAN_API->>MySQL: Registra error
+        DIAN_API-->>Consumer: Respuesta con errores DIAN
+
+        Consumer->>DB: Actualiza factura (estado: RECHAZADA, errores)
+        Consumer-->>Kafka: ACK - mensaje procesado
+
+        Note over Usuario: Notificación: Factura rechazada - revisar errores
+    end

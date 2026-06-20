@@ -1,0 +1,31 @@
+%% Pipeline CI/CD - Secuencia Deploy
+sequenceDiagram
+    autonumber
+    participant Dev as Desarrollador
+    participant GH as GitHub (main branch)
+    participant Actions as GitHub Actions
+    participant GHCR as Container Registry
+    participant QA as Servidor QA
+    participant Reviewer as Reviewer
+    participant Prod as Servidor Producción
+
+    Dev->>GH: Push to main (código fuente)
+    GH->>Actions: Trigger workflow (build)
+    Actions->>Actions: Run tests + lint
+    Actions->>Actions: Docker build
+    Actions->>GHCR: Docker push (tag: latest)
+
+    Note over GHCR,QA: Deploy automático a QA
+
+    GHCR->>Actions: repository_dispatch (deploy-qa)
+    Actions->>QA: SSH: git pull && make pull && make up
+    QA-->>Actions: Deploy exitoso
+
+    Note over QA,Reviewer: Validación manual
+
+    Reviewer->>GH: Aprueba deploy a producción
+    GH->>Actions: workflow_dispatch (production)
+    Actions->>Prod: SSH: git pull && make pull && make up
+    Prod-->>Actions: Deploy exitoso
+
+    Note over Prod: Validación post-deploy automática

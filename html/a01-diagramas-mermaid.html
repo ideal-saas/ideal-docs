@@ -1,0 +1,59 @@
+<div class="sheet page-break" id="annex-a">
+  <div class="annex-header">
+    ANEXO A (Mermaid)<br>
+    Diagramas de Arquitectura
+  </div>
+
+  <div class="meta">
+    Ref: Punto 8, Numeral 8, Artículo 55, Resolución 00165 de 2023<br>
+    IDEAL SOFTWARE S.A.S | NIT: 902.027.596-7<br>
+    Junio 2026 | Versión: 1.1
+  </div>
+
+  <hr>
+
+  <h3 id="diag-1">Diagrama 1: Arquitectura General del Servicio</h3>
+  <p>Visión de alto nivel del sistema de facturación electrónica, mostrando la relación entre usuarios, componentes internos y sistemas externos.</p>
+  <img src="diagrams/01-mermaid.png" alt="Arquitectura General del Servicio (Mermaid)" style="width:100%; margin:10pt 0;">
+
+  <hr>
+
+  <h3 id="diag-2">Diagrama 2: Flujo de Emisión de Factura Electrónica</h3>
+  <p>Proceso completo desde que el usuario genera una factura hasta la validación por parte de la DIAN y la obtención del CUFE.</p>
+  <img src="diagrams/02-flujo-mermaid.png" alt="Flujo de Emisión de Factura Electrónica (Mermaid)" style="width:100%; margin:10pt 0;">
+
+  <hr>
+
+  <h3 id="diag-3">Diagrama 3: Topología de Redes Docker</h3>
+  <p>Muestra el aislamiento de servicios mediante 7 redes Docker y la comunicación controlada entre componentes.</p>
+  <img src="diagrams/03-mermaid.png" alt="Topología de Redes Docker (Mermaid)" style="width:100%; margin:10pt 0;">
+
+  <hr>
+
+  <h3 id="diag-4">Diagrama 4: Pipeline de Despliegue (CI/CD)</h3>
+  <p>Flujo completo desde el desarrollo hasta la puesta en producción, incluyendo controles de calidad y aprobaciones.</p>
+  <img src="diagrams/04-flujo-cicd-mermaid.png" alt="Pipeline CI/CD (Mermaid)" style="width:100%; margin:10pt 0;">
+
+  <hr>
+
+  <p><strong>Detalle del proceso de deploy (GitHub Actions):</strong></p>
+  <img src="diagrams/04-seq-cicd-mermaid.png" alt="Secuencia Deploy CI/CD (Mermaid)" style="width:100%; margin:10pt 0;">
+
+  <hr>
+
+  <h3 id="diag-5">Diagrama 5: Capas de Seguridad</h3>
+  <p>Modelo de defensa en profundidad mostrando las múltiples capas de seguridad desde Internet hasta los datos.</p>
+  <img src="diagrams/05-mermaid.png" alt="Capas de Seguridad (Mermaid)" style="width:100%; margin:10pt 0;">
+
+  <h3>Notas</h3>
+  <ol>
+    <li>
+      Los diagramas fueron generados con <code>@mermaid-js/mermaid-cli</code> a partir del archivo fuente <code>punto-8-diagramas.md</code>.
+      Los archivos fuente (.mmd) y los PNG exportados se encuentran en <code>diagrams/</code>.
+    </li>
+    <li>
+      Los diagramas se actualizarán conjuntamente con la revisión anual del documento de
+      infraestructura o cuando ocurran cambios significativos en la arquitectura de la plataforma.
+    </li>
+  </ol>
+</div>

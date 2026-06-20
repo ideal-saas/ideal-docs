@@ -1,0 +1,92 @@
+%% Topología de Redes Docker
+flowchart TB
+    subgraph internet["Internet (Público)"]
+        user([Usuarios])
+        dian_ext([DIAN Web Services])
+    end
+
+    subgraph firewall["Firewall AWS Lightsail"]
+        direction TB
+        port80[Puerto 80 - HTTP]
+        port443[Puerto 443 - HTTPS/QUIC]
+        port22[Puerto 22 - SSH<br/>Restringido a CIDRs]
+    end
+
+    subgraph server["Servidor Producción - AWS Lightsail (4 vCPU, 16 GB RAM)"]
+
+        subgraph net_accounting["accounting-iac_accounting-net"]
+            caddy_a[Caddy]
+            router_a[Apollo Router :4000]
+            core_a[Core MS :3000]
+            inventory_a[Inventory MS :3001]
+            purchases_a[Purchases MS :3002]
+            fileuploader_a[File Uploader MS :3003]
+            accounting_a[Accounting MS :3004]
+            report_a[Report MS :3005]
+            payroll_a[Payroll MS :3006]
+            treasury_a[Treasury MS :3007]
+        end
+
+        subgraph net_dian["dian-api-iac_api-dian-net"]
+            api_dian_d[API DIAN :80]
+            core_d[Core MS]
+            purchases_d[Purchases MS]
+            payroll_d[Payroll MS]
+            consumers_d[6 Consumers]
+        end
+
+        subgraph net_kafka["kafka-iac_kafka-net"]
+            kafka_k[Kafka :9093]
+            purchases_k[Purchases MS]
+            payroll_k[Payroll MS]
+            consumers_k[6 Consumers]
+        end
+
+        subgraph net_kafkaui["kafka-iac_kafkaui-net"]
+            kafka_ui[Kafka UI :8080]
+            kafka_kui[Kafka]
+            caddy_kui[Caddy]
+        end
+
+        subgraph net_app["ideal-app-iac_ideal-app-net"]
+            webapp_app[Ideal App :3100]
+            caddy_app[Caddy]
+        end
+
+        subgraph net_monitoring["monitoring-iac_monitoring-net"]
+            alloy_m[Grafana Alloy]
+            cadvisor_m[cAdvisor :8080]
+        end
+
+        subgraph databases["Lightsail Managed Database (Externo a containers)"]
+            postgres_db[(PostgreSQL 15<br/>NO público)]
+            mysql_db[(MySQL 8.0<br/>NO público)]
+        end
+    end
+
+    user --> port80 & port443
+    port80 & port443 --> caddy_a
+    port22 -.->|Solo CIDRs autorizados| server
+
+    caddy_a --> router_a
+    caddy_a --> fileuploader_a
+    caddy_app --> webapp_app
+    caddy_kui --> kafka_ui
+
+    router_a --> core_a & inventory_a & purchases_a & accounting_a & report_a & payroll_a & treasury_a
+
+    purchases_k --> kafka_k
+    payroll_k --> kafka_k
+    kafka_k --> consumers_k
+    consumers_d --> api_dian_d
+    api_dian_d --> dian_ext
+
+    core_a & purchases_a & payroll_a & accounting_a --> postgres_db
+    api_dian_d --> mysql_db
+
+    alloy_m -.->|Métricas y logs| net_accounting
+    cadvisor_m -.->|Docker socket| server
+
+    style firewall fill:#ff6b6b,color:#fff
+    style databases fill:#4ecdc4,color:#fff
+    style net_monitoring fill:#f9f9f9,stroke:#999,stroke-dasharray: 5 5

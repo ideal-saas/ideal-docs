@@ -1,0 +1,48 @@
+%% Pipeline CI/CD - Flujo
+flowchart LR
+    subgraph dev["Desarrollo"]
+        code[Desarrollador<br/>escribe código]
+        commit[Git commit + push]
+    end
+
+    subgraph github["GitHub"]
+        repo[Repositorio<br/>código fuente]
+        actions_build[GitHub Actions<br/>Build + Test]
+        ghcr[GitHub Container<br/>Registry - ghcr.io]
+        repo_infra[Repositorio<br/>IaC infra]
+        actions_deploy[GitHub Actions<br/>Deploy]
+    end
+
+    subgraph qa_env["Ambiente QA"]
+        qa_server[Servidor QA<br/>2 vCPU, 8 GB]
+        qa_test[Validación<br/>funcional]
+    end
+
+    subgraph approval["Control"]
+        reviewer{Aprobación<br/>manual por<br/>reviewer}
+    end
+
+    subgraph prod_env["Ambiente Producción"]
+        prod_server[Servidor Prod<br/>4 vCPU, 16 GB]
+        prod_valid[Validación<br/>post-deploy]
+    end
+
+    code --> commit --> repo
+    repo -->|Push to main| actions_build
+    actions_build -->|Build Docker image| ghcr
+    ghcr -->|Image ready| repo_infra
+
+    repo_infra -->|Push to main<br/>Auto-trigger| actions_deploy
+    actions_deploy -->|SSH + make pull + make up| qa_server
+    qa_server --> qa_test
+
+    qa_test -->|QA aprobado| reviewer
+    reviewer -->|Aprobado| actions_deploy
+    actions_deploy -->|SSH + make pull + make up| prod_server
+    prod_server --> prod_valid
+
+    reviewer -->|Rechazado| code
+
+    style qa_env fill:#fff3cd,stroke:#ffc107
+    style prod_env fill:#d4edda,stroke:#28a745
+    style approval fill:#cce5ff,stroke:#0d6efd

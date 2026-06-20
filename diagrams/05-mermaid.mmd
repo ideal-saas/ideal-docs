@@ -1,0 +1,46 @@
+%% Capas de Seguridad
+flowchart TB
+    subgraph L1["CAPA 1: Internet y DNS"]
+        internet([Internet])
+        dns[DNS: idealsoluciones.com.co<br/>Registros A → IP estática]
+    end
+
+    subgraph L2["CAPA 2: Firewall AWS Lightsail"]
+        fw_rules["Reglas de firewall:<br/>- Puerto 443 (HTTPS): 0.0.0.0/0<br/>- Puerto 80 (HTTP→redirect): 0.0.0.0/0<br/>- Puerto 22 (SSH): Solo CIDRs autorizados<br/>- Todos los demás: BLOQUEADOS"]
+    end
+
+    subgraph L3["CAPA 3: TLS y Cifrado en Tránsito"]
+        caddy_tls["Caddy Reverse Proxy:<br/>- TLS 1.2/1.3 automático (Let's Encrypt)<br/>- HTTP/3 (QUIC) habilitado<br/>- Certificados auto-renovados<br/>- Compresión GZIP<br/>- Terminación TLS"]
+    end
+
+    subgraph L4["CAPA 4: Autenticación y Autorización"]
+        auth["Control de Acceso:<br/>- Firebase Auth (usuarios finales)<br/>- JWT tokens con propagación<br/>- SSH ed25519 (administradores)<br/>- GitHub Environments + Reviewers"]
+    end
+
+    subgraph L5["CAPA 5: Aislamiento de Red"]
+        networks["Redes Docker Aisladas:<br/>- 5 redes internas independientes<br/>- Principio de mínimo privilegio<br/>- Servicios solo acceden redes necesarias<br/>- Sin puertos públicos directos"]
+    end
+
+    subgraph L6["CAPA 6: Seguridad de Aplicación"]
+        app_sec["Aplicaciones:<br/>- Imágenes Docker inmutables<br/>- Base Alpine Linux (superficie mínima)<br/>- Límites de memoria por container<br/>- Restart policies automáticas<br/>- Variables sensibles en .env (no versionadas)"]
+    end
+
+    subgraph L7["CAPA 7: Seguridad de Datos"]
+        data_sec["Bases de Datos:<br/>- Lightsail Managed DB (NO públicas)<br/>- Cifrado en reposo (AWS)<br/>- Backups automáticos diarios (7 días)<br/>- Final snapshots en eliminación<br/>- Credenciales vía GitHub Secrets"]
+    end
+
+    subgraph L8["CAPA 8: Monitoreo y Detección"]
+        monitoring["Observabilidad:<br/>- Grafana Cloud (métricas + logs + alertas)<br/>- cAdvisor (métricas de containers)<br/>- Caddy logs JSON (acceso)<br/>- UptimeRobot (disponibilidad 24/7)<br/>- Alertas automáticas"]
+    end
+
+    internet --> dns --> L2 --> L3 --> L4 --> L5 --> L6 --> L7
+    L7 --> L8
+
+    style L1 fill:#f8f9fa,stroke:#6c757d
+    style L2 fill:#ff6b6b,color:#fff,stroke:#dc3545
+    style L3 fill:#feca57,stroke:#f39c12
+    style L4 fill:#48dbfb,stroke:#0abde3
+    style L5 fill:#a29bfe,color:#fff,stroke:#6c5ce7
+    style L6 fill:#55a3f0,color:#fff,stroke:#2e86de
+    style L7 fill:#00d2d3,color:#fff,stroke:#01a3a4
+    style L8 fill:#2ed573,color:#fff,stroke:#26de81
