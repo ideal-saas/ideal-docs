@@ -28,6 +28,11 @@
           <mxGeometry x="60" y="480" width="78" height="78" as="geometry" />
         </mxCell>
 
+        <!-- ===== AWS Lightsail Firewall ===== -->
+        <mxCell id="firewall" value="Firewall AWS Lightsail&lt;br&gt;Solo puertos 80, 443, 22 abiertos" style="sketch=0;outlineConnect=0;fontColor=#FFFFFF;gradientColor=none;fillColor=#FF6B6B;strokeColor=#CC0000;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=1;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.generic_firewall;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="145" y="370" width="80" height="80" as="geometry" />
+        </mxCell>
+
         <!-- ===== GRUPO A: Capa de Proxy y TLS ===== -->
         <mxCell id="gpo_a" value="&lt;b&gt;Grupo A&lt;/b&gt; — Capa de Proxy y TLS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#FF9900;fontSize=11;fontStyle=1;verticalAlign=top;align=left;spacingLeft=10;spacingTop=2;dashed=1;strokeWidth=1;" vertex="1" parent="1">
           <mxGeometry x="250" y="100" width="300" height="140" as="geometry" />
@@ -159,10 +164,15 @@
         <!-- ===== EDGES (CONNECTIONS) ===== -->
 
         <!-- Usuarios → Caddy -->
-        <mxCell id="e_user_fact_caddy" value="HTTPS" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=#F5F5F5;fontSize=10;" edge="1" source="user_fact" target="caddy" parent="1">
+        <mxCell id="e_user_fact_firewall" value="HTTPS" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.3;entryDx=0;entryDy=0;labelBackgroundColor=#F5F5F5;fontSize=10;" edge="1" source="user_fact" target="firewall" parent="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e_user_admin_caddy" value="HTTPS" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.8;entryDx=0;entryDy=0;labelBackgroundColor=#F5F5F5;fontSize=10;" edge="1" source="user_admin" target="caddy" parent="1">
+        <mxCell id="e_user_admin_firewall" value="HTTPS" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.7;entryDx=0;entryDy=0;labelBackgroundColor=#F5F5F5;fontSize=10;" edge="1" source="user_admin" target="firewall" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Firewall → Caddy -->
+        <mxCell id="e_firewall_caddy" value="HTTPS" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=#F5F5F5;fontSize=10;" edge="1" source="firewall" target="caddy" parent="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
@@ -220,8 +230,18 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
-        <!-- API DIAN → DIAN Web Services -->
-        <mxCell id="e_dian_ws" value="SOAP/HTTPS" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=#F5F5F5;fontSize=9;" edge="1" source="api_dian" target="dian_ws" parent="1">
+        <!-- DIAN WS → Firewall (SOAP/HTTPS) -->
+        <mxCell id="e_dian_ws" value="SOAP/HTTPS" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;labelBackgroundColor=#F5F5F5;fontSize=9;" edge="1" source="dian_ws" target="firewall" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2249" y="25" />
+              <mxPoint x="185" y="25" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Firewall → API DIAN (vía Caddy) -->
+        <mxCell id="e_firewall_api_dian" value="HTTPS&lt;br&gt;(vía Caddy)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=#F5F5F5;fontSize=8;strokeColor=#757575;" edge="1" source="firewall" target="api_dian" parent="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 

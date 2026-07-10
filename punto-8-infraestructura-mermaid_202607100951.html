@@ -1392,7 +1392,7 @@ hr.section-break {
 </div>
 <div class="sheet page-break" id="annex-a">
   <div class="annex-header">
-    ANEXO A<br>
+    ANEXO A (Mermaid)<br>
     Diagramas de Arquitectura
   </div>
 
@@ -1406,53 +1406,54 @@ hr.section-break {
 
   <h3 id="diag-1">Diagrama 1: Arquitectura General del Servicio</h3>
   <p>Visión de alto nivel del sistema de facturación electrónica, mostrando la relación entre usuarios, componentes internos y sistemas externos.</p>
-  <img src="diagrams/01-arquitectura-general.drawio.png" alt="Arquitectura General del Servicio" style="width:100%; margin:10pt 0;">
+  <img src="diagrams/01-mermaid.png" alt="Arquitectura General del Servicio (Mermaid)" style="width:100%; margin:10pt 0;">
 
   <hr>
 
   <h3 id="diag-2">Diagrama 2: Flujo de Emisión de Factura Electrónica</h3>
   <p>Proceso completo desde que el usuario genera una factura hasta la validación por parte de la DIAN y la obtención del CUFE.</p>
-  <img src="diagrams/02-flujo-emision-factura.drawio.png" alt="Flujo de Emisión de Factura Electrónica" style="width:100%; margin:10pt 0;">
+  <img src="diagrams/02-flujo-mermaid.png" alt="Flujo de Emisión de Factura Electrónica (Mermaid)" style="width:100%; margin:10pt 0;">
 
   <hr>
 
   <h3 id="diag-3">Diagrama 3: Topología de Redes Docker</h3>
   <p>Muestra el aislamiento de servicios mediante 7 redes Docker y la comunicación controlada entre componentes.</p>
-  <img src="diagrams/03-topologia-redes.drawio.png" alt="Topología de Redes Docker" style="width:100%; margin:10pt 0;">
+  <img src="diagrams/03-mermaid.png" alt="Topología de Redes Docker (Mermaid)" style="width:100%; margin:10pt 0;">
 
   <hr>
 
   <h3 id="diag-4">Diagrama 4: Pipeline de Despliegue (CI/CD)</h3>
   <p>Flujo completo desde el desarrollo hasta la puesta en producción, incluyendo controles de calidad y aprobaciones.</p>
-  <img src="diagrams/04-pipeline-cicd.drawio.png" alt="Pipeline de Despliegue CI/CD" style="width:100%; margin:10pt 0;">
+  <img src="diagrams/04-flujo-cicd-mermaid.png" alt="Pipeline CI/CD (Mermaid)" style="width:100%; margin:10pt 0;">
+
+  <hr>
+
+  <p><strong>Detalle del proceso de deploy (GitHub Actions):</strong></p>
+  <img src="diagrams/04-seq-cicd-mermaid.png" alt="Secuencia Deploy CI/CD (Mermaid)" style="width:100%; margin:10pt 0;">
 
   <hr>
 
   <h3 id="diag-5">Diagrama 5: Capas de Seguridad</h3>
   <p>Modelo de defensa en profundidad mostrando las múltiples capas de seguridad desde Internet hasta los datos.</p>
-  <img src="diagrams/05-capas-seguridad.drawio.png" alt="Capas de Seguridad" style="width:100%; margin:10pt 0;">
+  <img src="diagrams/05-mermaid.png" alt="Capas de Seguridad (Mermaid)" style="width:100%; margin:10pt 0;">
 
   <hr>
 
   <h3 id="diag-6">Diagrama 6: Infraestructura de Despliegue</h3>
   <p>Vista de los recursos físicos y lógicos de infraestructura en AWS Lightsail, incluyendo firewall, servidores, bases de datos gestionadas, almacenamiento S3 y servicios externos de monitoreo.</p>
-  <img src="diagrams/06-infraestructura.drawio.png" alt="Infraestructura de Despliegue" style="width:100%; margin:10pt 0;">
+  <img src="diagrams/06-infraestructura-mermaid.png" alt="Infraestructura de Despliegue (Mermaid)" style="width:100%; margin:10pt 0;">
 
   <hr>
 
   <h3>Notas</h3>
   <ol>
     <li>
-      Los diagramas fueron generados con draw.io a partir del archivo fuente <code>punto-8-diagramas.md</code>.
-      Los archivos editables (.drawio) se encuentran en <code>diagrams/</code>.
+      Los diagramas fueron generados con <code>@mermaid-js/mermaid-cli</code> a partir del archivo fuente <code>punto-8-diagramas.md</code>.
+      Los archivos fuente (.mmd) y los PNG exportados se encuentran en <code>diagrams/</code>.
     </li>
     <li>
       Los diagramas se actualizarán conjuntamente con la revisión anual del documento de
       infraestructura o cuando ocurran cambios significativos en la arquitectura de la plataforma.
-    </li>
-    <li>
-      La numeración de cada diagrama corresponde a la referencia del Punto 8 (Anexos), Numeral 8,
-      Artículo 55 de la Resolución 00165 de 2023 de la DIAN.
     </li>
   </ol>
 </div>

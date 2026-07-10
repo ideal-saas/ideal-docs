@@ -13,6 +13,10 @@ C4Container
 
     Container_Boundary(infra, "AWS Lightsail - Producción (us-east-1)") {
 
+        Container_Boundary(fw_layer, "Capa de Seguridad Perimetral") {
+            Container(firewall, "Firewall Lightsail", "AWS", "Solo 80, 443, 22\nDemás puertos BLOQUEADOS")
+        }
+
         Container_Boundary(proxy_layer, "Capa de Proxy y TLS") {
             Container(caddy, "Caddy 2.8.4", "Alpine Linux", "Reverse proxy, TLS automático, HTTP/3, compresión GZIP")
         }
@@ -58,8 +62,9 @@ C4Container
         }
     }
 
-    Rel(usuario, caddy, "Accede via HTTPS", "TLS 1.3")
-    Rel(admin, caddy, "Administra via SSH", "ed25519")
+    Rel(usuario, firewall, "Accede via HTTPS", "TLS 1.3")
+    Rel(admin, firewall, "Administra via SSH", "ed25519")
+    Rel(firewall, caddy, "Reenvía", "80, 443")
     Rel(caddy, router, "Proxy GraphQL", "HTTP :4000")
     Rel(caddy, fileuploader, "Proxy uploads", "HTTP :3003")
     Rel(caddy, webapp, "Proxy frontend", "HTTP :3100")
@@ -90,6 +95,7 @@ C4Container
     Rel(consumer_payroll_adj, api_dian, "Envía documento", "HTTP :80/api/ubl2.1")
 
     Rel(api_dian, dian, "Transmite XML firmado", "HTTPS/SOAP")
+    Rel(dian, firewall, "SOAP/HTTPS")
 
     Rel(core, postgres, "Lee/escribe", "TCP :5432")
     Rel(purchases, postgres, "Lee/escribe", "TCP :5432")

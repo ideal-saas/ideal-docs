@@ -1,0 +1,46 @@
+flowchart LR
+    internet([Internet]) --> dns[DNS: Route 53<br/>idealsoluciones.com.co]
+
+    subgraph firewall["Firewall AWS Lightsail"]
+        fw["Puertos 80, 443, 22<br/>Resto BLOQUEADO"]
+    end
+
+    internet --> firewall
+
+    subgraph lightsail["AWS Lightsail - us-east-1"]
+        subgraph servers["Servidores"]
+            prod["Producción<br/>4 vCPU, 16 GB, 320 GB<br/>xlarge_3_0<br/>24 containers"]
+            qa["QA<br/>2 vCPU, 8 GB, 160 GB<br/>large_3_0"]
+        end
+        
+        subgraph databases["Lightsail Managed DB"]
+            pg[(PostgreSQL 15<br/>micro_1_0<br/>NO público)]
+            mysql[(MySQL 8.0<br/>micro_1_0<br/>NO público)]
+        end
+    end
+
+    firewall --> servers
+    servers --> databases
+
+    subgraph storage["Almacenamiento"]
+        s3[(AWS S3<br/>Documentos UBL 2.1<br/>Sin límite retención)]
+    end
+
+    subgraph external["Servicios Externos"]
+        grafana["Grafana Cloud<br/>Métricas + Logs"]
+        posthog["PostHog<br/>Analytics"]
+        uptime["UptimeRobot<br/>Disponibilidad 24/7"]
+    end
+
+    prod --> s3
+    prod -.-> grafana
+    prod -.-> posthog
+    uptime -.-> prod
+
+    style firewall fill:#ff6b6b,color:#fff
+    style s3 fill:#7aa116,color:#fff
+    style pg fill:#c925d1,color:#fff
+    style mysql fill:#c925d1,color:#fff
+    style grafana fill:#232f3d,color:#fff
+    style posthog fill:#232f3d,color:#fff
+    style uptime fill:#232f3d,color:#fff
