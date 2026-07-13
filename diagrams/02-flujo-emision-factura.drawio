@@ -1,6 +1,7 @@
 <mxfile host="app.diagrams.net" modified="2026-06-20T00:00:00.000Z" agent="draw.io" version="24.0.0">
   <diagram name="Flujo Emisión Factura Electrónica" id="invoice-emission-flow">
-    <mxGraphModel dx="2000" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2800" pageHeight="2000" math="0" shadow="0">
+      <mxGraphModel dx="2000" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2990" pageHeight="2000" math="0" shadow="0">
+
       <root>
         <mxCell id="0"/>
         <mxCell id="1" parent="0"/>
@@ -12,7 +13,7 @@
 
         <!-- ===== ZONE A: Creación y encolado ===== -->
         <mxCell id="zoneA" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#90CAF9;strokeWidth=2;opacity=35;container=0;" vertex="1" parent="1">
-          <mxGeometry x="10" y="55" width="2780" height="340" as="geometry"/>
+          <mxGeometry x="10" y="55" width="2780" height="380" as="geometry"/>
         </mxCell>
         <mxCell id="zoneA-label" value="&lt;font style=&quot;font-size:13px&quot;&gt;&lt;b&gt;ZONA A: Creación y encolado&lt;/b&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=#1565C0;fontColor=#FFFFFF;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=13;" vertex="1" parent="1">
           <mxGeometry x="15" y="57" width="200" height="26" as="geometry"/>
@@ -20,18 +21,18 @@
 
         <!-- ===== ZONE B: Procesamiento asíncrono ===== -->
         <mxCell id="zoneB" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#FFB74D;strokeWidth=2;opacity=35;container=0;" vertex="1" parent="1">
-          <mxGeometry x="10" y="405" width="2780" height="320" as="geometry"/>
+          <mxGeometry x="10" y="445" width="2780" height="320" as="geometry"/>
         </mxCell>
         <mxCell id="zoneB-label" value="&lt;font style=&quot;font-size:13px&quot;&gt;&lt;b&gt;ZONA B: Procesamiento asíncrono&lt;/b&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=#E65100;fontColor=#FFFFFF;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=13;" vertex="1" parent="1">
-          <mxGeometry x="15" y="407" width="210" height="26" as="geometry"/>
+          <mxGeometry x="15" y="447" width="210" height="26" as="geometry"/>
         </mxCell>
 
         <!-- ===== ZONE C: Transmisión DIAN y respuesta ===== -->
         <mxCell id="zoneC" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#81C784;strokeWidth=2;opacity=35;container=0;" vertex="1" parent="1">
-          <mxGeometry x="10" y="735" width="2780" height="580" as="geometry"/>
+          <mxGeometry x="10" y="775" width="2780" height="580" as="geometry"/>
         </mxCell>
         <mxCell id="zoneC-label" value="&lt;font style=&quot;font-size:13px&quot;&gt;&lt;b&gt;ZONA C: Transmisión DIAN y respuesta&lt;/b&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=#2E7D32;fontColor=#FFFFFF;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=13;" vertex="1" parent="1">
-          <mxGeometry x="15" y="737" width="225" height="26" as="geometry"/>
+          <mxGeometry x="15" y="777" width="225" height="26" as="geometry"/>
         </mxCell>
 
         <!-- ===== PARTICIPANT HEADERS ===== -->
@@ -42,7 +43,7 @@
         <mxCell id="p1-line" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#1A3A5C;strokeWidth=1;dashPattern=4 4;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="120" y="137" as="sourcePoint"/>
-            <mxPoint x="120" y="1300" as="targetPoint"/>
+            <mxPoint x="120" y="1400" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
 
@@ -53,7 +54,7 @@
         <mxCell id="p2-line" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#1A3A5C;strokeWidth=1;dashPattern=4 4;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="355" y="137" as="sourcePoint"/>
-            <mxPoint x="355" y="1300" as="targetPoint"/>
+            <mxPoint x="355" y="1400" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
 
@@ -64,7 +65,7 @@
         <mxCell id="p3-line" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#1A3A5C;strokeWidth=1;dashPattern=4 4;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="590" y="137" as="sourcePoint"/>
-            <mxPoint x="590" y="1300" as="targetPoint"/>
+            <mxPoint x="590" y="1400" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
 
@@ -75,7 +76,7 @@
         <mxCell id="p4-line" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#1A3A5C;strokeWidth=1;dashPattern=4 4;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="825" y="137" as="sourcePoint"/>
-            <mxPoint x="825" y="1300" as="targetPoint"/>
+            <mxPoint x="825" y="1400" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
 
@@ -86,73 +87,84 @@
         <mxCell id="p5-line" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#1A3A5C;strokeWidth=1;dashPattern=4 4;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="1060" y="137" as="sourcePoint"/>
-            <mxPoint x="1060" y="1300" as="targetPoint"/>
+            <mxPoint x="1060" y="1400" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
 
         <!-- P6: PostgreSQL -->
-        <mxCell id="p6" value="&lt;font style=&quot;font-size:12px&quot;&gt;&lt;b&gt;PostgreSQL&lt;/b&gt;&lt;br&gt;16&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1A3A5C;fontColor=#FFFFFF;strokeColor=#0D1F33;fontSize=11;arcSize=10;" vertex="1" parent="1">
+        <mxCell id="p6" value="&lt;font style=&quot;font-size:12px&quot;&gt;&lt;b&gt;PostgreSQL&lt;/b&gt;&lt;br&gt;15&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1A3A5C;fontColor=#FFFFFF;strokeColor=#0D1F33;fontSize=11;arcSize=10;" vertex="1" parent="1">
           <mxGeometry x="1195" y="95" width="200" height="42" as="geometry"/>
         </mxCell>
         <mxCell id="p6-line" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#1A3A5C;strokeWidth=1;dashPattern=4 4;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="1295" y="137" as="sourcePoint"/>
-            <mxPoint x="1295" y="1300" as="targetPoint"/>
+            <mxPoint x="1295" y="1400" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- P6.5: Publicador Outbox (NUEVO — Transactional Outbox) -->
+        <mxCell id="p6half" value="&lt;font style=&quot;font-size:12px&quot;&gt;&lt;b&gt;Publicador Outbox&lt;/b&gt;&lt;br&gt;Transactional&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2E7D32;fontColor=#FFFFFF;strokeColor=#0D1F33;fontSize=11;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1315" y="95" width="200" height="42" as="geometry"/>
+        </mxCell>
+        <mxCell id="p6half-line" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#1A3A5C;strokeWidth=1;dashPattern=4 4;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1415" y="137" as="sourcePoint"/>
+            <mxPoint x="1415" y="1400" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
 
         <!-- P7: Apache Kafka -->
         <mxCell id="p7" value="&lt;font style=&quot;font-size:12px&quot;&gt;&lt;b&gt;Apache Kafka&lt;/b&gt;&lt;br&gt;KRaft&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1A3A5C;fontColor=#FFFFFF;strokeColor=#0D1F33;fontSize=11;arcSize=10;" vertex="1" parent="1">
-          <mxGeometry x="1430" y="95" width="200" height="42" as="geometry"/>
+          <mxGeometry x="1550" y="95" width="200" height="42" as="geometry"/>
         </mxCell>
         <mxCell id="p7-line" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#1A3A5C;strokeWidth=1;dashPattern=4 4;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1530" y="137" as="sourcePoint"/>
-            <mxPoint x="1530" y="1300" as="targetPoint"/>
+            <mxPoint x="1650" y="137" as="sourcePoint"/>
+            <mxPoint x="1650" y="1400" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
 
         <!-- P8: Consumer Factura -->
         <mxCell id="p8" value="&lt;font style=&quot;font-size:12px&quot;&gt;&lt;b&gt;Consumer Factura&lt;/b&gt;&lt;br&gt;NestJS&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1A3A5C;fontColor=#FFFFFF;strokeColor=#0D1F33;fontSize=11;arcSize=10;" vertex="1" parent="1">
-          <mxGeometry x="1665" y="95" width="200" height="42" as="geometry"/>
+          <mxGeometry x="1785" y="95" width="200" height="42" as="geometry"/>
         </mxCell>
         <mxCell id="p8-line" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#1A3A5C;strokeWidth=1;dashPattern=4 4;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1765" y="137" as="sourcePoint"/>
-            <mxPoint x="1765" y="1300" as="targetPoint"/>
+            <mxPoint x="1885" y="137" as="sourcePoint"/>
+            <mxPoint x="1885" y="1400" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
 
         <!-- P9: API DIAN -->
         <mxCell id="p9" value="&lt;font style=&quot;font-size:12px&quot;&gt;&lt;b&gt;API DIAN&lt;/b&gt;&lt;br&gt;Laravel / PHP&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1A3A5C;fontColor=#FFFFFF;strokeColor=#0D1F33;fontSize=11;arcSize=10;" vertex="1" parent="1">
-          <mxGeometry x="1900" y="95" width="200" height="42" as="geometry"/>
+          <mxGeometry x="2020" y="95" width="200" height="42" as="geometry"/>
         </mxCell>
         <mxCell id="p9-line" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#1A3A5C;strokeWidth=1;dashPattern=4 4;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="2000" y="137" as="sourcePoint"/>
-            <mxPoint x="2000" y="1300" as="targetPoint"/>
+            <mxPoint x="2120" y="137" as="sourcePoint"/>
+            <mxPoint x="2120" y="1400" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
 
         <!-- P10: MySQL -->
         <mxCell id="p10" value="&lt;font style=&quot;font-size:12px&quot;&gt;&lt;b&gt;MySQL&lt;/b&gt;&lt;br&gt;8.0&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1A3A5C;fontColor=#FFFFFF;strokeColor=#0D1F33;fontSize=11;arcSize=10;" vertex="1" parent="1">
-          <mxGeometry x="2135" y="95" width="200" height="42" as="geometry"/>
+          <mxGeometry x="2255" y="95" width="200" height="42" as="geometry"/>
         </mxCell>
         <mxCell id="p10-line" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#1A3A5C;strokeWidth=1;dashPattern=4 4;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="2235" y="137" as="sourcePoint"/>
-            <mxPoint x="2235" y="1300" as="targetPoint"/>
+            <mxPoint x="2355" y="137" as="sourcePoint"/>
+            <mxPoint x="2355" y="1400" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
 
         <!-- P11: DIAN -->
         <mxCell id="p11" value="&lt;font style=&quot;font-size:12px&quot;&gt;&lt;b&gt;DIAN&lt;/b&gt;&lt;br&gt;Web Service&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1A3A5C;fontColor=#FFFFFF;strokeColor=#0D1F33;fontSize=11;arcSize=10;" vertex="1" parent="1">
-          <mxGeometry x="2370" y="95" width="200" height="42" as="geometry"/>
+          <mxGeometry x="2490" y="95" width="200" height="42" as="geometry"/>
         </mxCell>
         <mxCell id="p11-line" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#1A3A5C;strokeWidth=1;dashPattern=4 4;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="2470" y="137" as="sourcePoint"/>
-            <mxPoint x="2470" y="1300" as="targetPoint"/>
+            <mxPoint x="2590" y="137" as="sourcePoint"/>
+            <mxPoint x="2590" y="1400" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
 
@@ -191,210 +203,218 @@
         </mxCell>
 
         <!-- Step 5: Purchases → PostgreSQL -->
-        <mxCell id="s5" value="&lt;font style=&quot;font-size:11px&quot;&gt;⑤ Valida y persiste (estado: PENDIENTE)&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1A3A5C;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+        <mxCell id="s5" value="&lt;font style=&quot;font-size:11px&quot;&gt;⑤ Persiste factura + inserta outbox (misma transacción)&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1A3A5C;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1060" y="370" as="sourcePoint"/>
-            <mxPoint x="1295" y="370" as="targetPoint"/>
+          <mxPoint x="1060" y="370" as="sourcePoint"/>
+          <mxPoint x="1295" y="370" as="targetPoint"/>
+        </mxGeometry>
+      </mxCell>
+
+      <!-- Step 6: PostgreSQL → Publicador Outbox (polling) -->
+      <mxCell id="s6poll" value="&lt;font style=&quot;font-size:11px&quot;&gt;⑥ Lee tabla outbox (polling)&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1A3A5C;fontSize=11;labelBackgroundColor=#FFFFFF;dashed=1;" edge="1" parent="1">
+        <mxGeometry relative="1" as="geometry">
+          <mxPoint x="1295" y="390" as="sourcePoint"/>
+          <mxPoint x="1415" y="390" as="targetPoint"/>
+        </mxGeometry>
+      </mxCell>
+
+      <!-- Step 7: Publicador Outbox → Kafka -->
+      <mxCell id="s6" value="&lt;font style=&quot;font-size:11px&quot;&gt;⑦ Publica evento invoice.emission&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1A3A5C;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+        <mxGeometry relative="1" as="geometry">
+          <mxPoint x="1415" y="410" as="sourcePoint"/>
+          <mxPoint x="1650" y="410" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
 
-        <!-- Step 6: Purchases → Kafka (diagonal) -->
-        <mxCell id="s6" value="&lt;font style=&quot;font-size:11px&quot;&gt;⑥ Publica evento invoice.emission&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1A3A5C;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+        <!-- ===== STEPS 8-11: ZONE B ===== -->
+
+        <!-- Step 8: Kafka → Consumer (diagonal) -->
+        <mxCell id="s7" value="&lt;font style=&quot;font-size:11px&quot;&gt;⑧ Consume mensaje&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1A3A5C;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1060" y="390" as="sourcePoint"/>
-            <mxPoint x="1530" y="390" as="targetPoint"/>
+            <mxPoint x="1650" y="495" as="sourcePoint"/>
+            <mxPoint x="1885" y="495" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
 
-        <!-- ===== STEPS 7-10: ZONE B ===== -->
-
-        <!-- Step 7: Kafka → Consumer (diagonal) -->
-        <mxCell id="s7" value="&lt;font style=&quot;font-size:11px&quot;&gt;⑦ Consume mensaje&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1A3A5C;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+        <!-- Step 9: Consumer → API DIAN -->
+        <mxCell id="s8" value="&lt;font style=&quot;font-size:11px&quot;&gt;⑨ POST /api/ubl2.1&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1A3A5C;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1530" y="455" as="sourcePoint"/>
-            <mxPoint x="1765" y="455" as="targetPoint"/>
+            <mxPoint x="1885" y="550" as="sourcePoint"/>
+            <mxPoint x="2120" y="550" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
 
-        <!-- Step 8: Consumer → API DIAN -->
-        <mxCell id="s8" value="&lt;font style=&quot;font-size:11px&quot;&gt;⑧ POST /api/ubl2.1&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1A3A5C;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+        <!-- Step 10: API DIAN → MySQL -->
+        <mxCell id="s9" value="&lt;font style=&quot;font-size:11px&quot;&gt;⑩ Obtiene resolución&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1A3A5C;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1765" y="510" as="sourcePoint"/>
-            <mxPoint x="2000" y="510" as="targetPoint"/>
+            <mxPoint x="2120" y="605" as="sourcePoint"/>
+            <mxPoint x="2355" y="605" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
 
-        <!-- Step 9: API DIAN → MySQL -->
-        <mxCell id="s9" value="&lt;font style=&quot;font-size:11px&quot;&gt;⑨ Obtiene resolución&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1A3A5C;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+        <!-- Step 11: API DIAN self-loop -->
+        <mxCell id="s10" value="&lt;font style=&quot;font-size:11px&quot;&gt;⑪ Construye XML UBL 2.1 + firma X.509 + CUFE SHA-384&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1A3A5C;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="2000" y="565" as="sourcePoint"/>
-            <mxPoint x="2235" y="565" as="targetPoint"/>
-          </mxGeometry>
-        </mxCell>
-
-        <!-- Step 10: API DIAN self-loop -->
-        <mxCell id="s10" value="&lt;font style=&quot;font-size:11px&quot;&gt;⑩ Construye XML UBL 2.1 + firma X.509 + CUFE SHA-384&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1A3A5C;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="2000" y="620" as="sourcePoint"/>
+            <mxPoint x="2120" y="660" as="sourcePoint"/>
             <Array as="points">
-              <mxPoint x="2080" y="620"/>
-              <mxPoint x="2080" y="650"/>
-              <mxPoint x="2000" y="650"/>
+              <mxPoint x="2200" y="660"/>
+              <mxPoint x="2200" y="690"/>
+              <mxPoint x="2120" y="690"/>
             </Array>
-            <mxPoint x="2000" y="675" as="targetPoint"/>
+            <mxPoint x="2120" y="715" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
 
-        <!-- ===== STEPS 11-15: ZONE C ===== -->
+        <!-- ===== STEPS 12-16: ZONE C ===== -->
 
-        <!-- Step 11: API DIAN → DIAN -->
-        <mxCell id="s11" value="&lt;font style=&quot;font-size:11px&quot;&gt;⑪ Transmite XML firmado (SOAP/HTTPS)&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1A3A5C;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+        <!-- Step 12: API DIAN → DIAN -->
+        <mxCell id="s11" value="&lt;font style=&quot;font-size:11px&quot;&gt;⑫ Transmite XML firmado (SOAP/HTTPS)&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1A3A5C;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="2000" y="785" as="sourcePoint"/>
-            <mxPoint x="2470" y="785" as="targetPoint"/>
+            <mxPoint x="2120" y="825" as="sourcePoint"/>
+            <mxPoint x="2590" y="825" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
 
-        <!-- Step 12: DIAN → API DIAN (return response) -->
-        <mxCell id="s12" value="&lt;font style=&quot;font-size:11px&quot;&gt;⑫ Respuesta (APROBADO o RECHAZADO)&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1A3A5C;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+        <!-- Step 13: DIAN → API DIAN (return response) -->
+        <mxCell id="s12" value="&lt;font style=&quot;font-size:11px&quot;&gt;⑬ Respuesta (APROBADO o RECHAZADO)&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1A3A5C;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="2470" y="845" as="sourcePoint"/>
-            <mxPoint x="2000" y="845" as="targetPoint"/>
+            <mxPoint x="2590" y="885" as="sourcePoint"/>
+            <mxPoint x="2120" y="885" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
 
         <!-- ===== DIAMOND DECISION ===== -->
         <mxCell id="diamond" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="1975" y="880" width="50" height="50" as="geometry"/>
+          <mxGeometry x="2095" y="920" width="50" height="50" as="geometry"/>
         </mxCell>
 
         <!-- ===== SPLIT: GREEN (APROBADO) flow ===== -->
 
-        <!-- Green connector from diamond to step 13g -->
+        <!-- Green connector from diamond to step 14g -->
         <mxCell id="split-green" value="&lt;font style=&quot;font-size:11px&quot;&gt;&lt;b&gt;APROBADO — CUFE asignado&lt;/b&gt;&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#2E7D32;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="2000" y="930" as="sourcePoint"/>
+            <mxPoint x="2120" y="970" as="sourcePoint"/>
             <Array as="points">
-              <mxPoint x="1900" y="930"/>
-              <mxPoint x="1900" y="960"/>
-              <mxPoint x="2000" y="960"/>
+              <mxPoint x="2020" y="970"/>
+              <mxPoint x="2020" y="1000"/>
+              <mxPoint x="2120" y="1000"/>
             </Array>
-            <mxPoint x="2000" y="960" as="targetPoint"/>
+            <mxPoint x="2120" y="1000" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
 
-        <!-- Step 13g: API DIAN → MySQL (green) -->
-        <mxCell id="s13g" value="&lt;font style=&quot;font-size:11px&quot;&gt;⑬ Actualiza estado APROBADO&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#2E7D32;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+        <!-- Step 14g: API DIAN → MySQL (green) -->
+        <mxCell id="s13g" value="&lt;font style=&quot;font-size:11px&quot;&gt;⑭ Actualiza estado APROBADO&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#2E7D32;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="2000" y="990" as="sourcePoint"/>
-            <mxPoint x="2235" y="990" as="targetPoint"/>
+            <mxPoint x="2120" y="1030" as="sourcePoint"/>
+            <mxPoint x="2355" y="1030" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
 
-        <!-- Step 14g: Consumer → PostgreSQL (green) -->
-        <mxCell id="s14g" value="&lt;font style=&quot;font-size:11px&quot;&gt;⑭ Actualiza factura con CUFE&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#2E7D32;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+        <!-- Step 15g: Consumer → PostgreSQL (green) -->
+        <mxCell id="s14g" value="&lt;font style=&quot;font-size:11px&quot;&gt;⑮ Actualiza factura con CUFE&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#2E7D32;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1765" y="1050" as="sourcePoint"/>
-            <mxPoint x="1295" y="1050" as="targetPoint"/>
+            <mxPoint x="1885" y="1090" as="sourcePoint"/>
+            <mxPoint x="1295" y="1090" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
 
-        <!-- Step 15g: App → Usuario (green) -->
-        <mxCell id="s15g" value="&lt;font style=&quot;font-size:11px&quot;&gt;⑮ Notificación exitosa ✓&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#2E7D32;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+        <!-- Step 16g: App → Usuario (green) -->
+        <mxCell id="s15g" value="&lt;font style=&quot;font-size:11px&quot;&gt;⑯ Notificación exitosa ✓&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#2E7D32;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="355" y="1110" as="sourcePoint"/>
-            <mxPoint x="120" y="1110" as="targetPoint"/>
+            <mxPoint x="355" y="1150" as="sourcePoint"/>
+            <mxPoint x="120" y="1150" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
 
         <!-- Green result box -->
         <mxCell id="result-green" value="&lt;font style=&quot;font-size:12px&quot;&gt;&lt;b&gt;✓ FACTURA APROBADA&lt;/b&gt;&lt;br&gt;CUFE asignado correctamente&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#2E7D32;strokeWidth=2;fontColor=#1B5E20;verticalAlign=middle;align=center;" vertex="1" parent="1">
-          <mxGeometry x="55" y="1140" width="180" height="52" as="geometry"/>
+          <mxGeometry x="55" y="1180" width="180" height="52" as="geometry"/>
         </mxCell>
 
         <!-- ===== SPLIT: RED (RECHAZADO) flow ===== -->
 
-        <!-- Red connector from diamond to step 13r -->
+        <!-- Red connector from diamond to step 14r -->
         <mxCell id="split-red" value="&lt;font style=&quot;font-size:11px&quot;&gt;&lt;b&gt;RECHAZADO — Errores DIAN&lt;/b&gt;&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#DC3545;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="2000" y="930" as="sourcePoint"/>
+            <mxPoint x="2120" y="970" as="sourcePoint"/>
             <Array as="points">
-              <mxPoint x="2100" y="930"/>
-              <mxPoint x="2100" y="980"/>
-              <mxPoint x="2000" y="980"/>
+              <mxPoint x="2220" y="970"/>
+              <mxPoint x="2220" y="1020"/>
+              <mxPoint x="2120" y="1020"/>
             </Array>
-            <mxPoint x="2000" y="980" as="targetPoint"/>
+            <mxPoint x="2120" y="1020" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
 
-        <!-- Step 13r: API DIAN → MySQL (red) -->
-        <mxCell id="s13r" value="&lt;font style=&quot;font-size:11px&quot;&gt;⑬ Actualiza estado RECHAZADO&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#DC3545;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+        <!-- Step 14r: API DIAN → MySQL (red) -->
+        <mxCell id="s13r" value="&lt;font style=&quot;font-size:11px&quot;&gt;⑭ Actualiza estado RECHAZADO&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#DC3545;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="2000" y="1180" as="sourcePoint"/>
-            <mxPoint x="2235" y="1180" as="targetPoint"/>
+            <mxPoint x="2120" y="1220" as="sourcePoint"/>
+            <mxPoint x="2355" y="1220" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
 
-        <!-- Step 14r: Consumer → PostgreSQL (red) -->
-        <mxCell id="s14r" value="&lt;font style=&quot;font-size:11px&quot;&gt;⑭ Marca factura como rechazada&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#DC3545;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+        <!-- Step 15r: Consumer → PostgreSQL (red) -->
+        <mxCell id="s14r" value="&lt;font style=&quot;font-size:11px&quot;&gt;⑮ Marca factura como rechazada&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#DC3545;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1765" y="1220" as="sourcePoint"/>
-            <mxPoint x="1295" y="1220" as="targetPoint"/>
+            <mxPoint x="1885" y="1260" as="sourcePoint"/>
+            <mxPoint x="1295" y="1260" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
 
-        <!-- Step 15r: App → Usuario (red) -->
-        <mxCell id="s15r" value="&lt;font style=&quot;font-size:11px&quot;&gt;⑮ Notificación de rechazo ✗&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#DC3545;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+        <!-- Step 16r: App → Usuario (red) -->
+        <mxCell id="s15r" value="&lt;font style=&quot;font-size:11px&quot;&gt;⑯ Notificación de rechazo ✗&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#DC3545;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="355" y="1270" as="sourcePoint"/>
-            <mxPoint x="120" y="1270" as="targetPoint"/>
+            <mxPoint x="355" y="1310" as="sourcePoint"/>
+            <mxPoint x="120" y="1310" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
 
         <!-- Red result box -->
         <mxCell id="result-red" value="&lt;font style=&quot;font-size:12px&quot;&gt;&lt;b&gt;✗ FACTURA RECHAZADA&lt;/b&gt;&lt;br&gt;Errores de validación DIAN&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#DC3545;strokeWidth=2;fontColor=#B71C1C;verticalAlign=middle;align=center;" vertex="1" parent="1">
-          <mxGeometry x="55" y="1300" width="180" height="52" as="geometry"/>
+          <mxGeometry x="55" y="1340" width="180" height="52" as="geometry"/>
         </mxCell>
 
         <!-- ===== LEGEND ===== -->
         <mxCell id="legend-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAFAFA;strokeColor=#BDBDBD;strokeWidth=1;" vertex="1" parent="1">
-          <mxGeometry x="2380" y="935" width="400" height="130" as="geometry"/>
+          <mxGeometry x="2500" y="975" width="400" height="130" as="geometry"/>
         </mxCell>
         <mxCell id="legend-title" value="&lt;font style=&quot;font-size:12px&quot;&gt;&lt;b&gt;Leyenda&lt;/b&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
-          <mxGeometry x="2480" y="935" width="200" height="22" as="geometry"/>
+          <mxGeometry x="2600" y="975" width="200" height="22" as="geometry"/>
         </mxCell>
         <mxCell id="legend-blue" value="" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#1A3A5C;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="2395" y="965" as="sourcePoint"/>
-            <mxPoint x="2450" y="965" as="targetPoint"/>
+            <mxPoint x="2515" y="1005" as="sourcePoint"/>
+            <mxPoint x="2570" y="1005" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
         <mxCell id="legend-blue-label" value="&lt;font style=&quot;font-size:10px&quot;&gt;Flujo normal&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="2460" y="954" width="100" height="22" as="geometry"/>
+          <mxGeometry x="2580" y="994" width="100" height="22" as="geometry"/>
         </mxCell>
         <mxCell id="legend-green" value="" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#2E7D32;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="2395" y="990" as="sourcePoint"/>
-            <mxPoint x="2450" y="990" as="targetPoint"/>
+            <mxPoint x="2515" y="1030" as="sourcePoint"/>
+            <mxPoint x="2570" y="1030" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
         <mxCell id="legend-green-label" value="&lt;font style=&quot;font-size:10px&quot;&gt;Camino APROBADO&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="2460" y="979" width="120" height="22" as="geometry"/>
+          <mxGeometry x="2580" y="1019" width="120" height="22" as="geometry"/>
         </mxCell>
         <mxCell id="legend-red" value="" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#DC3545;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="2395" y="1015" as="sourcePoint"/>
-            <mxPoint x="2450" y="1015" as="targetPoint"/>
+            <mxPoint x="2515" y="1055" as="sourcePoint"/>
+            <mxPoint x="2570" y="1055" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
         <mxCell id="legend-red-label" value="&lt;font style=&quot;font-size:10px&quot;&gt;Camino RECHAZADO&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="2460" y="1004" width="130" height="22" as="geometry"/>
+          <mxGeometry x="2580" y="1044" width="130" height="22" as="geometry"/>
         </mxCell>
         <mxCell id="legend-diamond" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;strokeWidth=1;" vertex="1" parent="1">
-          <mxGeometry x="2400" y="1035" width="20" height="20" as="geometry"/>
+          <mxGeometry x="2520" y="1075" width="20" height="20" as="geometry"/>
         </mxCell>
         <mxCell id="legend-diamond-label" value="&lt;font style=&quot;font-size:10px&quot;&gt;Decisión DIAN&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="2460" y="1034" width="100" height="22" as="geometry"/>
+          <mxGeometry x="2580" y="1074" width="100" height="22" as="geometry"/>
         </mxCell>
 
       </root>

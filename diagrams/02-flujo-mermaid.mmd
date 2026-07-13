@@ -21,11 +21,13 @@ sequenceDiagram
     Purchases->>+DB: Valida datos empresa y resolución
     DB-->>-Purchases: Datos validados
 
-    Purchases->>+DB: Persiste factura (estado: PENDIENTE)
-    DB-->>-Purchases: Factura guardada con ID
+    Purchases->>+DB: Persiste factura (estado: PENDIENTE) + inserta en tabla outbox (misma transacción)
+    DB-->>-Purchases: Factura + outbox guardados
 
-    Purchases->>Kafka: Publica evento "invoice.emission"
-    Note over Kafka: Topic: einvoice-emission<br/>Partición asignada automáticamente
+    Note over DB,Kafka: Patrón Transactional Outbox: el publicador lee la tabla outbox y envía a Kafka
+
+    DB->>Kafka: Publicador Outbox lee y publica evento "invoice.emission"
+    Note over Kafka: Topic: einvoice-emission<br/>Garantía: cero pérdida de eventos
 
     Purchases-->>-Router: Respuesta: factura creada (estado: EN_PROCESO)
     Router-->>-Caddy: GraphQL Response
