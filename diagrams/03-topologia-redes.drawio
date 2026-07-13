@@ -118,16 +118,19 @@
         <mxCell id="41" value="Kafka&lt;br&gt;:9093" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;strokeWidth=1;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="90" y="600" width="140" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="42" value="Purchases MS&lt;br&gt;(publica eventos)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;strokeWidth=1;fontSize=10;" vertex="1" parent="1">
+        <mxCell id="42" value="Purchases MS&lt;br&gt;(escribe outbox)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;strokeWidth=1;fontSize=10;" vertex="1" parent="1">
           <mxGeometry x="270" y="600" width="150" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="43" value="Payroll MS&lt;br&gt;(publica eventos)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;strokeWidth=1;fontSize=10;" vertex="1" parent="1">
+        <mxCell id="43" value="Payroll MS&lt;br&gt;(escribe outbox)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;strokeWidth=1;fontSize=10;" vertex="1" parent="1">
           <mxGeometry x="460" y="600" width="150" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="42b" value="Publicador Outbox&lt;br&gt;(lee tabla outbox)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#2E7D32;strokeWidth=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="600" y="600" width="160" height="42" as="geometry" />
         </mxCell>
         <mxCell id="44" value="6 Consumers&lt;br&gt;(emission_consumer_*)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;strokeWidth=1;fontSize=10;" vertex="1" parent="1">
           <mxGeometry x="240" y="680" width="180" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="45" value="&lt;i&gt;Apache Kafka KRaft | Topic: &lt;b&gt;emission.documents&lt;/b&gt;&lt;/i&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=10;fillColor=none;strokeColor=none;fontColor=#43a047;" vertex="1" parent="1">
+        <mxCell id="45" value="&lt;i&gt;Apache Kafka KRaft | &lt;b&gt;Patrón Transactional Outbox&lt;/b&gt; | Cero pérdida de eventos&lt;/i&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=10;fillColor=none;strokeColor=none;fontColor=#43a047;" vertex="1" parent="1">
           <mxGeometry x="180" y="745" width="680" height="22" as="geometry" />
         </mxCell>
 
@@ -341,24 +344,19 @@
           </mxGeometry>
         </mxCell>
 
-        <!-- Purchases MS (kafka-net) → Kafka -->
-        <mxCell id="216" value="publica eventos" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#43a047;strokeWidth=1;fontSize=9;fontColor=#43a047;endArrow=classic;" edge="1" parent="1" source="42" target="41">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="345" y="580" />
-              <mxPoint x="160" y="580" />
-            </Array>
-          </mxGeometry>
+        <!-- Purchases MS → Publicador Outbox -->
+        <mxCell id="316" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#43a047;strokeWidth=1;fontSize=9;endArrow=classic;" edge="1" parent="1" source="42" target="42b">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
-        <!-- Payroll MS (kafka-net) → Kafka -->
-        <mxCell id="217" value="publica eventos" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#43a047;strokeWidth=1;fontSize=9;fontColor=#43a047;endArrow=classic;" edge="1" parent="1" source="43" target="41">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="535" y="570" />
-              <mxPoint x="160" y="570" />
-            </Array>
-          </mxGeometry>
+        <!-- Payroll MS → Publicador Outbox -->
+        <mxCell id="317" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#43a047;strokeWidth=1;fontSize=9;endArrow=classic;" edge="1" parent="1" source="43" target="42b">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Publicador Outbox → Kafka -->
+        <mxCell id="318" value="publica eventos" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2E7D32;strokeWidth=2;fontSize=9;fontColor=#2E7D32;endArrow=classic;" edge="1" parent="1" source="42b" target="41">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
         <!-- Kafka → 6 Consumers (kafka-net) -->
