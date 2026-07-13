@@ -10,21 +10,29 @@
 
 ### 1.1 Servidores de Cómputo
 
-Las especificaciones de los servidores de producción y QA se encuentran documentadas en el documento principal (§3.2 y §3.3).
+| ID | Nombre | vCPU | RAM | Almacenamiento | Bundle | S.O. | Entorno |
+|:---:|--------|:---:|-----|------|--------|------|:---:|
+| SRV-001 | ideal-production-server | 4 | 16 GB | 320 GB SSD | xlarge_3_0 | Ubuntu 22.04 LTS | Producción |
+| SRV-002 | ideal-qa-server | 2 | 8 GB | 160 GB SSD | large_3_0 | Ubuntu 22.04 LTS | QA |
 
 ### 1.2 Bases de Datos Gestionadas
 
-Las bases de datos de producción (PostgreSQL 15 y MySQL 8.0, ambas micro_1_0) se documentan en el documento principal (§3.4). A continuación se listan las réplicas del ambiente QA:
+| ID | Motor | Bundle | Entorno | Acceso Público | Backup |
+|:---:|-------|--------|:---:|:---:|--------|
+| DB-001 | PostgreSQL 15 | micro_1_0 (1 GB RAM, 40 GB SSD) | Producción | NO | Diario 04:00 UTC (7 días) |
+| DB-002 | MySQL 8.0 | micro_1_0 (1 GB RAM, 40 GB SSD) | Producción | NO | Diario 04:00 UTC (7 días) |
+| DB-003 | PostgreSQL 15 | micro_1_0 (1 GB RAM, 40 GB SSD) | QA | SI (solo QA) | Diario 04:00 UTC (7 días) |
+| DB-004 | MySQL 8.0 | micro_1_0 (1 GB RAM, 40 GB SSD) | QA | SI (solo QA) | Diario 04:00 UTC (7 días) |
 
-| ID | Nombre | Motor | Acceso Público | Backup | Propósito |
-|:---:|--------|-------|:---:|--------|---------|
-| DB-003 | ideal-qa-postgres | PostgreSQL 15 | SI (solo QA) | Diario 04:00 UTC (7 días) | Réplica QA de PostgreSQL |
-| DB-004 | ideal-qa-mysql | MySQL 8.0 | SI (solo QA) | Diario 04:00 UTC (7 días) | Réplica QA de MySQL |
+### 1.3 Dominios y DNS
 
-### 1.4 Dominios y DNS
-
-Los dominios de producción se documentan en el documento principal (§3.5). Los subdominios de QA son:
-api.qa.idealsoluciones.com.co y app.qa.idealsoluciones.com.co, ambos apuntando a la IP del servidor QA.
+| ID | Dominio | Propósito | Entorno |
+|:---:|---------|---------|:---:|
+| DNS-001 | idealsoluciones.com.co | Dominio corporativo | Producción |
+| DNS-002 | api.idealsoluciones.com.co | API GraphQL | Producción |
+| DNS-003 | app.idealsoluciones.com.co | Aplicación web | Producción |
+| DNS-004 | api.qa.idealsoluciones.com.co | API GraphQL QA | QA |
+| DNS-005 | app.qa.idealsoluciones.com.co | Aplicación web QA | QA |
 
 ---
 
