@@ -1,182 +1,147 @@
-<mxfile host="app.diagrams.net" modified="2026-07-10T00:00:00.000Z" agent="openclaude" version="24.0.0">
+<mxfile host="app.diagrams.net" agent="openclaude">
   <diagram id="infraestructura" name="Infraestructura de Despliegue">
-    <mxGraphModel dx="2200" dy="1600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2860" pageHeight="2080" math="0" shadow="0">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="2200" pageHeight="1600" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-<mxCell id="title" value="&lt;b&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;Infraestructura de Despliegue — IDEAL SaaS&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;AWS Lightsail | us-east-1 | Julio 2026&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=16;fillColor=none;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="350" y="10" width="1500" height="55" as="geometry" />
+        <mxCell id="16dB4yMRwuXWM7MJfuaR-22" parent="1" style="fillColor=none;strokeColor=#5A6C86;dashed=1;verticalAlign=top;fontStyle=0;fontColor=#5A6C86;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="530" width="310" x="-190" y="20" as="geometry" />
         </mxCell>
-<mxCell id="dns-box" value="&lt;b&gt;GoDaddy / AWS Route 53&lt;/b&gt;&lt;br&gt;DNS: idealsoluciones.com.co&lt;br&gt;Registros A → IP Lightsail" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F2F6FA;strokeColor=#233753;strokeWidth=2;fontSize=14;fontColor=#232F3E;arcSize=8;align=center;" vertex="1" parent="1">
-          <mxGeometry x="810" y="75" width="280" height="70" as="geometry" />
+        <mxCell id="external-group" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#232F3D;strokeWidth=1;dashed=1;fontSize=13;fontColor=#232F3D;verticalAlign=top;align=left;spacingLeft=8;spacingTop=4;" value="&lt;b&gt;&lt;font&gt;Servicios Externos y Terceros&lt;/font&gt;&lt;/b&gt;" vertex="1">
+          <mxGeometry height="300" width="220" x="1470" y="130" as="geometry" />
         </mxCell>
-<mxCell id="internet" value="&lt;b&gt;Internet&lt;/b&gt;" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#E6F0FA;strokeColor=#6C8EBF;strokeWidth=2;fontSize=18;" vertex="1" parent="1">
-          <mxGeometry x="60" y="360" width="180" height="100" as="geometry" />
+        <mxCell id="16dB4yMRwuXWM7MJfuaR-1" parent="1" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=12;fontStyle=0;container=1;pointerEvents=0;collapsible=0;recursiveResize=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_aws_cloud;strokeColor=#232F3E;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#232F3E;dashed=0;strokeWidth=1;" value="AWS Cloud" vertex="1">
+          <mxGeometry height="1040" width="1220" x="190" y="-220" as="geometry" />
         </mxCell>
-<mxCell id="firewall" value="&lt;b&gt;Firewall&lt;br&gt;AWS Lightsail&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;Puertos 80, 443, 22 abiertos&lt;br&gt;Demás BLOQUEADOS&lt;/font&gt;" style="shape=mxgraph.aws4.generic_firewall;html=1;fillColor=#FF6B6B;strokeColor=#232F3E;strokeWidth=2;verticalAlign=middle;labelPosition=center;verticalLabelPosition=middle;align=center;fontSize=16;fontColor=#FFFFFF;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="310" y="320" width="180" height="180" as="geometry" />
+        <mxCell id="16dB4yMRwuXWM7MJfuaR-4" parent="16dB4yMRwuXWM7MJfuaR-1" style="fillColor=none;strokeColor=light-dark(#5A6C86, #d86d0c);dashed=1;verticalAlign=top;fontStyle=0;fontColor=#5A6C86;whiteSpace=wrap;html=1;strokeWidth=2;" value="" vertex="1">
+          <mxGeometry height="800" width="1160" x="30" y="190" as="geometry" />
         </mxCell>
-<mxCell id="lightsail-zone" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#FF9900;strokeWidth=3;dashed=1;dashPattern=12 6;" vertex="1" parent="1">
-          <mxGeometry x="530" y="85" width="860" height="1410" as="geometry" />
+        <mxCell id="dns-box" parent="16dB4yMRwuXWM7MJfuaR-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F2F6FA;strokeColor=#233753;strokeWidth=2;fontSize=12;fontColor=#232F3E;arcSize=8;align=center;" value="&lt;b&gt;&amp;nbsp;AWS Route 53&lt;/b&gt;&lt;br&gt;DNS: idealsoluciones.com.co&lt;br&gt;Registros A → IP Lightsail" vertex="1">
+          <mxGeometry height="70" width="280" x="30" y="70" as="geometry" />
         </mxCell>
-<mxCell id="lightsail-label" value="&lt;b&gt;AWS Lightsail — us-east-1&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;spacingLeft=12;spacingTop=6;fillColor=none;strokeColor=none;fontColor=#FF9900;fontSize=18;" vertex="1" parent="1">
-          <mxGeometry x="545" y="90" width="300" height="30" as="geometry" />
+        <mxCell id="16dB4yMRwuXWM7MJfuaR-3" parent="16dB4yMRwuXWM7MJfuaR-1" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#8C4FFF;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.route_53;" value="" vertex="1">
+          <mxGeometry height="50" width="50" x="30" y="70" as="geometry" />
         </mxCell>
-<mxCell id="server-prod" value="&lt;b&gt;Servidor Producción&lt;/b&gt;&lt;br&gt;ideal-production-server&lt;br&gt;4 vCPU, 16 GB RAM&lt;br&gt;320 GB SSD&lt;br&gt;Bundle: xlarge_3_0&lt;br&gt;24 containers Docker" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ED7100;strokeColor=#232F3E;strokeWidth=2;fontSize=14;fontColor=#FFFFFF;arcSize=8;align=center;verticalAlign=middle;" vertex="1" parent="1">
-          <mxGeometry x="570" y="140" width="240" height="130" as="geometry" />
+        <mxCell id="lightsail-label" parent="16dB4yMRwuXWM7MJfuaR-1" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;spacingLeft=12;spacingTop=6;fillColor=none;strokeColor=none;fontColor=#FF9900;fontSize=16;" value="&lt;b&gt;AWS Lightsail — us-east-1&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="300" x="485" y="180" as="geometry" />
         </mxCell>
-<mxCell id="server-qa" value="&lt;b&gt;Servidor QA&lt;/b&gt;&lt;br&gt;ideal-qa-server&lt;br&gt;2 vCPU, 8 GB RAM&lt;br&gt;160 GB SSD&lt;br&gt;Bundle: large_3_0" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ED7100;strokeColor=#232F3E;strokeWidth=2;fontSize=14;fontColor=#FFFFFF;arcSize=8;align=center;verticalAlign=middle;" vertex="1" parent="1">
-          <mxGeometry x="860" y="140" width="240" height="130" as="geometry" />
+        <mxCell id="16dB4yMRwuXWM7MJfuaR-5" parent="16dB4yMRwuXWM7MJfuaR-1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font&gt;&lt;b style=&quot;color: rgb(18, 18, 18); text-wrap-mode: nowrap;&quot;&gt;Firewall&lt;br&gt;AWS Lightsail&lt;/b&gt;&lt;br style=&quot;color: rgb(18, 18, 18); font-weight: 700; text-wrap-mode: nowrap;&quot;&gt;&lt;font style=&quot;color: rgb(18, 18, 18); font-weight: 700; text-wrap-mode: nowrap;&quot;&gt;Puertos 80, 443, 22 abiertos&lt;br&gt;Demás BLOQUEADOS&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="70" width="120" x="70" y="460" as="geometry" />
         </mxCell>
-<mxCell id="servers-group" value="&lt;b&gt;Servidores Lightsail&lt;br&gt;(instancias compute)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#ED7100;strokeWidth=1;dashed=1;fontSize=13;fontColor=#ED7100;verticalAlign=top;align=left;spacingLeft=8;spacingTop=4;" vertex="1" parent="1">
-          <mxGeometry x="555" y="125" width="570" height="160" as="geometry" />
+        <mxCell id="16dB4yMRwuXWM7MJfuaR-11" edge="1" parent="16dB4yMRwuXWM7MJfuaR-1" source="servers-group" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="16dB4yMRwuXWM7MJfuaR-10">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-<mxCell id="db-postgres" value="&lt;b&gt;PostgreSQL 15&lt;/b&gt;&lt;br&gt;Lightsail Managed DB&lt;br&gt;micro_1_0, 1 GB, 40 GB&lt;br&gt;Backups diarios 7 días&lt;br&gt;NO acceso público" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.rds;html=1;fillColor=#C925D1;strokeColor=#232F3E;strokeWidth=2;fontSize=14;fontColor=#FFFFFF;labelPosition=right;verticalLabelPosition=top;align=left;verticalAlign=top;spacingLeft=12;" vertex="1" parent="1">
-          <mxGeometry x="580" y="350" width="220" height="130" as="geometry" />
+        <mxCell id="servers-group" parent="16dB4yMRwuXWM7MJfuaR-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#ED7100;strokeWidth=1;dashed=1;fontSize=15;fontColor=#ED7100;verticalAlign=top;align=left;spacingLeft=8;spacingTop=4;" value="&lt;b&gt;&lt;font&gt;Servidores Lightsail&lt;br&gt;(instancias compute)&lt;/font&gt;&lt;/b&gt;" vertex="1">
+          <mxGeometry height="230" width="615" x="332.5" y="300" as="geometry" />
         </mxCell>
-<mxCell id="db-mysql" value="&lt;b&gt;MySQL 8.0&lt;/b&gt;&lt;br&gt;Lightsail Managed DB&lt;br&gt;micro_1_0, 1 GB, 40 GB&lt;br&gt;Backups diarios 7 días&lt;br&gt;NO acceso público" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.rds;html=1;fillColor=#C925D1;strokeColor=#232F3E;strokeWidth=2;fontSize=14;fontColor=#FFFFFF;labelPosition=right;verticalLabelPosition=top;align=left;verticalAlign=top;spacingLeft=12;" vertex="1" parent="1">
-          <mxGeometry x="840" y="350" width="220" height="130" as="geometry" />
+        <mxCell id="databases-group" parent="16dB4yMRwuXWM7MJfuaR-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#C925D1;strokeWidth=1;dashed=1;fontSize=10;fontColor=#C925D1;verticalAlign=top;align=left;spacingLeft=8;spacingTop=4;" value="&lt;b&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Bases de Datos&lt;br&gt;Lightsail Managed DB&amp;nbsp;&lt;/font&gt;&lt;/b&gt;" vertex="1">
+          <mxGeometry height="210" width="380" x="460" y="570" as="geometry" />
         </mxCell>
-<mxCell id="databases-group" value="&lt;b&gt;Bases de Datos&lt;br&gt;Lightsail Managed DB&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#C925D1;strokeWidth=1;dashed=1;fontSize=13;fontColor=#C925D1;verticalAlign=top;align=left;spacingLeft=8;spacingTop=4;" vertex="1" parent="1">
-          <mxGeometry x="555" y="335" width="570" height="160" as="geometry" />
+        <mxCell id="16dB4yMRwuXWM7MJfuaR-8" edge="1" parent="16dB4yMRwuXWM7MJfuaR-1" source="servers-group" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.492;entryY=0.002;entryDx=0;entryDy=0;entryPerimeter=0;" target="databases-group">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-<mxCell id="s3" value="&lt;b&gt;AWS S3&lt;/b&gt;&lt;br&gt;Almacenamiento documentos&lt;br&gt;electrónicos (UBL 2.1 XML)&lt;br&gt;Sin límite de retención" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;html=1;fillColor=#7AA116;strokeColor=#232F3E;strokeWidth=2;fontSize=14;fontColor=#FFFFFF;labelPosition=right;verticalLabelPosition=top;align=left;verticalAlign=top;spacingLeft=12;" vertex="1" parent="1">
-          <mxGeometry x="1430" y="140" width="240" height="120" as="geometry" />
+        <mxCell id="notes-box" parent="16dB4yMRwuXWM7MJfuaR-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9E6;strokeColor=#E6A817;strokeWidth=1;fontSize=10;fontColor=#333333;arcSize=8;align=left;verticalAlign=top;spacingLeft=12;spacingTop=10;" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;&lt;b style=&quot;&quot;&gt;Notas:&lt;br&gt;&lt;/b&gt;• Cada servidor se conecta a dos bases de datos, en su ambiente correspondiente&lt;br&gt;• Bases de datos: NO accesibles públicamente&lt;br&gt;• dian-api-iac almacena documentos en S3&lt;br&gt;• Conexiones a DBs vía TCP 5432 (PG) y 3306 (MySQL)&lt;br&gt;• Grafana Alloy envía telemetría a Grafana Cloud&lt;/font&gt;" vertex="1">
+          <mxGeometry height="120" width="520" x="370" y="830" as="geometry" />
         </mxCell>
-<mxCell id="grafana" value="&lt;b&gt;Grafana Cloud&lt;/b&gt;&lt;br&gt;Métricas + Logs + Alertas&lt;br&gt;Free tier" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#232F3D;strokeColor=#232F3E;strokeWidth=2;fontSize=14;fontColor=#FFFFFF;arcSize=8;align=center;verticalAlign=middle;" vertex="1" parent="1">
-          <mxGeometry x="1430" y="320" width="180" height="100" as="geometry" />
+        <mxCell id="16dB4yMRwuXWM7MJfuaR-9" edge="1" parent="16dB4yMRwuXWM7MJfuaR-1" source="16dB4yMRwuXWM7MJfuaR-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;innerLoopWaypoints=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="16dB4yMRwuXWM7MJfuaR-4">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-<mxCell id="posthog" value="&lt;b&gt;PostHog&lt;/b&gt;&lt;br&gt;Analytics de producto&lt;br&gt;Comportamiento usuarios" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#232F3D;strokeColor=#232F3E;strokeWidth=2;fontSize=13;fontColor=#FFFFFF;arcSize=8;align=center;verticalAlign=middle;" vertex="1" parent="1">
-          <mxGeometry x="1640" y="320" width="180" height="100" as="geometry" />
+        <mxCell id="16dB4yMRwuXWM7MJfuaR-10" parent="16dB4yMRwuXWM7MJfuaR-1" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#7AA116;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;" value="" vertex="1">
+          <mxGeometry height="100" width="100" x="670" y="45" as="geometry" />
         </mxCell>
-<mxCell id="uptime" value="&lt;b&gt;UptimeRobot&lt;/b&gt;&lt;br&gt;Monitoreo disponibilidad&lt;br&gt;24/7, monitors HTTP" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#232F3D;strokeColor=#232F3E;strokeWidth=2;fontSize=13;fontColor=#FFFFFF;arcSize=8;align=center;verticalAlign=middle;" vertex="1" parent="1">
-          <mxGeometry x="1430" y="460" width="180" height="100" as="geometry" />
+        <mxCell id="16dB4yMRwuXWM7MJfuaR-12" parent="16dB4yMRwuXWM7MJfuaR-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F2F6FA;strokeColor=#233753;strokeWidth=2;fontSize=11;fontColor=#232F3E;arcSize=8;align=center;" value="&lt;b&gt;AWS S3&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="130" x="655" y="20" as="geometry" />
         </mxCell>
-<mxCell id="colafeliz" value="&lt;b&gt;ColaFeliz&lt;/b&gt;&lt;br&gt;API Sistema Externo&lt;br&gt;Consulta de giros" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#232F3D;strokeColor=#232F3E;strokeWidth=2;fontSize=13;fontColor=#FFFFFF;arcSize=8;align=center;verticalAlign=middle;" vertex="1" parent="1">
-          <mxGeometry x="1640" y="460" width="180" height="100" as="geometry" />
+        <mxCell id="lg2HjX3wI7YpgLsrpLBw-3" parent="16dB4yMRwuXWM7MJfuaR-1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#C925D1;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.rds_mysql_instance_alt;" value="" vertex="1">
+          <mxGeometry height="152" width="152" x="670" y="608" as="geometry" />
         </mxCell>
-<mxCell id="external-group" value="&lt;b&gt;Servicios Externos y Terceros&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#232F3D;strokeWidth=1;dashed=1;fontSize=13;fontColor=#232F3D;verticalAlign=top;align=left;spacingLeft=8;spacingTop=4;" vertex="1" parent="1">
-          <mxGeometry x="1410" y="305" width="430" height="270" as="geometry" />
+        <mxCell id="lg2HjX3wI7YpgLsrpLBw-4" parent="16dB4yMRwuXWM7MJfuaR-1" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#C925D1;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.database;" value="" vertex="1">
+          <mxGeometry height="78" width="78" x="707" y="670" as="geometry" />
         </mxCell>
-<mxCell id="notes-box" value="&lt;b&gt;Notas:&lt;/b&gt;&lt;br&gt;• Bases de datos: NO accesibles públicamente&lt;br&gt;• dian-api-iac almacena documentos en S3&lt;br&gt;• Conexiones a DBs vía TCP 5432 (PG) y 3306 (MySQL)&lt;br&gt;• Grafana Alloy envía telemetría a Grafana Cloud" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9E6;strokeColor=#E6A817;strokeWidth=1;fontSize=13;fontColor=#333333;arcSize=8;align=left;verticalAlign=top;spacingLeft=12;spacingTop=10;" vertex="1" parent="1">
-          <mxGeometry x="580" y="540" width="520" height="90" as="geometry" />
+        <mxCell id="lg2HjX3wI7YpgLsrpLBw-5" parent="16dB4yMRwuXWM7MJfuaR-1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#C925D1;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.rds_postgresql_instance_alt;" value="" vertex="1">
+          <mxGeometry height="150" width="150" x="470" y="610" as="geometry" />
         </mxCell>
-<mxCell id="conn-inet-dns" value="" style="endArrow=none;html=1;rounded=0;dashed=1;strokeWidth=1;strokeColor=#888888;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="internet" target="dns-box">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="150" y="360" as="sourcePoint" />
-            <mxPoint x="200" y="310" as="targetPoint" />
-            <Array as="points" />
+        <mxCell id="lg2HjX3wI7YpgLsrpLBw-6" parent="16dB4yMRwuXWM7MJfuaR-1" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#C925D1;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.database;" value="" vertex="1">
+          <mxGeometry height="78" width="78" x="506" y="670" as="geometry" />
+        </mxCell>
+        <mxCell id="conn-dns-servers" edge="1" parent="16dB4yMRwuXWM7MJfuaR-1" source="dns-box" style="endArrow=block;html=1;rounded=1;strokeWidth=2;strokeColor=#333333;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.288;entryY=-0.005;entryDx=0;entryDy=0;entryPerimeter=0;" target="servers-group" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="760" y="365" as="sourcePoint" />
+            <mxPoint x="500" y="360" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-<mxCell id="conn-inet-dns-label" value="DNS" style="text;html=1;align=center;verticalAlign=middle;fontSize=12;fontColor=#888888;fillColor=none;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="170" y="200" width="50" height="16" as="geometry" />
+        <mxCell id="title" parent="1" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=17;fillColor=none;strokeColor=none;" value="&lt;b&gt;&lt;font&gt;Infraestructura de Despliegue — IDEAL SaaS&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font&gt;AWS Lightsail | us-east-1 | Julio 2026&lt;/font&gt;" vertex="1">
+          <mxGeometry height="55" width="570" x="490" y="-300" as="geometry" />
         </mxCell>
-<mxCell id="conn-inet-fw" value="" style="endArrow=block;html=1;rounded=1;strokeWidth=2;strokeColor=#333333;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="internet" target="firewall">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="300" y="410" as="sourcePoint" />
+        <mxCell id="internet" parent="1" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#E6F0FA;strokeColor=#6C8EBF;strokeWidth=2;fontSize=14;" value="&lt;b&gt;Internet&lt;/b&gt;" vertex="1">
+          <mxGeometry height="90" width="140" x="-200" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="firewall" parent="1" style="shape=mxgraph.aws4.generic_firewall;html=1;fillColor=#FF6B6B;strokeColor=#232F3E;strokeWidth=2;verticalAlign=middle;labelPosition=center;verticalLabelPosition=middle;align=center;fontSize=12;fontColor=#FFFFFF;fontStyle=1;" value="" vertex="1">
+          <mxGeometry height="165" width="180" x="240" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="server-prod" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ED7100;strokeColor=#232F3E;strokeWidth=2;fontSize=12;fontColor=#FFFFFF;arcSize=8;align=center;verticalAlign=middle;" value="&lt;b&gt;Servidor Producción&lt;/b&gt;&lt;br&gt;ideal-production-server&lt;br&gt;4 vCPU, 16 GB RAM&lt;br&gt;320 GB SSD&lt;br&gt;Bundle: xlarge_3_0" vertex="1">
+          <mxGeometry height="130" width="240" x="570" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="server-qa" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BD5A00;strokeColor=#232F3E;strokeWidth=2;fontSize=12;fontColor=#FFFFFF;arcSize=8;align=center;verticalAlign=middle;gradientColor=none;fillStyle=auto;" value="&lt;b&gt;Servidor QA&lt;/b&gt;&lt;br&gt;ideal-qa-server&lt;br&gt;2 vCPU, 8 GB RAM&lt;br&gt;160 GB SSD&lt;br&gt;Bundle: large_3_0" vertex="1">
+          <mxGeometry height="130" width="240" x="860" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="grafana" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;fontSize=12;arcSize=8;align=center;verticalAlign=middle;" value="&lt;b&gt;Grafana Cloud&lt;/b&gt;&lt;br&gt;Métricas + Logs + Alertas&lt;br&gt;Free tier" vertex="1">
+          <mxGeometry height="100" width="180" x="1490" y="165" as="geometry" />
+        </mxCell>
+        <mxCell id="posthog" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;fontSize=10;arcSize=8;align=center;verticalAlign=middle;" value="&lt;b&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;PostHog&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Analytics de producto&lt;br&gt;&lt;/font&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Comportamiento usuarios&lt;/font&gt;" vertex="1">
+          <mxGeometry height="100" width="180" x="1490" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="conn-inet-dns" edge="1" parent="1" source="16dB4yMRwuXWM7MJfuaR-22" style="endArrow=none;html=1;rounded=0;dashed=1;strokeWidth=1;strokeColor=#888888;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=1.006;exitY=0.114;exitDx=0;exitDy=0;exitPerimeter=0;" target="dns-box" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points" />
+            <mxPoint x="60" y="350" as="sourcePoint" />
+            <mxPoint x="200" y="310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="conn-inet-dns-label" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=9;fontColor=#888888;fillColor=none;strokeColor=none;" value="DNS" vertex="1">
+          <mxGeometry height="16" width="50" x="170" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="conn-inet-fw" edge="1" parent="1" style="endArrow=block;html=1;rounded=1;strokeWidth=2;strokeColor=#333333;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="firewall" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="120" y="390" as="sourcePoint" />
             <mxPoint x="350" y="410" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-<mxCell id="conn-inet-fw-label" value="HTTPS" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontColor=#333333;fontStyle=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="246" y="398" width="60" height="16" as="geometry" />
+        <mxCell id="conn-inet-fw-label" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#333333;fontStyle=1;fillColor=none;strokeColor=none;" value="HTTPS" vertex="1">
+          <mxGeometry height="16" width="60" x="180" y="359" as="geometry" />
         </mxCell>
-<mxCell id="conn-fw-servers" value="" style="endArrow=block;html=1;rounded=1;strokeWidth=2;strokeColor=#333333;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="firewall" target="server-prod">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
+        <mxCell id="conn-fw-servers" edge="1" parent="1" source="firewall" style="endArrow=block;html=1;rounded=1;strokeWidth=2;strokeColor=#333333;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" target="servers-group" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
             <mxPoint x="490" y="410" as="sourcePoint" />
             <mxPoint x="540" y="410" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-<mxCell id="conn-fw-qa" value="" style="endArrow=block;html=1;rounded=1;strokeWidth=2;strokeColor=#787878;exitX=1;exitY=0.6;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="firewall" target="server-qa">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="490" y="430" as="sourcePoint" />
-            <mxPoint x="540" y="430" as="targetPoint" />
-          </mxGeometry>
+        <mxCell id="conn-servers-posthog-label" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=9;fontColor=#888888;fontStyle=2;fillColor=none;strokeColor=none;" value="analytics" vertex="1">
+          <mxGeometry height="14" width="60" x="1430" y="200" as="geometry" />
         </mxCell>
-<mxCell id="conn-servers-pg" value="" style="endArrow=block;html=1;rounded=1;strokeWidth=2;strokeColor=#333333;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="server-prod" target="db-postgres">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="690" y="350" as="sourcePoint" />
-            <mxPoint x="740" y="400" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="690" y="320" />
-              <mxPoint x="690" y="310" />
-            </Array>
-          </mxGeometry>
+        <mxCell id="16dB4yMRwuXWM7MJfuaR-15" edge="1" parent="1" source="servers-group" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" target="external-group">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-<mxCell id="conn-servers-pg-label" value="TCP 5432" style="text;html=1;align=center;verticalAlign=middle;fontSize=12;fontColor=#333333;fontStyle=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="670" y="305" width="60" height="14" as="geometry" />
+        <mxCell id="16dB4yMRwuXWM7MJfuaR-16" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#232F3D;strokeWidth=1;dashed=1;fontSize=13;fontColor=#232F3D;verticalAlign=top;align=left;spacingLeft=8;spacingTop=4;" value="&lt;b&gt;&lt;font&gt;Servicios Externos y Terceros&lt;/font&gt;&lt;/b&gt;" vertex="1">
+          <mxGeometry height="170" width="220" x="-120" y="130" as="geometry" />
         </mxCell>
-<mxCell id="conn-servers-mysql" value="" style="endArrow=block;html=1;rounded=1;strokeWidth=2;strokeColor=#333333;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="server-prod" target="db-mysql">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="690" y="350" as="sourcePoint" />
-            <mxPoint x="740" y="400" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="690" y="310" />
-              <mxPoint x="950" y="310" />
-            </Array>
-          </mxGeometry>
+        <mxCell id="16dB4yMRwuXWM7MJfuaR-17" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=12;arcSize=8;align=center;verticalAlign=middle;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;b&gt;UptimeRobot&lt;/b&gt;&lt;br&gt;Monitoreo disponibilidad&lt;br&gt;24/7, monitors HTTP" vertex="1">
+          <mxGeometry height="100" width="180" x="-100" y="170" as="geometry" />
         </mxCell>
-<mxCell id="conn-servers-mysql-label" value="TCP 3306" style="text;html=1;align=center;verticalAlign=middle;fontSize=12;fontColor=#333333;fontStyle=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="810" y="305" width="60" height="14" as="geometry" />
+        <mxCell id="16dB4yMRwuXWM7MJfuaR-18" edge="1" parent="1" source="external-group" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;innerLoopWaypoints=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="external-group">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-<mxCell id="conn-servers-s3" value="" style="endArrow=block;html=1;rounded=1;strokeWidth=2;strokeColor=#333333;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="server-prod" target="s3">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="810" y="170" as="sourcePoint" />
-            <mxPoint x="860" y="170" as="targetPoint" />
-          </mxGeometry>
+        <mxCell id="16dB4yMRwuXWM7MJfuaR-19" edge="1" parent="1" source="external-group" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;innerLoopWaypoints=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="external-group">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-<mxCell id="conn-servers-s3-label" value="HTTPS" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontColor=#333333;fontStyle=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="1290" y="155" width="60" height="14" as="geometry" />
+        <mxCell id="16dB4yMRwuXWM7MJfuaR-24" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#232F3D;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.users;" value="" vertex="1">
+          <mxGeometry height="115" width="115" x="-80" y="375" as="geometry" />
         </mxCell>
-<mxCell id="s3-note" value="dian-api-iac&lt;br&gt;almacena documentos" style="text;html=1;align=left;verticalAlign=middle;fontSize=12;fontColor=#7AA116;fontStyle=2;fillColor=none;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="1435" y="270" width="120" height="28" as="geometry" />
+        <mxCell id="16dB4yMRwuXWM7MJfuaR-25" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Usuarios finales" vertex="1">
+          <mxGeometry height="30" width="60" x="-50" y="335" as="geometry" />
         </mxCell>
-<mxCell id="conn-servers-grafana" value="" style="endArrow=block;html=1;rounded=1;strokeWidth=2;strokeColor=#888888;dashed=1;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="server-prod" target="grafana">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="810" y="270" as="sourcePoint" />
-            <mxPoint x="1430" y="380" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="1310" y="270" />
-              <mxPoint x="1310" y="380" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-<mxCell id="conn-servers-grafana-label" value="telemetría" style="text;html=1;align=center;verticalAlign=middle;fontSize=12;fontColor=#888888;fontStyle=2;fillColor=none;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="1310" y="320" width="60" height="14" as="geometry" />
-        </mxCell>
-<mxCell id="conn-servers-posthog" value="" style="endArrow=block;html=1;rounded=1;strokeWidth=2;strokeColor=#888888;dashed=1;exitX=1;exitY=0.8;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="server-prod" target="posthog">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="810" y="240" as="sourcePoint" />
-            <mxPoint x="1640" y="380" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="1310" y="240" />
-              <mxPoint x="1310" y="380" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-<mxCell id="conn-servers-posthog-label" value="analytics" style="text;html=1;align=center;verticalAlign=middle;fontSize=12;fontColor=#888888;fontStyle=2;fillColor=none;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="1370" y="355" width="60" height="14" as="geometry" />
-        </mxCell>
-<mxCell id="conn-uptime-servers" value="" style="endArrow=block;html=1;rounded=1;strokeWidth=2;strokeColor=#888888;dashed=1;startArrow=classic;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="uptime" target="server-prod">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="1430" y="520" as="sourcePoint" />
-            <mxPoint x="1310" y="520" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="1310" y="520" />
-              <mxPoint x="1310" y="204" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-<mxCell id="conn-uptime-servers-label" value="monitoreo" style="text;html=1;align=center;verticalAlign=middle;fontSize=12;fontColor=#888888;fontStyle=2;fillColor=none;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="1230" y="350" width="60" height="14" as="geometry" />
-        </mxCell>
-<mxCell id="conn-dns-servers" value="" style="endArrow=block;html=1;rounded=1;strokeWidth=2;strokeColor=#333333;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="dns-box" target="server-prod">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="950" y="145" as="sourcePoint" />
-            <mxPoint x="690" y="140" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-<mxCell id="conn-dns-servers-label" value="resolución DNS" style="text;html=1;align=center;verticalAlign=middle;fontSize=12;fontColor=#888888;fontStyle=2;fillColor=none;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="800" y="100" width="80" height="14" as="geometry" />
+        <mxCell id="OetWnhXa8T6atGcr8MCc-1" edge="1" parent="1" source="16dB4yMRwuXWM7MJfuaR-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;innerLoopWaypoints=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="16dB4yMRwuXWM7MJfuaR-22">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
