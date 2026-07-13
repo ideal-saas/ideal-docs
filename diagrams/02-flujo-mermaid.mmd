@@ -57,8 +57,6 @@ sequenceDiagram
         DB-->>-Consumer: Actualizada
 
         Consumer-->>-Kafka: ACK - mensaje procesado
-
-        Note over Usuario: Notificación: Factura aprobada por DIAN
     else Validación rechazada
         DIAN-->>DIAN_API: Respuesta: RECHAZADO + errores
         DIAN_API->>MySQL: Registra error
@@ -66,6 +64,17 @@ sequenceDiagram
 
         Consumer->>DB: Actualiza factura (estado: RECHAZADA, errores)
         Consumer-->>Kafka: ACK - mensaje procesado
-
-        Note over Usuario: Notificación: Factura rechazada - revisar errores
     end
+
+    Note over Usuario,DB: El usuario consulta activamente el estado
+
+    Usuario->>+App: Solicita estado de factura
+    App->>+Caddy: GET /graphql queryInvoiceStatus (HTTPS)
+    Caddy->>+Router: Proxy HTTP
+    Router->>+Purchases: Query invoiceStatus
+    Purchases->>+DB: Consulta estado de la factura
+    DB-->>-Purchases: Estado: APROBADA (con CUFE) o RECHAZADA (con errores)
+    Purchases-->>-Router: Retorna estado
+    Router-->>-Caddy: GraphQL Response
+    Caddy-->>-App: HTTPS Response
+    App-->>-Usuario: Muestra resultado (✓ APROBADA / ✗ RECHAZADA)
